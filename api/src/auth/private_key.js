@@ -1,0 +1,1 @@
+module.exports = 'MY_SUPER_KEY_PERSO';
