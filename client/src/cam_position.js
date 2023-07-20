@@ -24,4 +24,19 @@ export function cam_position(camera, scene) {
     
         document.querySelector("#main").append(DIV);
     }
+    document.onkeydown = function(e) {
+        // console.log(e);
+        if (e.key === "ArrowRight") {
+            camera.position.x += 1;
+        }
+        if (e.key === "ArrowLeft") {
+            camera.position.x += -1;
+        }
+        if (e.key === "ArrowDown") {
+            camera.position.z += -1;
+        }
+        if (e.key === "ArrowUp") {
+            camera.position.z += 1;
+        }
+    }
 }

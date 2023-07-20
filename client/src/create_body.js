@@ -46,7 +46,7 @@ export function create_body() {
     });
 };
 
-function add_orbite_and_body(body) {
+function add_orbite_and_body(body, data) {
 
     // Calcul de la moyenne du rayon de l'orbite du corps
     body.orbit_radius = ((body.aphelion + body.perihelion) / 2) * scale;
@@ -62,7 +62,14 @@ function add_orbite_and_body(body) {
     const positions = [];
 
     // Construction du corps
-    const debug_scale = 10;
+    let debug_scale = 1;
+    if (body.body_type === "Moon") {
+        debug_scale = 1000;
+    }
+    else {
+        debug_scale = 10;
+    }
+    
     const corp_geometry = new THREE.SphereGeometry((body.mean_radius * scale) * debug_scale, 32, 32); // Géométrie du corps
     const corp_material = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Matériau du corps
     const corp_mesh = new THREE.Mesh(corp_geometry, corp_material); // Maillage du corps
@@ -83,7 +90,7 @@ function add_orbite_and_body(body) {
         corp_mesh.position.set(x_corps, y_corps, z_corps);
     }
     orbit_geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-    const orbit_material = new THREE.LineBasicMaterial(body.color);
+    const orbit_material = new THREE.LineBasicMaterial({ color: 0x0000ff });
     const orbit_line = new THREE.Line(orbit_geometry, orbit_material);
 
     // Aouter ici la vitesse de rotation
@@ -92,6 +99,27 @@ function add_orbite_and_body(body) {
     // Création d'un group
     const group = new THREE.Group();
     group.name = "group_" + body.english_name;
+
+    // Création des lunes (si elles existent)
+    if (body.moons) {
+        body.moons.forEach(element => {
+            const moon_name = element.moon;
+            const moon_data = data.find(data => data.name === moon_name);
+            const moon_celestial_body = add_orbite_and_body(moon_data, data);
+
+            console.log("Processing moon : " + moon_data.english_name + " to " + body.english_name);
+
+            // Ajuster la position des lunes par rapport à leur orbite et leur planète parente
+            const moon_orbit_radius = element.orbit * scale; // Utiliser le rayon d'orbite fourni pour la lune
+            const x_moon_orbite = moon_orbit_radius * Math.cos(body.orbit_angle) + body.position.x;
+            const y_moon_orbite = body.position.y;
+            const z_moon_orbite = moon_orbit_radius * Math.sin(body.orbit_angle) + body.position.z;
+            moon_celestial_body.position.set(x_moon_orbite, y_moon_orbite, z_moon_orbite);
+
+            group.add(moon_celestial_body);
+        });
+    }
+
     group.add(orbit_line);
     group.add(corp_mesh);
     return group;

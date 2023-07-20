@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { get_celestial_bodies } from './req_bodies.js';
 import { cam_position } from './cam_position.js'
 import { scene_axe } from './scene_axe.js'
 
@@ -12,9 +11,11 @@ const scene = new THREE.Scene();
 
 // Création de la caméra
 const aspectRatio = window.innerWidth / window.innerHeight;
-const zoom = 25;
+const zoom = 200;
 // OrthographicCamera : caméra sans perspective (mode CAD)
 const camera = new THREE.OrthographicCamera(-zoom * aspectRatio, zoom * aspectRatio, zoom, -zoom, 0.1, 1000);
+camera.position.x = 0;
+camera.position.y = 250;
 camera.position.z = 500; // Reculer la camera si une orbite est coupé
 
 // Création du rendu
