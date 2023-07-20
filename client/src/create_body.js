@@ -4,9 +4,6 @@ import { get_celestial_bodies } from './req_bodies.js';
 // Echelle 1 / 1 000 000
 const scale = 1 / 1000000;
 
-let celestial_body;
-
-// Contient les planètes possédant une ou des lunes
 let bodies = [];
 
 export function create_body() {
@@ -16,6 +13,7 @@ export function create_body() {
             data.forEach(body => {
                 if (body.body_type !== "Moon") {
                     // Traitement du soleil
+                    let celestial_body;
                     if (body.body_type === "Star") {
                         body.orbit_radius = 0;
                         body.orbit_angle = 0;
@@ -48,86 +46,53 @@ export function create_body() {
     });
 };
 
-function add_orbite_and_body(body, data) {
+function add_orbite_and_body(body) {
+
     // Calcul de la moyenne du rayon de l'orbite du corps
     body.orbit_radius = ((body.aphelion + body.perihelion) / 2) * scale;
-
-    // Retourne un angle aléatoire en radians
+    // Retourne un angle aléatoir en radians
     body.orbit_angle = Math.random() * Math.PI * 2;
-
     // Positionnement de l'orbite
-    body.position = new THREE.Vector3((body.orbit_radius * scale) * Math.cos(body.orbit_angle), 0, (body.orbit_radius * scale) * Math.sin(body.orbit_angle));
+    body.position = new THREE.Vector3((body.orbit_radius / scale) * Math.cos(body.orbit_angle), 0, (body.orbit_radius / scale) * Math.sin(body.orbit_angle));
 
+    // Construction de l'orbite
     const orbit_geometry = new THREE.BufferGeometry();
-    const segments = 100;
-    const angleStep = (Math.PI * 2) / segments;
+    const segments = 100; // Nombre de segments pour représenter l'orbite
+    const angle_step = (Math.PI * 2) / segments;
     const positions = [];
 
-    // Construction du corps céleste
-    const debug_scale = 100;
-    const corp_geometry = new THREE.SphereGeometry((body.mean_radius * scale) * debug_scale, 32, 32);
-    const corp_material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const corp_mesh = new THREE.Mesh(corp_geometry, corp_material);
-    corp_mesh.name = "corps_" + body.english_name;
+    // Construction du corps
+    const debug_scale = 10;
+    const corp_geometry = new THREE.SphereGeometry((body.mean_radius * scale) * debug_scale, 32, 32); // Géométrie du corps
+    const corp_material = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Matériau du corps
+    const corp_mesh = new THREE.Mesh(corp_geometry, corp_material); // Maillage du corps
+    corp_mesh.name = body.name; // Nommage du corps
 
     for (let i = 0; i <= segments; i++) {
-        // Orbite
-        const angle = angleStep * i;
+        // plan des orbites ici sur les axes XZ
+        const angle = angle_step * i;
         const x_orbite = body.orbit_radius * Math.cos(angle);
         const y_orbite = 0;
         const z_orbite = body.orbit_radius * Math.sin(angle);
         positions.push(x_orbite, y_orbite, z_orbite);
 
-        // Corps céleste
+        // Plan des planètes
         const x_corps = body.orbit_radius * Math.cos(angle);
         const y_corps = 0;
-        const z_corps = body.orbit_radius * Math.sin(angle);
+        const z_corps = body.orbit_radius * Math.sin(angle)
         corp_mesh.position.set(x_corps, y_corps, z_corps);
-
-        // Création de l'orbite des lunes (si elles existent)
-        if (body.body_type === "Moon") {
-            const parentBody = data.find(parent => parent.name.toLowerCase() === body.around_planet.toLowerCase());
-            const moon_orbit_radius = parentBody.orbit_radius * scale;
-            const x_moon_orbite = moon_orbit_radius * Math.cos(angle) + parentBody.position.x + 0.1;
-            const y_moon_orbite = parentBody.position.y;
-            const z_moon_orbite = moon_orbit_radius * Math.sin(angle) + parentBody.position.z + 0.1;
-            positions.push(x_moon_orbite, y_moon_orbite, z_moon_orbite);
-        } else {
-            positions.push(x_orbite, y_orbite, z_orbite);
-        }
     }
-
     orbit_geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-    const orbit_material = new THREE.LineBasicMaterial({ color: 0x0000ff });
+    const orbit_material = new THREE.LineBasicMaterial(body.color);
     const orbit_line = new THREE.Line(orbit_geometry, orbit_material);
-    orbit_line.name = "orbite_" + body.english_name;
 
-    // Vitesse de rotation de l'orbite
+    // Aouter ici la vitesse de rotation
     orbit_line.rotation.speed = (2 * Math.PI / body.sideral_orbit);
 
-    const celestial_body = new THREE.Group();
-    celestial_body.name = "group_" + body.english_name;
-    celestial_body.add(orbit_line);
-    celestial_body.add(corp_mesh);
-
-    // Création des lunes (si elles existent)
-    if (body.moons) {
-        body.moons.forEach(element => {
-            const moon_name = element.moon;
-            const moon_data = data.find(data => data.name === moon_name);
-            const moon_celestial_body = add_orbite_and_body(moon_data, data);
-
-            console.log("Processing moon : " + moon_data.english_name + " to " + body.english_name);
-
-            // Ajuster la position des lunes par rapport à leur orbite et leur planète parente
-            const moon_orbit_radius = element.orbit * scale; // Utiliser le rayon d'orbite fourni pour la lune
-            const x_moon_orbite = moon_orbit_radius * Math.cos(body.orbit_angle) + body.position.x;
-            const y_moon_orbite = body.position.y;
-            const z_moon_orbite = moon_orbit_radius * Math.sin(body.orbit_angle) + body.position.z;
-            moon_celestial_body.position.set(x_moon_orbite, y_moon_orbite, z_moon_orbite);
-
-            celestial_body.add(moon_celestial_body);
-        });
-    }
-    return celestial_body;
+    // Création d'un group
+    const group = new THREE.Group();
+    group.name = "group_" + body.english_name;
+    group.add(orbit_line);
+    group.add(corp_mesh);
+    return group;
 }
