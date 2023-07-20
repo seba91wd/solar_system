@@ -31,42 +31,46 @@ controls.enableRotate = true; // Activer la fonction de rotation
 // DELETE ME
 debug()
 
+// Tableau des objets à animer
+let element_list = [];
+
 create_body().then(celestial_body => {
     // console.log(celestial_body);
     celestial_body.forEach(element => {
         console.log("Add body : " + element.name);
         // console.log(element);
+        element_list.push(element)
         scene.add(element)
 
         element.children.forEach(child => {
             if (child.type === "Group") {
                 console.log("Add first_child : " + child.name);
                 // console.log(child);
+                element_list.push(child)
                 scene.add(child)
             }
         });
+        console.log(element_list);
     });
 });
-
-
 
 animate()
 // Animation
 function animate() {
     requestAnimationFrame(animate);
 
-    // const speed_rotate = 10
-    // for (let i = 0; i < element_list.length; i++) {
-    //     if (element_list[i]) {
+    const speed_rotate = 10
+    for (let i = 0; i < element_list.length; i++) {
+        if (element_list[i]) {
 
-    //         if (element_list[i].type === "Mesh") {
-    //             element_list[i].rotation.y += 0.01;
-    //         }
-    //         else if (element_list[i].type === "Line") {
-    //             element_list[i].rotation.y += (element_list[i].rotation.speed / speed_rotate);
-    //         }
-    //     }
-    // }
+            if (element_list[i].type === "Mesh") {
+                element_list[i].rotation.y += element_list[i].rotation.speed;
+            }
+            else {
+                element_list[i].rotation.y += (element_list[i].rotation.speed / speed_rotate);
+            }
+        }
+    }
 
     // Rotation du cube
     // cube.rotation.y += 0.01;
