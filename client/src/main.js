@@ -15,8 +15,8 @@ const zoom = 200;
 // OrthographicCamera : caméra sans perspective (mode CAD)
 const camera = new THREE.OrthographicCamera(-zoom * aspectRatio, zoom * aspectRatio, zoom, -zoom, 0.1, 1000);
 camera.position.x = 0;
-camera.position.y = 250;
-camera.position.z = 500; // Reculer la camera si une orbite est coupé
+camera.position.y = 560;
+camera.position.z = 0;
 
 // Création du rendu
 const renderer = new THREE.WebGLRenderer();
@@ -35,31 +35,20 @@ debug()
 let element_list = [];
 
 create_body().then(celestial_body => {
-    // console.log(celestial_body);
     celestial_body.forEach(element => {
         console.log("Add body : " + element.name);
-        // console.log(element);
         element_list.push(element)
         scene.add(element)
-
-        element.children.forEach(child => {
-            if (child.type === "Group") {
-                console.log("Add first_child : " + child.name);
-                // console.log(child);
-                element_list.push(child)
-                scene.add(child)
-            }
-        });
-        console.log(element_list);
     });
 });
-
 animate()
+
 // Animation
 function animate() {
     requestAnimationFrame(animate);
 
-    const speed_rotate = 10
+    const speed_rotate = 100
+
     for (let i = 0; i < element_list.length; i++) {
         if (element_list[i]) {
 
@@ -68,6 +57,13 @@ function animate() {
             }
             else {
                 element_list[i].rotation.y += (element_list[i].rotation.speed / speed_rotate);
+                if (element_list[i].children) {
+                    element_list[i].children.forEach(child => {
+                        if (child.type === "Group") {
+                            child.rotation.y += (child.rotation.speed / speed_rotate);
+                        }
+                    });
+                }
             }
         }
     }

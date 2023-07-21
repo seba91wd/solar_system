@@ -15,22 +15,19 @@ export function create_body() {
                     // Traitement du soleil
                     let celestial_body;
                     if (body.body_type === "Star") {
-                        body.orbit_radius = 0;
-                        body.orbit_angle = 0;
+
+                        // Position au centre de la scène
                         body.position = new THREE.Vector3(0, 0, 0);
 
                         // Texture du soleil
                         const textureLoader = new THREE.TextureLoader();
                         const texture = textureLoader.load('../public/textures/sun.jpg');
                         texture.mapping = THREE.EquirectangularReflectionMapping;
-
                         const geometry = new THREE.SphereGeometry(body.mean_radius * scale, 32, 32);
                         const material = new THREE.MeshBasicMaterial({ map: texture });
                         celestial_body = new THREE.Mesh(geometry, material);
                         // Vitesse de rotation
                         celestial_body.rotation.speed = 0.01;
-                        // Ajout d'un type 
-                        celestial_body.body_type = body.body_type;
                         // Ajout d'un nom
                         celestial_body.name = body.english_name;
                         bodies.push(celestial_body);
@@ -54,7 +51,6 @@ function add_orbite_and_body(body, data) {
     body.orbit_radius = ((body.aphelion + body.perihelion) / 2) * scale;
     // Retourne un angle aléatoir en radians
     body.orbit_angle = 0;
-    // body.orbit_angle = Math.random() * Math.PI * 2;
     // Positionnement de l'orbite
     body.position = new THREE.Vector3((body.orbit_radius / scale) * Math.cos(body.orbit_angle), 0, (body.orbit_radius / scale) * Math.sin(body.orbit_angle));
 
@@ -65,7 +61,7 @@ function add_orbite_and_body(body, data) {
     const positions = [];
 
     // Construction du corps
-    const debug_scale = 100;
+    const debug_scale = 1;
 
     const corp_geometry = new THREE.SphereGeometry((body.mean_radius * scale) * debug_scale, 32, 32); // Géométrie du corps
     let  corp_material = {};
@@ -112,9 +108,9 @@ function add_orbite_and_body(body, data) {
 
             // Ajuster la position des lunes par rapport à leur orbite et leur planète parente
             const moon_orbit_radius = ((moon_data.aphelion + moon_data.perihelion) / 2) * scale;
-            const x_moon_orbite = moon_orbit_radius * Math.cos(body.orbit_angle) + body.position.x * scale;
+            const x_moon_orbite = moon_orbit_radius * Math.cos(body.orbit_angle) + (body.position.x * scale) - moon_orbit_radius;
             const y_moon_orbite = body.position.y;
-            const z_moon_orbite = moon_orbit_radius * Math.sin(body.orbit_angle) + body.position.z * scale;
+            const z_moon_orbite = moon_orbit_radius * Math.sin(body.orbit_angle) + (body.position.z * scale);
             moon_celestial_body.position.set(x_moon_orbite, y_moon_orbite, z_moon_orbite);
 
             // Ajouter la lune au groupe parent
