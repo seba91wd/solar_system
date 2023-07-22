@@ -1,4 +1,4 @@
-export function cam_position(camera, scene) {
+export function cam_position(camera) {
 
     if (document.querySelector("#cam_position")) {
         let cam_position = document.querySelector("#cam_position")
@@ -17,29 +17,17 @@ export function cam_position(camera, scene) {
         const p1 = document.createTextNode(`Position Caméra`);
         paragraphe1.append(p1);
 
-        // Bouton
-        const div_btn = document.createElement('div')
-
-        const btn_back = document.createElement('button')
-        btn_back.innerHTML = "←"
-        
-        const btn_follow_body = document.createElement('button')
-        btn_follow_body.innerHTML = "Sun";
-
-        const btn_next = document.createElement('button')
-        btn_next.innerHTML = "→"
-        
-        div_btn.append(btn_back, btn_follow_body, btn_next)
-    
+        // Coordonnées de la caméra
         const cam_position = document.createElement('p');
         cam_position.id = "cam_position";
     
         div.append(paragraphe1);
-        div.append(div_btn);
         div.append(cam_position);
     
         document.querySelector("#main").append(div);
     }
+
+    // Événement sur les touches du clavier
     document.onkeydown = function(e) {
         // console.log(e);
         if (e.key === "ArrowRight") {

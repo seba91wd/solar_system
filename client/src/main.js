@@ -1,10 +1,9 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { cam_position } from './cam_position.js'
+import { cam_follow, scroll_follow_body } from './cam_follow.js'
 import { scene_axe } from './scene_axe.js'
-
 import { create_body } from './create_body.js';
-
 
 // Création de la scène
 const scene = new THREE.Scene();
@@ -33,6 +32,8 @@ debug()
 
 // Tableau des objets à animer
 let element_list = [];
+// Tableau de la position des objets
+let element_list_pos = [];
 
 create_body().then(celestial_body => {
     celestial_body.forEach(element => {
@@ -47,7 +48,11 @@ animate()
 function animate() {
     requestAnimationFrame(animate);
 
+    // Reset du tableau de la position des objets
+    element_list_pos = [];
+    // potentiometre vitesse de rotation
     const speed_rotate = 100
+
 
     for (let i = 0; i < element_list.length; i++) {
         if (element_list[i]) {
@@ -61,21 +66,23 @@ function animate() {
                     element_list[i].children.forEach(child => {
                         if (child.type === "Group") {
                             child.rotation.y += (child.rotation.speed / speed_rotate);
-                        }
+                        };
                     });
-                }
-            }
-        }
-    }
-
+                };
+                element_list_pos.push(element_list[i]);
+            };
+        };
+    };
     // Rotation du cube
     // cube.rotation.y += 0.01;
 
-    cam_position(camera, scene);
+    // console.log(element_list_pos);
+    cam_position(camera);
 
     // Rendu de la scène avec la caméra
     renderer.render(scene, camera);
 }
+cam_follow();
 
 function debug() {
     const axe_display = true;
@@ -92,3 +99,41 @@ function debug() {
         scene.add(cube);
     };
 };
+
+// Evenement btn_back, btn_next
+btn_back.addEventListener('click', () => {
+    scroll_follow_body(-1, element_list); // Défiler vers le corps précédent
+});
+
+btn_next.addEventListener('click', () => {
+    scroll_follow_body(1, element_list); // Défiler vers le corps suivant
+});
+
+btn_follow_body.addEventListener('click', (e) => {
+    const target_name = e.target.textContent;
+    element_list_pos.forEach(element => {
+        if (element.name === target_name) {
+            // Placer la caméra à la position de l'astre plus un décalage approprié (par exemple, en ajoutant 50 unités sur l'axe y)
+            camera.position.set(element.children[1].position.x, 560, element.children[1].position.z);
+            // Orienter la caméra vers l'astre
+            camera.lookAt(element.children[1].position);
+            camera.rotation.set(0, element.rotation.y, 0);
+        }
+    });
+});
+
+function follow_body(e, active) {
+    if (active === "start") {
+        const target_name = e.target.textContent;
+        element_list_pos.forEach(element => {
+            if (element.name === target_name) {
+                element.children[1].position.y = 560;
+                console.log(element.rotation);
+                console.log(element.children[1].position);
+                // while (active === "start") {
+                //     camera.position.copy(element.children[1].position);
+                // }
+            }
+        })
+    }
+}

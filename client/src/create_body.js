@@ -61,7 +61,7 @@ function add_orbite_and_body(body, data) {
     const positions = [];
 
     // Construction du corps
-    const debug_scale = 1;
+    const debug_scale = 10;
 
     const corp_geometry = new THREE.SphereGeometry((body.mean_radius * scale) * debug_scale, 32, 32); // Géométrie du corps
     let  corp_material = {};
