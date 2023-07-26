@@ -1,4 +1,3 @@
-// const link = "http://localhost:3000/";
 const { hostname, port } = require("../../app");
 const link = `http://${hostname}:${port}/api/bodies?name=`;
 const bodies = [
@@ -20,7 +19,7 @@ const bodies = [
         "inclination": 5.145,
         "around_planet": {
             "planet": "terre",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/terre"
+            "rel": link + "terre"
         },
         "eccentricity": 0.0549,
         "aphelion": 405500,
@@ -49,7 +48,7 @@ const bodies = [
         "inclination": 1.075,
         "around_planet": {
             "planet": "mars",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/mars"
+            "rel": link + "mars"
         },
         "eccentricity": 0.0151,
         "aphelion": 9518,
@@ -78,7 +77,7 @@ const bodies = [
         "inclination": 1.075,
         "around_planet": {
             "planet": "mars",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/mars"
+            "rel": link + "mars"
         },
         "eccentricity": 0.0002,
         "aphelion": 23471,
@@ -107,7 +106,7 @@ const bodies = [
         "inclination": 0.036,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.004,
         "aphelion": 423529,
@@ -136,7 +135,7 @@ const bodies = [
         "inclination": 0.466,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.009,
         "aphelion": 0,
@@ -165,7 +164,7 @@ const bodies = [
         "inclination": 0.177,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.001,
         "aphelion": 0,
@@ -194,7 +193,7 @@ const bodies = [
         "inclination": 0.192,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.007,
         "aphelion": 0,
@@ -223,7 +222,7 @@ const bodies = [
         "inclination": 0.38,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.003,
         "aphelion": 182840,
@@ -252,7 +251,7 @@ const bodies = [
         "inclination": 27.5,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.162,
         "aphelion": 13082000,
@@ -281,7 +280,7 @@ const bodies = [
         "inclination": 26.63,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.217,
         "aphelion": 0,
@@ -310,7 +309,7 @@ const bodies = [
         "inclination": 151.4,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.409,
         "aphelion": 0,
@@ -339,7 +338,7 @@ const bodies = [
         "inclination": 158.1,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.25,
         "aphelion": 0,
@@ -368,7 +367,7 @@ const bodies = [
         "inclination": 28.3,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.112,
         "aphelion": 0,
@@ -397,7 +396,7 @@ const bodies = [
         "inclination": 164.9,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.253,
         "aphelion": 0,
@@ -426,7 +425,7 @@ const bodies = [
         "inclination": 148.9,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.244,
         "aphelion": 0,
@@ -455,7 +454,7 @@ const bodies = [
         "inclination": 27.46,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.164,
         "aphelion": 0,
@@ -484,7 +483,7 @@ const bodies = [
         "inclination": 1.08,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.018,
         "aphelion": 226000,
@@ -513,7 +512,7 @@ const bodies = [
         "inclination": 0.054,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.002,
         "aphelion": 0,
@@ -542,7 +541,7 @@ const bodies = [
         "inclination": 0.019,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.001,
         "aphelion": 128026,
@@ -571,7 +570,7 @@ const bodies = [
         "inclination": 147.1,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.283,
         "aphelion": 0,
@@ -600,7 +599,7 @@ const bodies = [
         "inclination": 43.08,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.242,
         "aphelion": 8874300,
@@ -629,7 +628,7 @@ const bodies = [
         "inclination": 152.8,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.421,
         "aphelion": 0,
@@ -658,7 +657,7 @@ const bodies = [
         "inclination": 165.2,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.252,
         "aphelion": 0,
@@ -687,7 +686,7 @@ const bodies = [
         "inclination": 165.2,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.251,
         "aphelion": 0,
@@ -716,7 +715,7 @@ const bodies = [
         "inclination": 148.6,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.226,
         "aphelion": 0,
@@ -745,7 +744,7 @@ const bodies = [
         "inclination": 165.2,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.245,
         "aphelion": 0,
@@ -774,7 +773,7 @@ const bodies = [
         "inclination": 149.4,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.216,
         "aphelion": 0,
@@ -803,7 +802,7 @@ const bodies = [
         "inclination": 164.9,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.266,
         "aphelion": 0,
@@ -832,7 +831,7 @@ const bodies = [
         "inclination": 165.2,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.246,
         "aphelion": 0,
@@ -861,7 +860,7 @@ const bodies = [
         "inclination": 149,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.23,
         "aphelion": 0,
@@ -890,7 +889,7 @@ const bodies = [
         "inclination": 152.9,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.334,
         "aphelion": 0,
@@ -919,7 +918,7 @@ const bodies = [
         "inclination": 148.5,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.229,
         "aphelion": 0,
@@ -948,7 +947,7 @@ const bodies = [
         "inclination": 150.7,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.21,
         "aphelion": 0,
@@ -977,7 +976,7 @@ const bodies = [
         "inclination": 165.1,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.264,
         "aphelion": 0,
@@ -1006,7 +1005,7 @@ const bodies = [
         "inclination": 150.3,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.276,
         "aphelion": 0,
@@ -1035,7 +1034,7 @@ const bodies = [
         "inclination": 148.9,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.232,
         "aphelion": 0,
@@ -1064,7 +1063,7 @@ const bodies = [
         "inclination": 145.8,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.144,
         "aphelion": 0,
@@ -1093,7 +1092,7 @@ const bodies = [
         "inclination": 145.9,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.281,
         "aphelion": 0,
@@ -1122,7 +1121,7 @@ const bodies = [
         "inclination": 151,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.312,
         "aphelion": 0,
@@ -1151,7 +1150,7 @@ const bodies = [
         "inclination": 165,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.26,
         "aphelion": 0,
@@ -1180,7 +1179,7 @@ const bodies = [
         "inclination": 165.1,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.267,
         "aphelion": 0,
@@ -1209,7 +1208,7 @@ const bodies = [
         "inclination": 155.2,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.328,
         "aphelion": 0,
@@ -1238,7 +1237,7 @@ const bodies = [
         "inclination": 148.6,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.227,
         "aphelion": 0,
@@ -1267,7 +1266,7 @@ const bodies = [
         "inclination": 158.3,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.432,
         "aphelion": 0,
@@ -1296,7 +1295,7 @@ const bodies = [
         "inclination": 151.4,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.221,
         "aphelion": 0,
@@ -1325,7 +1324,7 @@ const bodies = [
         "inclination": 165,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.259,
         "aphelion": 0,
@@ -1354,7 +1353,7 @@ const bodies = [
         "inclination": 165.5,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.264,
         "aphelion": 0,
@@ -1383,7 +1382,7 @@ const bodies = [
         "inclination": 154.8,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.156,
         "aphelion": 0,
@@ -1412,7 +1411,7 @@ const bodies = [
         "inclination": 51.4,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.43,
         "aphelion": 0,
@@ -1441,7 +1440,7 @@ const bodies = [
         "inclination": 165.5,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.272,
         "aphelion": 0,
@@ -1470,7 +1469,7 @@ const bodies = [
         "inclination": 149.3,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.319,
         "aphelion": 0,
@@ -1499,7 +1498,7 @@ const bodies = [
         "inclination": 145,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.325,
         "aphelion": 0,
@@ -1528,7 +1527,7 @@ const bodies = [
         "inclination": 164.2,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.2,
         "aphelion": 0,
@@ -1557,7 +1556,7 @@ const bodies = [
         "inclination": 151.8,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.38,
         "aphelion": 0,
@@ -1586,7 +1585,7 @@ const bodies = [
         "inclination": 148,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.253,
         "aphelion": 0,
@@ -1615,7 +1614,7 @@ const bodies = [
         "inclination": 144.9,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.204,
         "aphelion": 0,
@@ -1644,7 +1643,7 @@ const bodies = [
         "inclination": 163.1,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.22,
         "aphelion": 0,
@@ -1673,7 +1672,7 @@ const bodies = [
         "inclination": 164.5,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.269,
         "aphelion": 0,
@@ -1702,7 +1701,7 @@ const bodies = [
         "inclination": 164.1,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.214,
         "aphelion": 0,
@@ -1731,7 +1730,7 @@ const bodies = [
         "inclination": 145.8,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.376,
         "aphelion": 0,
@@ -1760,7 +1759,7 @@ const bodies = [
         "inclination": 143.6,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.194,
         "aphelion": 0,
@@ -1789,7 +1788,7 @@ const bodies = [
         "inclination": 148.5,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.23,
         "aphelion": 0,
@@ -1818,7 +1817,7 @@ const bodies = [
         "inclination": 146.4,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.105,
         "aphelion": 0,
@@ -1847,7 +1846,7 @@ const bodies = [
         "inclination": 162.9,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.334,
         "aphelion": 0,
@@ -1876,7 +1875,7 @@ const bodies = [
         "inclination": 149.2,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.309,
         "aphelion": 0,
@@ -1905,7 +1904,7 @@ const bodies = [
         "inclination": 1.53,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.0202,
         "aphelion": 189270,
@@ -1934,7 +1933,7 @@ const bodies = [
         "inclination": 0,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.0045,
         "aphelion": 239066,
@@ -1963,7 +1962,7 @@ const bodies = [
         "inclination": 1.86,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.0001,
         "aphelion": 294648,
@@ -1992,7 +1991,7 @@ const bodies = [
         "inclination": 0.002,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.0022,
         "aphelion": 378260,
@@ -2021,7 +2020,7 @@ const bodies = [
         "inclination": 0.35,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.001,
         "aphelion": 527597,
@@ -2050,7 +2049,7 @@ const bodies = [
         "inclination": 0.33,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.0292,
         "aphelion": 1257060,
@@ -2079,7 +2078,7 @@ const bodies = [
         "inclination": 0.43,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.123,
         "aphelion": 1535756,
@@ -2108,7 +2107,7 @@ const bodies = [
         "inclination": 14.72,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.0283,
         "aphelion": 3661612,
@@ -2137,7 +2136,7 @@ const bodies = [
         "inclination": 174.8,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.164,
         "aphelion": 0,
@@ -2166,7 +2165,7 @@ const bodies = [
         "inclination": 0.14,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.007,
         "aphelion": 0,
@@ -2195,7 +2194,7 @@ const bodies = [
         "inclination": 0.34,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.009,
         "aphelion": 0,
@@ -2221,7 +2220,7 @@ const bodies = [
         "inclination": 0.199,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.0022,
         "aphelion": 0,
@@ -2250,7 +2249,7 @@ const bodies = [
         "inclination": 1.158,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.001,
         "aphelion": 0,
@@ -2279,7 +2278,7 @@ const bodies = [
         "inclination": 1.473,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.001,
         "aphelion": 0,
@@ -2308,7 +2307,7 @@ const bodies = [
         "inclination": 0.3,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0,
         "aphelion": 0,
@@ -2337,7 +2336,7 @@ const bodies = [
         "inclination": 0,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.00204,
         "aphelion": 0,
@@ -2366,7 +2365,7 @@ const bodies = [
         "inclination": 0,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.0042,
         "aphelion": 0,
@@ -2395,7 +2394,7 @@ const bodies = [
         "inclination": 0,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0,
         "aphelion": 0,
@@ -2424,7 +2423,7 @@ const bodies = [
         "inclination": 167.9,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.187,
         "aphelion": 0,
@@ -2453,7 +2452,7 @@ const bodies = [
         "inclination": 47.2,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.364,
         "aphelion": 23139965,
@@ -2482,7 +2481,7 @@ const bodies = [
         "inclination": 33.8,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.531,
         "aphelion": 0,
@@ -2511,7 +2510,7 @@ const bodies = [
         "inclination": 49.1,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.316,
         "aphelion": 0,
@@ -2540,7 +2539,7 @@ const bodies = [
         "inclination": 175.8,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.114,
         "aphelion": 0,
@@ -2569,7 +2568,7 @@ const bodies = [
         "inclination": 48.7,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.334,
         "aphelion": 0,
@@ -2598,7 +2597,7 @@ const bodies = [
         "inclination": 169.4,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.21,
         "aphelion": 0,
@@ -2627,7 +2626,7 @@ const bodies = [
         "inclination": 34,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.469,
         "aphelion": 0,
@@ -2656,7 +2655,7 @@ const bodies = [
         "inclination": 148.5,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.27,
         "aphelion": 0,
@@ -2685,7 +2684,7 @@ const bodies = [
         "inclination": 34.6,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.474,
         "aphelion": 0,
@@ -2714,7 +2713,7 @@ const bodies = [
         "inclination": 45.6,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.295,
         "aphelion": 0,
@@ -2743,7 +2742,7 @@ const bodies = [
         "inclination": 175,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.47,
         "aphelion": 0,
@@ -2772,7 +2771,7 @@ const bodies = [
         "inclination": 145.8,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.431,
         "aphelion": 0,
@@ -2801,7 +2800,7 @@ const bodies = [
         "inclination": 0,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.0001,
         "aphelion": 194459,
@@ -2830,7 +2829,7 @@ const bodies = [
         "inclination": 0,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.004,
         "aphelion": 0,
@@ -2859,7 +2858,7 @@ const bodies = [
         "inclination": 0.1705,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.018,
         "aphelion": 0,
@@ -2888,7 +2887,7 @@ const bodies = [
         "inclination": 0,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0,
         "aphelion": 0,
@@ -2917,7 +2916,7 @@ const bodies = [
         "inclination": 166.7,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.252,
         "aphelion": 0,
@@ -2946,7 +2945,7 @@ const bodies = [
         "inclination": 35,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.469,
         "aphelion": 0,
@@ -2975,7 +2974,7 @@ const bodies = [
         "inclination": 158.5,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.142,
         "aphelion": 0,
@@ -3004,7 +3003,7 @@ const bodies = [
         "inclination": 145.2,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.521,
         "aphelion": 0,
@@ -3033,7 +3032,7 @@ const bodies = [
         "inclination": 156.4,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.206,
         "aphelion": 0,
@@ -3062,7 +3061,7 @@ const bodies = [
         "inclination": 164.9,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.136,
         "aphelion": 0,
@@ -3091,7 +3090,7 @@ const bodies = [
         "inclination": 170.4,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.206,
         "aphelion": 0,
@@ -3120,7 +3119,7 @@ const bodies = [
         "inclination": 165.8,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.372,
         "aphelion": 0,
@@ -3149,7 +3148,7 @@ const bodies = [
         "inclination": 151.4,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.333,
         "aphelion": 0,
@@ -3178,7 +3177,7 @@ const bodies = [
         "inclination": 156.3,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.478,
         "aphelion": 0,
@@ -3207,7 +3206,7 @@ const bodies = [
         "inclination": 173.1,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.335,
         "aphelion": 0,
@@ -3236,7 +3235,7 @@ const bodies = [
         "inclination": 161.2,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.464,
         "aphelion": 0,
@@ -3265,7 +3264,7 @@ const bodies = [
         "inclination": 177.5,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.451,
         "aphelion": 0,
@@ -3294,7 +3293,7 @@ const bodies = [
         "inclination": 0.1,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.001,
         "aphelion": 0,
@@ -3323,7 +3322,7 @@ const bodies = [
         "inclination": 163.3,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.216,
         "aphelion": 0,
@@ -3352,7 +3351,7 @@ const bodies = [
         "inclination": 179.8,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.326,
         "aphelion": 0,
@@ -3381,7 +3380,7 @@ const bodies = [
         "inclination": 46.1,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.16,
         "aphelion": 0,
@@ -3410,7 +3409,7 @@ const bodies = [
         "inclination": 0.001,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.0002,
         "aphelion": 0,
@@ -3439,7 +3438,7 @@ const bodies = [
         "inclination": 165.1,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.58,
         "aphelion": 0,
@@ -3468,7 +3467,7 @@ const bodies = [
         "inclination": 164,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.401,
         "aphelion": 0,
@@ -3497,7 +3496,7 @@ const bodies = [
         "inclination": 167.4,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.273,
         "aphelion": 0,
@@ -3526,7 +3525,7 @@ const bodies = [
         "inclination": 166.6,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.259,
         "aphelion": 0,
@@ -3555,7 +3554,7 @@ const bodies = [
         "inclination": 154.2,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.13,
         "aphelion": 0,
@@ -3584,7 +3583,7 @@ const bodies = [
         "inclination": 150.8,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.471,
         "aphelion": 0,
@@ -3613,7 +3612,7 @@ const bodies = [
         "inclination": 176.7,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.218,
         "aphelion": 0,
@@ -3642,7 +3641,7 @@ const bodies = [
         "inclination": 177.2,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.13,
         "aphelion": 0,
@@ -3671,7 +3670,7 @@ const bodies = [
         "inclination": 0,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0,
         "aphelion": 0,
@@ -3700,7 +3699,7 @@ const bodies = [
         "inclination": 0.04,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0012,
         "aphelion": 191130,
@@ -3729,7 +3728,7 @@ const bodies = [
         "inclination": 0.13,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0039,
         "aphelion": 267500,
@@ -3758,7 +3757,7 @@ const bodies = [
         "inclination": 0.08,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0011,
         "aphelion": 436800,
@@ -3787,7 +3786,7 @@ const bodies = [
         "inclination": 0.07,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0014,
         "aphelion": 584336,
@@ -3816,7 +3815,7 @@ const bodies = [
         "inclination": 4.34,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0013,
         "aphelion": 130041,
@@ -3845,7 +3844,7 @@ const bodies = [
         "inclination": 0.08,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0003,
         "aphelion": 0,
@@ -3874,7 +3873,7 @@ const bodies = [
         "inclination": 0.1,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0099,
         "aphelion": 0,
@@ -3903,7 +3902,7 @@ const bodies = [
         "inclination": 0.19,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0009,
         "aphelion": 0,
@@ -3932,7 +3931,7 @@ const bodies = [
         "inclination": 0.01,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0004,
         "aphelion": 0,
@@ -3961,7 +3960,7 @@ const bodies = [
         "inclination": 0.11,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0001,
         "aphelion": 0,
@@ -3990,7 +3989,7 @@ const bodies = [
         "inclination": 0.07,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0007,
         "aphelion": 0,
@@ -4019,7 +4018,7 @@ const bodies = [
         "inclination": 0.06,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0001,
         "aphelion": 0,
@@ -4048,7 +4047,7 @@ const bodies = [
         "inclination": 0.28,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0001,
         "aphelion": 0,
@@ -4077,7 +4076,7 @@ const bodies = [
         "inclination": 0.03,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0001,
         "aphelion": 0,
@@ -4106,7 +4105,7 @@ const bodies = [
         "inclination": 0.32,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0001,
         "aphelion": 0,
@@ -4135,7 +4134,7 @@ const bodies = [
         "inclination": 141.53,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.1812,
         "aphelion": 0,
@@ -4164,7 +4163,7 @@ const bodies = [
         "inclination": 159.42,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.5219,
         "aphelion": 0,
@@ -4193,7 +4192,7 @@ const bodies = [
         "inclination": 151.83,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.4445,
         "aphelion": 0,
@@ -4222,7 +4221,7 @@ const bodies = [
         "inclination": 158.24,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.5908,
         "aphelion": 0,
@@ -4251,7 +4250,7 @@ const bodies = [
         "inclination": 143.82,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.2248,
         "aphelion": 0,
@@ -4280,7 +4279,7 @@ const bodies = [
         "inclination": 166.93,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.2194,
         "aphelion": 0,
@@ -4309,7 +4308,7 @@ const bodies = [
         "inclination": 147.25,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.1324,
         "aphelion": 0,
@@ -4338,7 +4337,7 @@ const bodies = [
         "inclination": 57.37,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.6772,
         "aphelion": 0,
@@ -4367,7 +4366,7 @@ const bodies = [
         "inclination": 169.79,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.3993,
         "aphelion": 0,
@@ -4396,7 +4395,7 @@ const bodies = [
         "inclination": 0.47,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0116,
         "aphelion": 0,
@@ -4425,7 +4424,7 @@ const bodies = [
         "inclination": 0.13,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0025,
         "aphelion": 0,
@@ -4454,7 +4453,7 @@ const bodies = [
         "inclination": 0.1,
         "around_planet": {
             "planet": "uranus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/uranus"
+            "rel": link + "uranus"
         },
         "eccentricity": 0.0013,
         "aphelion": 0,
@@ -4483,7 +4482,7 @@ const bodies = [
         "inclination": 157.345,
         "around_planet": {
             "planet": "neptune",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/neptune"
+            "rel": link + "neptune"
         },
         "eccentricity": 0.00002,
         "aphelion": 354765,
@@ -4512,7 +4511,7 @@ const bodies = [
         "inclination": 7.23,
         "around_planet": {
             "planet": "neptune",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/neptune"
+            "rel": link + "neptune"
         },
         "eccentricity": 0.7512,
         "aphelion": 9655000,
@@ -4541,7 +4540,7 @@ const bodies = [
         "inclination": 4.74,
         "around_planet": {
             "planet": "neptune",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/neptune"
+            "rel": link + "neptune"
         },
         "eccentricity": 0.0003,
         "aphelion": 0,
@@ -4570,7 +4569,7 @@ const bodies = [
         "inclination": 0.21,
         "around_planet": {
             "planet": "neptune",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/neptune"
+            "rel": link + "neptune"
         },
         "eccentricity": 0.0002,
         "aphelion": 0,
@@ -4599,7 +4598,7 @@ const bodies = [
         "inclination": 0.07,
         "around_planet": {
             "planet": "neptune",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/neptune"
+            "rel": link + "neptune"
         },
         "eccentricity": 0.0001,
         "aphelion": 0,
@@ -4628,7 +4627,7 @@ const bodies = [
         "inclination": 0.05,
         "around_planet": {
             "planet": "neptune",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/neptune"
+            "rel": link + "neptune"
         },
         "eccentricity": 0.0001,
         "aphelion": 0,
@@ -4657,7 +4656,7 @@ const bodies = [
         "inclination": 0.2,
         "around_planet": {
             "planet": "neptune",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/neptune"
+            "rel": link + "neptune"
         },
         "eccentricity": 0.0014,
         "aphelion": 0,
@@ -4686,7 +4685,7 @@ const bodies = [
         "inclination": 0.04,
         "around_planet": {
             "planet": "neptune",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/neptune"
+            "rel": link + "neptune"
         },
         "eccentricity": 0.0004,
         "aphelion": 0,
@@ -4715,7 +4714,7 @@ const bodies = [
         "inclination": 134.1,
         "around_planet": {
             "planet": "neptune",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/neptune"
+            "rel": link + "neptune"
         },
         "eccentricity": 0.571,
         "aphelion": 0,
@@ -4744,7 +4743,7 @@ const bodies = [
         "inclination": 137.4,
         "around_planet": {
             "planet": "neptune",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/neptune"
+            "rel": link + "neptune"
         },
         "eccentricity": 0.45,
         "aphelion": 0,
@@ -4773,7 +4772,7 @@ const bodies = [
         "inclination": 48.5,
         "around_planet": {
             "planet": "neptune",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/neptune"
+            "rel": link + "neptune"
         },
         "eccentricity": 0.293,
         "aphelion": 0,
@@ -4802,7 +4801,7 @@ const bodies = [
         "inclination": 34.7,
         "around_planet": {
             "planet": "neptune",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/neptune"
+            "rel": link + "neptune"
         },
         "eccentricity": 0.424,
         "aphelion": 0,
@@ -4831,7 +4830,7 @@ const bodies = [
         "inclination": 132.6,
         "around_planet": {
             "planet": "neptune",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/neptune"
+            "rel": link + "neptune"
         },
         "eccentricity": 0.495,
         "aphelion": 0,
@@ -4860,7 +4859,7 @@ const bodies = [
         "inclination": 0.08,
         "around_planet": {
             "planet": "pluton",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/pluton"
+            "rel": link + "pluton"
         },
         "eccentricity": 0.0002,
         "aphelion": 19595,
@@ -4889,7 +4888,7 @@ const bodies = [
         "inclination": 0.133,
         "around_planet": {
             "planet": "pluton",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/pluton"
+            "rel": link + "pluton"
         },
         "eccentricity": 0.002,
         "aphelion": 0,
@@ -4918,7 +4917,7 @@ const bodies = [
         "inclination": 0.242,
         "around_planet": {
             "planet": "pluton",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/pluton"
+            "rel": link + "pluton"
         },
         "eccentricity": 0.005,
         "aphelion": 0,
@@ -4947,7 +4946,7 @@ const bodies = [
         "inclination": 113,
         "around_planet": {
             "planet": "haumea",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/haumea"
+            "rel": link + "haumea"
         },
         "eccentricity": 0.249,
         "aphelion": 0,
@@ -4976,7 +4975,7 @@ const bodies = [
         "inclination": 126.35,
         "around_planet": {
             "planet": "haumea",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/haumea"
+            "rel": link + "haumea"
         },
         "eccentricity": 0.0513,
         "aphelion": 0,
@@ -5005,7 +5004,7 @@ const bodies = [
         "inclination": 45.49,
         "around_planet": {
             "planet": "eris",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/eris"
+            "rel": link + "eris"
         },
         "eccentricity": 0.0062,
         "aphelion": 0,
@@ -5034,7 +5033,7 @@ const bodies = [
         "inclination": 28.23,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.211,
         "aphelion": 0,
@@ -5060,7 +5059,7 @@ const bodies = [
         "inclination": 0,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.02,
         "aphelion": 0,
@@ -5086,7 +5085,7 @@ const bodies = [
         "inclination": 0,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0,
         "aphelion": 0,
@@ -5112,7 +5111,7 @@ const bodies = [
         "inclination": 0.02,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.002,
         "aphelion": 0,
@@ -5138,7 +5137,7 @@ const bodies = [
         "inclination": 163.2,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.32,
         "aphelion": 0,
@@ -5164,7 +5163,7 @@ const bodies = [
         "inclination": 150.4,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.307,
         "aphelion": 0,
@@ -5268,7 +5267,7 @@ const bodies = [
         "inclination": 8,
         "around_planet": {
             "planet": "eugenia",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/eugenia"
+            "rel": link + "eugenia"
         },
         "eccentricity": 0.01,
         "aphelion": 0,
@@ -5358,7 +5357,7 @@ const bodies = [
         "moons": [
             {
                 "moon": "Weywot",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/weywot"
+                "rel": link + "weywot"
             }
         ]
     },
@@ -5412,7 +5411,7 @@ const bodies = [
         "moons": [
             {
                 "moon": "Dysnomie",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/dysnomie"
+                "rel": link + "dysnomie"
             }
         ]
     },
@@ -5512,7 +5511,7 @@ const bodies = [
         "inclination": 2,
         "around_planet": {
             "planet": "sylvia",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/sylvia"
+            "rel": link + "sylvia"
         },
         "eccentricity": 0.016,
         "aphelion": 0,
@@ -5576,11 +5575,11 @@ const bodies = [
         "moons": [
             {
                 "moon": "Alexhélios",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/alexhelios"
+                "rel": link + "alexhelios"
             },
             {
                 "moon": "Cléoséléné",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/cleoselene"
+                "rel": link + "cleoselene"
             }
         ]
     },
@@ -5741,111 +5740,111 @@ const bodies = [
         "moons": [
             {
                 "moon": "Ariel",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/ariel"
+                "rel": link + "ariel"
             },
             {
                 "moon": "Umbriel",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/umbriel"
+                "rel": link + "umbriel"
             },
             {
                 "moon": "Titania",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/titania"
+                "rel": link + "titania"
             },
             {
                 "moon": "Obéron",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/oberon"
+                "rel": link + "oberon"
             },
             {
                 "moon": "Miranda",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/miranda"
+                "rel": link + "miranda"
             },
             {
                 "moon": "Cordélia",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/cordelia"
+                "rel": link + "cordelia"
             },
             {
                 "moon": "Ophélie",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/ophelia"
+                "rel": link + "ophelia"
             },
             {
                 "moon": "Bianca",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/bianca"
+                "rel": link + "bianca"
             },
             {
                 "moon": "Cressida",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/cressida"
+                "rel": link + "cressida"
             },
             {
                 "moon": "Desdémone",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/desdemona"
+                "rel": link + "desdemona"
             },
             {
                 "moon": "Juliette",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/juliet"
+                "rel": link + "juliet"
             },
             {
                 "moon": "Portia",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/portia"
+                "rel": link + "portia"
             },
             {
                 "moon": "Rosalinde",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/rosalind"
+                "rel": link + "rosalind"
             },
             {
                 "moon": "Belinda",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/belinda"
+                "rel": link + "belinda"
             },
             {
                 "moon": "Puck",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/puck"
+                "rel": link + "puck"
             },
             {
                 "moon": "Caliban",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/caliban"
+                "rel": link + "caliban"
             },
             {
                 "moon": "Sycorax",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/sycorax"
+                "rel": link + "sycorax"
             },
             {
                 "moon": "Prospero",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/prospero"
+                "rel": link + "prospero"
             },
             {
                 "moon": "Setebos",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/setebos"
+                "rel": link + "setebos"
             },
             {
                 "moon": "Stephano",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/stephano"
+                "rel": link + "stephano"
             },
             {
                 "moon": "Trinculo",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/trinculo"
+                "rel": link + "trinculo"
             },
             {
                 "moon": "Francisco",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/francisco"
+                "rel": link + "francisco"
             },
             {
                 "moon": "Margaret",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/margaret"
+                "rel": link + "margaret"
             },
             {
                 "moon": "Ferdinand",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/ferdinand"
+                "rel": link + "ferdinand"
             },
             {
                 "moon": "Perdita",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/perdita"
+                "rel": link + "perdita"
             },
             {
                 "moon": "Mab",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/mab"
+                "rel": link + "mab"
             },
             {
                 "moon": "Cupid",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/cupid"
+                "rel": link + "cupid"
             }
         ]
     },
@@ -5919,7 +5918,7 @@ const bodies = [
         "inclination": 105.03,
         "around_planet": {
             "planet": "orcus",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/orcus"
+            "rel": link + "orcus"
         },
         "eccentricity": 0.0009,
         "aphelion": 0,
@@ -6006,11 +6005,11 @@ const bodies = [
         "moons": [
             {
                 "moon": "Rémus",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/remus"
+                "rel": link + "remus"
             },
             {
                 "moon": "Romulus",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/romulus"
+                "rel": link + "romulus"
             }
         ]
     },
@@ -6029,7 +6028,7 @@ const bodies = [
         "inclination": 8,
         "around_planet": {
             "planet": "ida",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/ida"
+            "rel": link + "ida"
         },
         "eccentricity": 0,
         "aphelion": 0,
@@ -6067,7 +6066,7 @@ const bodies = [
         "moons": [
             {
                 "moon": "Vanth",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/vanth"
+                "rel": link + "vanth"
             }
         ]
     },
@@ -6098,23 +6097,23 @@ const bodies = [
         "moons": [
             {
                 "moon": "Charon",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/charon"
+                "rel": link + "charon"
             },
             {
                 "moon": "Nix",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/nix"
+                "rel": link + "nix"
             },
             {
                 "moon": "Hydra",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/hydra"
+                "rel": link + "hydra"
             },
             {
                 "moon": "Kerberos",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/kerberos"
+                "rel": link + "kerberos"
             },
             {
                 "moon": "Styx",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/styx"
+                "rel": link + "styx"
             }
         ]
     },
@@ -6156,7 +6155,7 @@ const bodies = [
         "inclination": 1.7,
         "around_planet": {
             "planet": "sylvia",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/sylvia"
+            "rel": link + "sylvia"
         },
         "eccentricity": 0.0069,
         "aphelion": 0,
@@ -6182,7 +6181,7 @@ const bodies = [
         "inclination": 0,
         "around_planet": {
             "planet": "kleopatra",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/kleopatra"
+            "rel": link + "kleopatra"
         },
         "eccentricity": 0,
         "aphelion": 0,
@@ -6208,7 +6207,7 @@ const bodies = [
         "inclination": 0,
         "around_planet": {
             "planet": "kleopatra",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/kleopatra"
+            "rel": link + "kleopatra"
         },
         "eccentricity": 0,
         "aphelion": 0,
@@ -6335,7 +6334,7 @@ const bodies = [
         "inclination": 14,
         "around_planet": {
             "planet": "quaoar",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/quaoar"
+            "rel": link + "quaoar"
         },
         "eccentricity": 0.148,
         "aphelion": 16530,
@@ -6399,59 +6398,59 @@ const bodies = [
         "moons": [
             {
                 "moon": "Triton",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/triton"
+                "rel": link + "triton"
             },
             {
                 "moon": "Néreïde",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/nereide"
+                "rel": link + "nereide"
             },
             {
                 "moon": "Naïade",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/naiade"
+                "rel": link + "naiade"
             },
             {
                 "moon": "Thalassa",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/thalassa"
+                "rel": link + "thalassa"
             },
             {
                 "moon": "Despina",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/despina"
+                "rel": link + "despina"
             },
             {
                 "moon": "Galatée",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/galatee"
+                "rel": link + "galatee"
             },
             {
                 "moon": "Larissa",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/larissa"
+                "rel": link + "larissa"
             },
             {
                 "moon": "Protée",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/protee"
+                "rel": link + "protee"
             },
             {
                 "moon": "Halimède",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/halimede"
+                "rel": link + "halimede"
             },
             {
                 "moon": "Psamathée",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/psamathee"
+                "rel": link + "psamathee"
             },
             {
                 "moon": "Sao",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/sao"
+                "rel": link + "sao"
             },
             {
                 "moon": "Laomédie",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/laomedie"
+                "rel": link + "laomedie"
             },
             {
                 "moon": "Néso",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/neso"
+                "rel": link + "neso"
             },
             {
                 "moon": "Hippocampe",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/hippocampe"
+                "rel": link + "hippocampe"
             }
         ]
     },
@@ -6531,11 +6530,11 @@ const bodies = [
         "moons": [
             {
                 "moon": "Namaka",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/namaka"
+                "rel": link + "namaka"
             },
             {
                 "moon": "Hi'iaka",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/hiiaka"
+                "rel": link + "hiiaka"
             }
         ]
     },
@@ -6638,7 +6637,7 @@ const bodies = [
         "moons": [
             {
                 "moon": "Petit-Prince",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/petitprince"
+                "rel": link + "petitprince"
             }
         ]
     },
@@ -6793,7 +6792,7 @@ const bodies = [
         "moons": [
             {
                 "moon": "Dactyl",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/dactyl"
+                "rel": link + "dactyl"
             }
         ]
     },
@@ -6899,7 +6898,7 @@ const bodies = [
         "moons": [
             {
                 "moon": "S/2015 (136472) 1",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/mk2"
+                "rel": link + "mk2"
             }
         ]
     },
@@ -6956,323 +6955,323 @@ const bodies = [
         "moons": [
             {
                 "moon": "Io",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/io"
+                "rel": link + "io"
             },
             {
                 "moon": "Europe",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/europe"
+                "rel": link + "europe"
             },
             {
                 "moon": "Ganymède",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/ganymede"
+                "rel": link + "ganymede"
             },
             {
                 "moon": "Callisto",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/callisto"
+                "rel": link + "callisto"
             },
             {
                 "moon": "Amalthée",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/amalthee"
+                "rel": link + "amalthee"
             },
             {
                 "moon": "Himalia",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/himalia"
+                "rel": link + "himalia"
             },
             {
                 "moon": "Élara",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/elara"
+                "rel": link + "elara"
             },
             {
                 "moon": "Pasiphaé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/pasiphae"
+                "rel": link + "pasiphae"
             },
             {
                 "moon": "Sinopé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/sinope"
+                "rel": link + "sinope"
             },
             {
                 "moon": "Lysithéa",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/lysithea"
+                "rel": link + "lysithea"
             },
             {
                 "moon": "Carmé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/carme"
+                "rel": link + "carme"
             },
             {
                 "moon": "Ananké",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/ananke"
+                "rel": link + "ananke"
             },
             {
                 "moon": "Léda",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/leda"
+                "rel": link + "leda"
             },
             {
                 "moon": "Thébé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/thebe"
+                "rel": link + "thebe"
             },
             {
                 "moon": "Adrastée",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/adrastee"
+                "rel": link + "adrastee"
             },
             {
                 "moon": "Métis",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/metis"
+                "rel": link + "metis"
             },
             {
                 "moon": "Callirrhoé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/callirrhoe"
+                "rel": link + "callirrhoe"
             },
             {
                 "moon": "Thémisto",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/themisto"
+                "rel": link + "themisto"
             },
             {
                 "moon": "Mégaclité",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/megaclite"
+                "rel": link + "megaclite"
             },
             {
                 "moon": "Taygété",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/taygete"
+                "rel": link + "taygete"
             },
             {
                 "moon": "Chaldéné",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/chaldene"
+                "rel": link + "chaldene"
             },
             {
                 "moon": "Harpalyké",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/harpalyke"
+                "rel": link + "harpalyke"
             },
             {
                 "moon": "Kalyké",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/kalyke"
+                "rel": link + "kalyke"
             },
             {
                 "moon": "Iocasté",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/iocaste"
+                "rel": link + "iocaste"
             },
             {
                 "moon": "Erinomé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/erinome"
+                "rel": link + "erinome"
             },
             {
                 "moon": "Isonoé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/isonoe"
+                "rel": link + "isonoe"
             },
             {
                 "moon": "Praxidyké",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/praxidike"
+                "rel": link + "praxidike"
             },
             {
                 "moon": "Autonoé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/autonoe"
+                "rel": link + "autonoe"
             },
             {
                 "moon": "Thyoné",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/thyone"
+                "rel": link + "thyone"
             },
             {
                 "moon": "Hermippé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/hermippe"
+                "rel": link + "hermippe"
             },
             {
                 "moon": "Aitné",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/aitne"
+                "rel": link + "aitne"
             },
             {
                 "moon": "Eurydomé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/eurydome"
+                "rel": link + "eurydome"
             },
             {
                 "moon": "Euanthé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/euanthe"
+                "rel": link + "euanthe"
             },
             {
                 "moon": "Euporie",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/euporie"
+                "rel": link + "euporie"
             },
             {
                 "moon": "Orthosie",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/orthosie"
+                "rel": link + "orthosie"
             },
             {
                 "moon": "Spondé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/sponde"
+                "rel": link + "sponde"
             },
             {
                 "moon": "Calé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/cale"
+                "rel": link + "cale"
             },
             {
                 "moon": "Pasithée",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/pasithee"
+                "rel": link + "pasithee"
             },
             {
                 "moon": "Hégémone",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/hegemone"
+                "rel": link + "hegemone"
             },
             {
                 "moon": "Mnémé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/mneme"
+                "rel": link + "mneme"
             },
             {
                 "moon": "Aoedé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/aoede"
+                "rel": link + "aoede"
             },
             {
                 "moon": "Thelxinoé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/thelxinoe"
+                "rel": link + "thelxinoe"
             },
             {
                 "moon": "Arché",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/arche"
+                "rel": link + "arche"
             },
             {
                 "moon": "Callichore",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/callichore"
+                "rel": link + "callichore"
             },
             {
                 "moon": "Hélicé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/helice"
+                "rel": link + "helice"
             },
             {
                 "moon": "Carpo",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/carpo"
+                "rel": link + "carpo"
             },
             {
                 "moon": "Eukéladé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/eukelade"
+                "rel": link + "eukelade"
             },
             {
                 "moon": "Cyllène",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/cyllene"
+                "rel": link + "cyllene"
             },
             {
                 "moon": "Coré",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/core"
+                "rel": link + "core"
             },
             {
                 "moon": "Hersé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/herse"
+                "rel": link + "herse"
             },
             {
                 "moon": "S/2003 J 2",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2003j2"
+                "rel": link + "s2003j2"
             },
             {
                 "moon": "Euphémé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/eupheme"
+                "rel": link + "eupheme"
             },
             {
                 "moon": "S/2003 J 4",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2003j4"
+                "rel": link + "s2003j4"
             },
             {
                 "moon": "Eiréné",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/eirene"
+                "rel": link + "eirene"
             },
             {
                 "moon": "S/2003 J 9",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2003j9"
+                "rel": link + "s2003j9"
             },
             {
                 "moon": "S/2003 J 10",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2003j10"
+                "rel": link + "s2003j10"
             },
             {
                 "moon": "S/2003 J 12",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2003j12"
+                "rel": link + "s2003j12"
             },
             {
                 "moon": "Philophrosyne",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/philophrosyne"
+                "rel": link + "philophrosyne"
             },
             {
                 "moon": "S/2003 J 16",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2003j16"
+                "rel": link + "s2003j16"
             },
             {
                 "moon": "S/2003 J 18",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2003j18"
+                "rel": link + "s2003j18"
             },
             {
                 "moon": "S/2003 J 19",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2003j19"
+                "rel": link + "s2003j19"
             },
             {
                 "moon": "S/2003 J 23",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2003j23"
+                "rel": link + "s2003j23"
             },
             {
                 "moon": "Dia",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/dia"
+                "rel": link + "dia"
             },
             {
                 "moon": "S/2010 J 1",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2010j1"
+                "rel": link + "s2010j1"
             },
             {
                 "moon": "S/2010 J 2",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2010j2"
+                "rel": link + "s2010j2"
             },
             {
                 "moon": "S/2011 J 1",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2011j1"
+                "rel": link + "s2011j1"
             },
             {
                 "moon": "S/2011 J 2",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2011j2"
+                "rel": link + "s2011j2"
             },
             {
                 "moon": "S/2017 J 1",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2017j1"
+                "rel": link + "s2017j1"
             },
             {
                 "moon": "S/2016 J 1",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2016j1"
+                "rel": link + "s2016j1"
             },
             {
                 "moon": "Valétudo",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/valetudo"
+                "rel": link + "valetudo"
             },
             {
                 "moon": "S/2017 J 2",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2017j2"
+                "rel": link + "s2017j2"
             },
             {
                 "moon": "S/2017 J 3",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2017j3"
+                "rel": link + "s2017j3"
             },
             {
                 "moon": "Pandia",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/pandia"
+                "rel": link + "pandia"
             },
             {
                 "moon": "S/2017 J 5",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2017j5"
+                "rel": link + "s2017j5"
             },
             {
                 "moon": "S/2017 J 6",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2017j6"
+                "rel": link + "s2017j6"
             },
             {
                 "moon": "S/2017 J 7",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2017j7"
+                "rel": link + "s2017j7"
             },
             {
                 "moon": "S/2017 J 8",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2017j8"
+                "rel": link + "s2017j8"
             },
             {
                 "moon": "S/2017 J 9",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2017j9"
+                "rel": link + "s2017j9"
             },
             {
                 "moon": "Ersa",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/ersa"
+                "rel": link + "ersa"
             },
             {
                 "moon": "S/2003 J 24",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2003j24"
+                "rel": link + "s2003j24"
             }
         ]
     },
@@ -7303,11 +7302,11 @@ const bodies = [
         "moons": [
             {
                 "moon": "Phobos",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/phobos"
+                "rel": link + "phobos"
             },
             {
                 "moon": "Deïmos",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/deimos"
+                "rel": link + "deimos"
             }
         ]
     },
@@ -7364,331 +7363,331 @@ const bodies = [
         "moons": [
             {
                 "moon": "Mimas",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/mimas"
+                "rel": link + "mimas"
             },
             {
                 "moon": "Encelade",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/encelade"
+                "rel": link + "encelade"
             },
             {
                 "moon": "Téthys",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/tethys"
+                "rel": link + "tethys"
             },
             {
                 "moon": "Dioné",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/dione"
+                "rel": link + "dione"
             },
             {
                 "moon": "Rhéa",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/rhea"
+                "rel": link + "rhea"
             },
             {
                 "moon": "Titan",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/titan"
+                "rel": link + "titan"
             },
             {
                 "moon": "Hypérion",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/hyperion"
+                "rel": link + "hyperion"
             },
             {
                 "moon": "Japet",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/japet"
+                "rel": link + "japet"
             },
             {
                 "moon": "Phœbé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/phoebe"
+                "rel": link + "phoebe"
             },
             {
                 "moon": "Janus",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/janus"
+                "rel": link + "janus"
             },
             {
                 "moon": "Epiméthée",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/epimethee"
+                "rel": link + "epimethee"
             },
             {
                 "moon": "Hélène",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/helene"
+                "rel": link + "helene"
             },
             {
                 "moon": "Télesto",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/telesto"
+                "rel": link + "telesto"
             },
             {
                 "moon": "Calypso",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/calypso"
+                "rel": link + "calypso"
             },
             {
                 "moon": "Atlas",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/atlas"
+                "rel": link + "atlas"
             },
             {
                 "moon": "Prométhée",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/promethee"
+                "rel": link + "promethee"
             },
             {
                 "moon": "Pandore",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/pandore"
+                "rel": link + "pandore"
             },
             {
                 "moon": "Pan",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/pan"
+                "rel": link + "pan"
             },
             {
                 "moon": "Ymir",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/ymir"
+                "rel": link + "ymir"
             },
             {
                 "moon": "Paaliaq",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/paaliaq"
+                "rel": link + "paaliaq"
             },
             {
                 "moon": "Tarvos",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/tarvos"
+                "rel": link + "tarvos"
             },
             {
                 "moon": "Ijiraq",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/ijiraq"
+                "rel": link + "ijiraq"
             },
             {
                 "moon": "Suttungr",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/suttungr"
+                "rel": link + "suttungr"
             },
             {
                 "moon": "Kiviuq",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/kiviuq"
+                "rel": link + "kiviuq"
             },
             {
                 "moon": "Mundilfari",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/mundilfari"
+                "rel": link + "mundilfari"
             },
             {
                 "moon": "Albiorix",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/albiorix"
+                "rel": link + "albiorix"
             },
             {
                 "moon": "Skathi",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/skathi"
+                "rel": link + "skathi"
             },
             {
                 "moon": "Erriapo",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/erriapo"
+                "rel": link + "erriapo"
             },
             {
                 "moon": "Siarnaq",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/siarnaq"
+                "rel": link + "siarnaq"
             },
             {
                 "moon": "Thrymr",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/thrymr"
+                "rel": link + "thrymr"
             },
             {
                 "moon": "Narvi",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/narvi"
+                "rel": link + "narvi"
             },
             {
                 "moon": "Méthone",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/methone"
+                "rel": link + "methone"
             },
             {
                 "moon": "Pallène",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/pallene"
+                "rel": link + "pallene"
             },
             {
                 "moon": "Pollux",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/pollux"
+                "rel": link + "pollux"
             },
             {
                 "moon": "Daphnis",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/daphnis"
+                "rel": link + "daphnis"
             },
             {
                 "moon": "Aegir",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/aegir"
+                "rel": link + "aegir"
             },
             {
                 "moon": "Bebhionn",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/bebhionn"
+                "rel": link + "bebhionn"
             },
             {
                 "moon": "Bergelmir",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/bergelmir"
+                "rel": link + "bergelmir"
             },
             {
                 "moon": "Bestla",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/bestla"
+                "rel": link + "bestla"
             },
             {
                 "moon": "Farbauti",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/farbauti"
+                "rel": link + "farbauti"
             },
             {
                 "moon": "Fenrir",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/fenrir"
+                "rel": link + "fenrir"
             },
             {
                 "moon": "Fornjot",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/fornjot"
+                "rel": link + "fornjot"
             },
             {
                 "moon": "Hati",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/hati"
+                "rel": link + "hati"
             },
             {
                 "moon": "Hyrrokkin",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/hyrrokkin"
+                "rel": link + "hyrrokkin"
             },
             {
                 "moon": "Kari",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/kari"
+                "rel": link + "kari"
             },
             {
                 "moon": "Loge",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/loge"
+                "rel": link + "loge"
             },
             {
                 "moon": "Skoll",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/skoll"
+                "rel": link + "skoll"
             },
             {
                 "moon": "Surtur",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/surtur"
+                "rel": link + "surtur"
             },
             {
                 "moon": "Anthé",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/anthe"
+                "rel": link + "anthe"
             },
             {
                 "moon": "Jarnsaxa",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/jarnsaxa"
+                "rel": link + "jarnsaxa"
             },
             {
                 "moon": "Greip",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/greip"
+                "rel": link + "greip"
             },
             {
                 "moon": "Tarqeq",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/tarqeq"
+                "rel": link + "tarqeq"
             },
             {
                 "moon": "Égéon",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/egeon"
+                "rel": link + "egeon"
             },
             {
                 "moon": "S/2004 S 7",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s7"
+                "rel": link + "s2004s7"
             },
             {
                 "moon": "S/2004 S 12",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s12"
+                "rel": link + "s2004s12"
             },
             {
                 "moon": "S/2004 S 13",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s13"
+                "rel": link + "s2004s13"
             },
             {
                 "moon": "S/2004 S 17",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s17"
+                "rel": link + "s2004s17"
             },
             {
                 "moon": "S/2006 S 1",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2006s1"
+                "rel": link + "s2006s1"
             },
             {
                 "moon": "S/2006 S 3",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2006s3"
+                "rel": link + "s2006s3"
             },
             {
                 "moon": "S/2007 S 2",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2007s2"
+                "rel": link + "s2007s2"
             },
             {
                 "moon": "S/2007 S 3",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2007s3"
+                "rel": link + "s2007s3"
             },
             {
                 "moon": "S/2009 S 1",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2009s1"
+                "rel": link + "s2009s1"
             },
             {
                 "moon": "S/2004 S 22",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s22"
+                "rel": link + "s2004s22"
             },
             {
                 "moon": "S/2004 S 21",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s21"
+                "rel": link + "s2004s21"
             },
             {
                 "moon": "S/2004 S 20",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s20"
+                "rel": link + "s2004s20"
             },
             {
                 "moon": "S/2004 S 23",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s23"
+                "rel": link + "s2004s23"
             },
             {
                 "moon": "S/2004 S 24",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s24"
+                "rel": link + "s2004s24"
             },
             {
                 "moon": "S/2004 S 25",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s25"
+                "rel": link + "s2004s25"
             },
             {
                 "moon": "S/2004 S 26",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s26"
+                "rel": link + "s2004s26"
             },
             {
                 "moon": "S/2004 S 27",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s27"
+                "rel": link + "s2004s27"
             },
             {
                 "moon": "S/2004 S 28",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s28"
+                "rel": link + "s2004s28"
             },
             {
                 "moon": "S/2004 S 29",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s29"
+                "rel": link + "s2004s29"
             },
             {
                 "moon": "S/2004 S 30",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s30"
+                "rel": link + "s2004s30"
             },
             {
                 "moon": "S/2004 S 31",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s31"
+                "rel": link + "s2004s31"
             },
             {
                 "moon": "S/2004 S 32",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s32"
+                "rel": link + "s2004s32"
             },
             {
                 "moon": "S/2004 S 33",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s33"
+                "rel": link + "s2004s33"
             },
             {
                 "moon": "S/2004 S 34",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s34"
+                "rel": link + "s2004s34"
             },
             {
                 "moon": "S/2004 S 35",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s35"
+                "rel": link + "s2004s35"
             },
             {
                 "moon": "S/2004 S 36",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s36"
+                "rel": link + "s2004s36"
             },
             {
                 "moon": "S/2004 S 37",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s37"
+                "rel": link + "s2004s37"
             },
             {
                 "moon": "S/2004 S 38",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s38"
+                "rel": link + "s2004s38"
             },
             {
                 "moon": "S/2004 S 39",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/s2004s39"
+                "rel": link + "s2004s39"
             }
         ]
     },
@@ -7745,7 +7744,7 @@ const bodies = [
         "moons": [
             {
                 "moon": "La Lune",
-                "rel": "https://api.le-systeme-solaire.net/rest/bodies/lune"
+                "rel": link + "lune"
             }
         ]
     },
@@ -7793,7 +7792,7 @@ const bodies = [
         "inclination": 0.389,
         "around_planet": {
             "planet": "pluton",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/pluton"
+            "rel": link + "pluton"
         },
         "eccentricity": 0.003,
         "aphelion": 0,
@@ -7819,7 +7818,7 @@ const bodies = [
         "inclination": 162.8,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.296,
         "aphelion": 0,
@@ -7845,7 +7844,7 @@ const bodies = [
         "inclination": 148.8,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.332,
         "aphelion": 0,
@@ -7874,7 +7873,7 @@ const bodies = [
         "inclination": 0.809,
         "around_planet": {
             "planet": "pluton",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/pluton"
+            "rel": link + "pluton"
         },
         "eccentricity": 0.005,
         "aphelion": 0,
@@ -7903,7 +7902,7 @@ const bodies = [
         "inclination": 0,
         "around_planet": {
             "planet": "neptune",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/neptune"
+            "rel": link + "neptune"
         },
         "eccentricity": 0,
         "aphelion": 0,
@@ -7929,7 +7928,7 @@ const bodies = [
         "inclination": 0,
         "around_planet": {
             "planet": "makemake",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/makemake"
+            "rel": link + "makemake"
         },
         "eccentricity": 0,
         "aphelion": 300000,
@@ -7955,7 +7954,7 @@ const bodies = [
         "inclination": 149.2,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.397,
         "aphelion": 0,
@@ -7981,7 +7980,7 @@ const bodies = [
         "inclination": 139.8,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.141,
         "aphelion": 0,
@@ -8007,7 +8006,7 @@ const bodies = [
         "inclination": 34,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.222,
         "aphelion": 0,
@@ -8033,7 +8032,7 @@ const bodies = [
         "inclination": 166.4,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.236,
         "aphelion": 0,
@@ -8059,7 +8058,7 @@ const bodies = [
         "inclination": 147.9,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.148,
         "aphelion": 0,
@@ -8085,7 +8084,7 @@ const bodies = [
         "inclination": 28.2,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.18,
         "aphelion": 0,
@@ -8111,7 +8110,7 @@ const bodies = [
         "inclination": 164.3,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.284,
         "aphelion": 0,
@@ -8137,7 +8136,7 @@ const bodies = [
         "inclination": 155.2,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.557,
         "aphelion": 0,
@@ -8163,7 +8162,7 @@ const bodies = [
         "inclination": 143.4,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.215,
         "aphelion": 0,
@@ -8189,7 +8188,7 @@ const bodies = [
         "inclination": 164.7,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.312,
         "aphelion": 0,
@@ -8215,7 +8214,7 @@ const bodies = [
         "inclination": 152.7,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.229,
         "aphelion": 0,
@@ -8241,7 +8240,7 @@ const bodies = [
         "inclination": 30.6,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.094,
         "aphelion": 0,
@@ -8313,7 +8312,7 @@ const bodies = [
         "inclination": 177.4,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.257,
         "aphelion": 0,
@@ -8339,7 +8338,7 @@ const bodies = [
         "inclination": 154.6,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.312,
         "aphelion": 0,
@@ -8365,7 +8364,7 @@ const bodies = [
         "inclination": 163.1,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.204,
         "aphelion": 0,
@@ -8391,7 +8390,7 @@ const bodies = [
         "inclination": 177.7,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.399,
         "aphelion": 0,
@@ -8417,7 +8416,7 @@ const bodies = [
         "inclination": 36.78,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.049,
         "aphelion": 0,
@@ -8443,7 +8442,7 @@ const bodies = [
         "inclination": 173.3,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.457,
         "aphelion": 0,
@@ -8469,7 +8468,7 @@ const bodies = [
         "inclination": 171.3,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.148,
         "aphelion": 0,
@@ -8495,7 +8494,7 @@ const bodies = [
         "inclination": 167.1,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.12,
         "aphelion": 0,
@@ -8521,7 +8520,7 @@ const bodies = [
         "inclination": 171,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.133,
         "aphelion": 0,
@@ -8547,7 +8546,7 @@ const bodies = [
         "inclination": 44.43,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.472,
         "aphelion": 0,
@@ -8573,7 +8572,7 @@ const bodies = [
         "inclination": 156.3,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.113,
         "aphelion": 0,
@@ -8599,7 +8598,7 @@ const bodies = [
         "inclination": 48.11,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.242,
         "aphelion": 0,
@@ -8625,7 +8624,7 @@ const bodies = [
         "inclination": 158.5,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.262,
         "aphelion": 0,
@@ -8651,7 +8650,7 @@ const bodies = [
         "inclination": 161.5,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.417,
         "aphelion": 0,
@@ -8677,7 +8676,7 @@ const bodies = [
         "inclination": 165.7,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.267,
         "aphelion": 0,
@@ -8703,7 +8702,7 @@ const bodies = [
         "inclination": 176.4,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.182,
         "aphelion": 0,
@@ -8729,7 +8728,7 @@ const bodies = [
         "inclination": 147.6,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.667,
         "aphelion": 0,
@@ -8755,7 +8754,7 @@ const bodies = [
         "inclination": 164,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.506,
         "aphelion": 0,
@@ -8781,7 +8780,7 @@ const bodies = [
         "inclination": 155,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.381,
         "aphelion": 0,
@@ -8807,7 +8806,7 @@ const bodies = [
         "inclination": 167.6,
         "around_planet": {
             "planet": "saturne",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
+            "rel": link + "saturne"
         },
         "eccentricity": 0.081,
         "aphelion": 0,
@@ -8856,7 +8855,7 @@ const bodies = [
         "inclination": 0,
         "around_planet": {
             "planet": "jupiter",
-            "rel": "https://api.le-systeme-solaire.net/rest/bodies/jupiter"
+            "rel": link + "jupiter"
         },
         "eccentricity": 0.25,
         "aphelion": 0,
@@ -8868,7 +8867,4 @@ const bodies = [
         "moons": null
     }
 ]
-
-
-
 module.exports = bodies

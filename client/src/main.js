@@ -29,6 +29,8 @@ controls.enableRotate = true; // Activer la fonction de rotation
 
 // DELETE ME
 debug()
+// 
+cam_follow();
 
 // Tableau des objets à animer
 let element_list = [];
@@ -77,12 +79,14 @@ function animate() {
     // cube.rotation.y += 0.01;
 
     // console.log(element_list_pos);
+
+    // Affichage de la position de la caméra
     cam_position(camera);
 
     // Rendu de la scène avec la caméra
     renderer.render(scene, camera);
 }
-cam_follow();
+
 
 function debug() {
     const axe_display = true;
@@ -111,29 +115,44 @@ btn_next.addEventListener('click', () => {
 
 btn_follow_body.addEventListener('click', (e) => {
     const target_name = e.target.textContent;
-    element_list_pos.forEach(element => {
-        if (element.name === target_name) {
-            // Placer la caméra à la position de l'astre plus un décalage approprié (par exemple, en ajoutant 50 unités sur l'axe y)
-            camera.position.set(element.children[1].position.x, 560, element.children[1].position.z);
-            // Orienter la caméra vers l'astre
-            camera.lookAt(element.children[1].position);
-            camera.rotation.set(0, element.rotation.y, 0);
-        }
-    });
+    follow_body(target_name, camera, "start");
+
+    // element_list_pos.forEach(element => {
+    //     if (element.name === target_name) {
+    //         // Placer la caméra à la position de l'astre plus un décalage approprié (par exemple, en ajoutant 50 unités sur l'axe y)
+    //         camera.position.set(element.children[1].position.x, 560, element.children[1].position.z);
+    //         // Orienter la caméra vers l'astre
+    //         camera.lookAt(element.children[1].position);
+    //         camera.rotation.set(0, element.rotation.y, 0);
+    //     }
+    // });
 });
 
-function follow_body(e, active) {
+function updateCamera(element){
+    var offset = new THREE.Vector3(element.position.x + 20, element.position.y + 6, element.position.z);
+    camera.position.lerp(offset, 0.2);
+    camera.lookAt(element.position);
+}
+
+
+function follow_body(target_name, camera, active) {
     if (active === "start") {
-        const target_name = e.target.textContent;
         element_list_pos.forEach(element => {
             if (element.name === target_name) {
-                element.children[1].position.y = 560;
-                console.log(element.rotation);
-                console.log(element.children[1].position);
-                // while (active === "start") {
-                //     camera.position.copy(element.children[1].position);
-                // }
-            }
-        })
-    }
-}
+                console.log(element.name);
+                // console.log(element.rotation);
+                // console.log(element.children[1].position);
+
+                // Orienter la caméra vers l'astre
+                // camera.position.x = element.children[1].position.x
+                // camera.position.y = 560;
+                // camera.position.z = element.children[1].position.z
+
+                // camera.lookAt(element.children[1].position);
+                // camera.position.copy(element.children[1].position);
+                // camera.rotation.set(element.children[1].position.x, 560, element.children[1].position.z);
+
+            };
+        });
+    };
+};

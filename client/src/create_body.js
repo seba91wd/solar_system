@@ -47,6 +47,8 @@ export function create_body() {
 
 function add_orbite_and_body(body, data) {
 
+    // Attribution d'une couleur
+    body.color = get_body_color(body);
     // Calcul de la moyenne du rayon de l'orbite du corps
     body.orbit_radius = ((body.aphelion + body.perihelion) / 2) * scale;
     // Retourne un angle aléatoir en radians
@@ -61,16 +63,11 @@ function add_orbite_and_body(body, data) {
     const positions = [];
 
     // Construction du corps
-    const debug_scale = 10;
+    const debug_scale = 100;
 
     const corp_geometry = new THREE.SphereGeometry((body.mean_radius * scale) * debug_scale, 32, 32); // Géométrie du corps
     let  corp_material = {};
-    if (body.body_type === "Moon") {
-        corp_material = new THREE.MeshBasicMaterial({ color: 0xff0000 }); // Matériau du corps
-    }
-    else {
-        corp_material = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Matériau du corps
-    }
+    corp_material = new THREE.MeshBasicMaterial({ color: body.color }); // Matériau du corps
     const corp_mesh = new THREE.Mesh(corp_geometry, corp_material); // Maillage du corps
     corp_mesh.name = "body_" + body.english_name; // Nommage du corps
 
@@ -85,7 +82,7 @@ function add_orbite_and_body(body, data) {
         positions.push(x, y, z);
     }
     orbit_geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-    const orbit_material = new THREE.LineBasicMaterial({ color: 0x0000ff });
+    const orbit_material = new THREE.LineBasicMaterial({ color: body.color });
     const orbit_line = new THREE.Line(orbit_geometry, orbit_material);
     orbit_line.name = "orbit_" + body.english_name;
 
@@ -117,7 +114,65 @@ function add_orbite_and_body(body, data) {
             group.add(moon_celestial_body);
         });
     }
-
-
     return group;
+}
+
+// Fonction pour obtenir la couleur en fonction du corps céleste
+function get_body_color(body) {
+    let color;
+    if (body.body_type === "Star") {
+        color = 0xffff00; // Jaune
+    }
+    else if (body.body_type === "Telluric planet") {
+        color = 0x0000ff; // Bleu
+    }
+    else if (body.body_type === "Gas giant") {
+        color = 0xff0000; // Rouge
+    }
+    else if (body.body_type === "Dwarf planet") {
+        color = 0x00ff00; // Vert
+    }
+    else if (body.body_type === "Moon") {
+        color = 0xff00ff; // Magenta
+    }
+    else if (body.body_type === "Asteroid") {
+        color = 0xffa500; // Orange
+    }
+    else if (body.body_type === "Comet") {
+        color = 0x808080; // Gris
+    }
+    else {
+        color = 0xffffff; // Blanc par défaut
+    }
+    return color;
+}
+
+// Fonction pour obtenir le symbole en fonction du corps céleste
+function get_body_symbol(body) {
+    let symbol;
+    if (body.body_type === "Star") {
+        symbol = '*';
+    }
+    else if (body.body_type === "Telluric planet") {
+        symbol = 'T';
+    }
+    else if (body.body_type === "Gas giant") {
+        symbol = 'G';
+    }
+    else if (body.body_type === "Dwarf planet") {
+        symbol = 'D';
+    }
+    else if (body.body_type === "Moon") {
+        symbol = 'M';
+    }
+    else if (body.body_type === "Asteroid") {
+        symbol = 'A';
+    }
+    else if (body.body_type === "Comet") {
+        symbol = 'C';
+    }
+    else {
+        symbol = '?';
+    }
+    return symbol;
 }
