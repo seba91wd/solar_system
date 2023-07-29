@@ -2,7 +2,7 @@ const express = require('express');
 const body_parse = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3001;
-const hostname = process.env.HOST || "192.168.1.17";
+const hostname = process.env.HOST || "localhost";
 const path = require('path');
 
 module.exports = {
