@@ -10,9 +10,9 @@ const scene = new THREE.Scene();
 
 // Création de la caméra
 const aspectRatio = window.innerWidth / window.innerHeight;
-const zoom = 200;
+const zoom = 1000;
 // OrthographicCamera : caméra sans perspective (mode CAD)
-const camera = new THREE.OrthographicCamera(-zoom * aspectRatio, zoom * aspectRatio, zoom, -zoom, 0.1, 1000);
+const camera = new THREE.OrthographicCamera(-zoom * aspectRatio, zoom * aspectRatio, zoom, -zoom, -10000, 12000);
 camera.position.x = 0;
 camera.position.y = 560;
 camera.position.z = 0;

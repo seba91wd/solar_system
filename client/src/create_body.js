@@ -62,11 +62,11 @@ function add_orbite_and_body(body, data) {
     const angle_step = (Math.PI * 2) / segments;
     const positions = [];
 
-    // Construction du corps
-    const debug_scale = 100;
+    // Construction du corps 
+    const debug_scale = 100; // (delete me)
 
     const corp_geometry = new THREE.SphereGeometry((body.mean_radius * scale) * debug_scale, 32, 32); // Géométrie du corps
-    let  corp_material = {};
+    let corp_material = {};
     corp_material = new THREE.MeshBasicMaterial({ color: body.color }); // Matériau du corps
     const corp_mesh = new THREE.Mesh(corp_geometry, corp_material); // Maillage du corps
     corp_mesh.name = "body_" + body.english_name; // Nommage du corps
