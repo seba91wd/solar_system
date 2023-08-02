@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { get_celestial_bodies } from './req_bodies.js';
 
 // Echelle 1 / 1 000 000
+// Cette échelle ne modifie pas l'aspect du système solaire mais permet de diminuer "astronomiquement" les dimmension de la scène
 const scale = 1 / 1000000;
 
 let bodies = [];
@@ -10,16 +11,19 @@ export function create_body() {
     // Envoi de la requête
     return new Promise((resolve, reject) => {
         get_celestial_bodies().then(data => {
+            // Réception de la réponse
             data.forEach(body => {
                 if (body.body_type !== "Moon") {
-                    // Traitement du soleil
+                    // Variable contenant le corps céleste à traiter
                     let celestial_body;
+
+                    // Traitement du soleil
                     if (body.body_type === "Star") {
 
                         // Position au centre de la scène
                         body.position = new THREE.Vector3(0, 0, 0);
 
-                        // Texture du soleil
+                        // Forme et texture du soleil
                         const textureLoader = new THREE.TextureLoader();
                         const texture = textureLoader.load('../public/textures/sun.jpg');
                         texture.mapping = THREE.EquirectangularReflectionMapping;
@@ -28,14 +32,16 @@ export function create_body() {
                         celestial_body = new THREE.Mesh(geometry, material);
                         // Vitesse de rotation
                         celestial_body.rotation.speed = 0.01;
-                        // Ajout d'un nom
+                        // Ajout d'un nom (utile pour le débogage)
                         celestial_body.name = body.english_name;
                         bodies.push(celestial_body);
-                    } else {
+                    } 
+                    // Pour le traitement des autres corps céleste on fait appelle a la fonction add_orbite_and_body()
+                    else {
                         celestial_body = add_orbite_and_body(body, data);
                         bodies.push(celestial_body);
                     }
-                    console.log("Processing body : " + body.english_name);
+                    console.log("Body processing : " + body.english_name);
                 }
             });
             resolve(bodies);
@@ -62,10 +68,8 @@ function add_orbite_and_body(body, data) {
     const angle_step = (Math.PI * 2) / segments;
     const positions = [];
 
-    // Construction du corps 
-    const debug_scale = 100; // (delete me)
-
-    const corp_geometry = new THREE.SphereGeometry((body.mean_radius * scale) * debug_scale, 32, 32); // Géométrie du corps
+    // Construction du corps
+    const corp_geometry = new THREE.SphereGeometry((body.mean_radius * scale), 32, 32); // Géométrie du corps
     let corp_material = {};
     corp_material = new THREE.MeshBasicMaterial({ color: body.color }); // Matériau du corps
     const corp_mesh = new THREE.Mesh(corp_geometry, corp_material); // Maillage du corps
@@ -112,6 +116,7 @@ function add_orbite_and_body(body, data) {
 
             // Ajouter la lune au groupe parent
             group.add(moon_celestial_body);
+            console.log("Moon processing of " + body.english_name + " : " + moon_name);
         });
     }
     return group;
@@ -145,34 +150,4 @@ function get_body_color(body) {
         color = 0xffffff; // Blanc par défaut
     }
     return color;
-}
-
-// Fonction pour obtenir le symbole en fonction du corps céleste
-function get_body_symbol(body) {
-    let symbol;
-    if (body.body_type === "Star") {
-        symbol = '*';
-    }
-    else if (body.body_type === "Telluric planet") {
-        symbol = 'T';
-    }
-    else if (body.body_type === "Gas giant") {
-        symbol = 'G';
-    }
-    else if (body.body_type === "Dwarf planet") {
-        symbol = 'D';
-    }
-    else if (body.body_type === "Moon") {
-        symbol = 'M';
-    }
-    else if (body.body_type === "Asteroid") {
-        symbol = 'A';
-    }
-    else if (body.body_type === "Comet") {
-        symbol = 'C';
-    }
-    else {
-        symbol = '?';
-    }
-    return symbol;
 }

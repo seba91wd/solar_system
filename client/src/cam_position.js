@@ -26,21 +26,4 @@ export function cam_position(camera) {
     
         document.querySelector("#main").append(div);
     }
-
-    // Événement sur les touches du clavier
-    document.onkeydown = function(e) {
-        // console.log(e);
-        if (e.key === "ArrowRight") {
-            camera.position.x += 1;
-        }
-        if (e.key === "ArrowLeft") {
-            camera.position.x += -1;
-        }
-        if (e.key === "ArrowDown") {
-            camera.position.z += 1;
-        }
-        if (e.key === "ArrowUp") {
-            camera.position.z += -1;
-        }
-    }
 }

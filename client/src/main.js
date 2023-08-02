@@ -2,11 +2,12 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { cam_position } from './cam_position.js'
 import { cam_follow, scroll_follow_body } from './cam_follow.js'
-import { scene_axe } from './scene_axe.js'
+// import { scene_axe } from './scene_axe.js'
 import { create_body } from './create_body.js';
 
 // Création de la scène
 const scene = new THREE.Scene();
+console.log(scene);
 
 // Création de la caméra
 const aspectRatio = window.innerWidth / window.innerHeight;
@@ -22,15 +23,10 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.querySelector('#main').appendChild(renderer.domElement);
 
-// OrbitControls: rotation (click gauche) et zoom de la caméra (scroll)
+// OrbitControls: rotation (clic gauche), zoom de la caméra (scroll), déplacement (clic droit)
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableZoom = true; // Activer la fonction de zoom
 controls.enableRotate = true; // Activer la fonction de rotation
-
-// DELETE ME
-debug()
-// 
-cam_follow();
 
 // Tableau des objets à animer
 let element_list = [];
@@ -44,9 +40,55 @@ create_body().then(celestial_body => {
         scene.add(element)
     });
 });
-animate()
+
+// La fonction cam_follow() "permettra" de poursuivre visuellement un corps céleste actuelement en beta test
+let tracking; // Interrupteur de suivi des corps par la caméra
+let target_name; // Nom du corps suivi
+cam_follow(element_list);
+
+// Evenement btn_back, btn_next
+btn_back.addEventListener('click', () => {
+    scroll_follow_body(-1, element_list); // Défiler vers le corps précédent
+});
+
+btn_next.addEventListener('click', () => {
+    scroll_follow_body(1, element_list); // Défiler vers le corps suivant
+});
+
+btn_follow_body.addEventListener('click', (e) => {
+    if (tracking === true) {
+        tracking = false;
+        console.log("tracking = " + tracking);
+    }
+    else {
+        target_name = e.target.textContent;
+        tracking = true;
+        console.log("tracking = " + tracking);
+        console.log("target_name = " + target_name);
+    }
+});
+
+function follow_body() {
+    if (tracking === true) {
+        element_list_pos.forEach(element => {
+            if (element.name === target_name) {
+                const radius = element.children[1].position.x; // Rayon de l'orbite du corps cible
+                const angle = -element.rotation.y; // Angle de rotation actuel du corps cible
+                
+                // Coordonnées du point à suivre sur l'orbite du corps cible
+                const x_target = radius * Math.cos(angle);
+                const y_target = element.children[1].position.y;
+                const z_target = radius * Math.sin(angle);
+                
+                controls.target.set(x_target, y_target, z_target);
+                controls.update();
+            }
+        })
+    };
+}
 
 // Animation
+animate()
 function animate() {
     requestAnimationFrame(animate);
 
@@ -75,84 +117,11 @@ function animate() {
             };
         };
     };
-    // Rotation du cube
-    // cube.rotation.y += 0.01;
-
-    // console.log(element_list_pos);
 
     // Affichage de la position de la caméra
     cam_position(camera);
+    follow_body();
 
     // Rendu de la scène avec la caméra
     renderer.render(scene, camera);
 }
-
-
-function debug() {
-    const axe_display = true;
-    const cube_display = false;
-    if (axe_display) {
-        // DEBUG : Affiche les axes X Y Z
-        scene_axe(scene);
-    };
-    if (cube_display) {
-        // DEBUG : Création du cube
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
-    };
-};
-
-// Evenement btn_back, btn_next
-btn_back.addEventListener('click', () => {
-    scroll_follow_body(-1, element_list); // Défiler vers le corps précédent
-});
-
-btn_next.addEventListener('click', () => {
-    scroll_follow_body(1, element_list); // Défiler vers le corps suivant
-});
-
-btn_follow_body.addEventListener('click', (e) => {
-    const target_name = e.target.textContent;
-    follow_body(target_name, camera, "start");
-
-    // element_list_pos.forEach(element => {
-    //     if (element.name === target_name) {
-    //         // Placer la caméra à la position de l'astre plus un décalage approprié (par exemple, en ajoutant 50 unités sur l'axe y)
-    //         camera.position.set(element.children[1].position.x, 560, element.children[1].position.z);
-    //         // Orienter la caméra vers l'astre
-    //         camera.lookAt(element.children[1].position);
-    //         camera.rotation.set(0, element.rotation.y, 0);
-    //     }
-    // });
-});
-
-function updateCamera(element){
-    var offset = new THREE.Vector3(element.position.x + 20, element.position.y + 6, element.position.z);
-    camera.position.lerp(offset, 0.2);
-    camera.lookAt(element.position);
-}
-
-
-function follow_body(target_name, camera, active) {
-    if (active === "start") {
-        element_list_pos.forEach(element => {
-            if (element.name === target_name) {
-                console.log(element.name);
-                // console.log(element.rotation);
-                // console.log(element.children[1].position);
-
-                // Orienter la caméra vers l'astre
-                // camera.position.x = element.children[1].position.x
-                // camera.position.y = 560;
-                // camera.position.z = element.children[1].position.z
-
-                // camera.lookAt(element.children[1].position);
-                // camera.position.copy(element.children[1].position);
-                // camera.rotation.set(element.children[1].position.x, 560, element.children[1].position.z);
-
-            };
-        });
-    };
-};
