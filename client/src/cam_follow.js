@@ -1,4 +1,4 @@
-export function cam_follow(element_list, target_name, tracking) {
+export function btn_cam_follow() {
     if (!document.querySelector("#div_btn")) {
         // Création des boutons
         const div_btn = document.createElement('div')
@@ -36,4 +36,23 @@ export function scroll_follow_body(direction, element_list) {
 
     const current_follow_body = element_list[current_follow_index];
     btn_follow_body.innerHTML = current_follow_body.name;
+}
+
+export function follow_body(tracking, element_list_pos, target_name, controls) {
+    if (tracking === true) {
+        element_list_pos.forEach(element => {
+            if (element.name === target_name) {
+                const radius = element.children[1].position.x; // Rayon de l'orbite du corps cible
+                const angle = -element.rotation.y; // Angle de rotation actuel du corps cible
+                
+                // Coordonnées du point à suivre sur l'orbite du corps cible
+                const x_target = radius * Math.cos(angle);
+                const y_target = element.children[1].position.y;
+                const z_target = radius * Math.sin(angle);
+                
+                controls.target.set(x_target, y_target, z_target);
+                controls.update();
+            }
+        })
+    };
 }

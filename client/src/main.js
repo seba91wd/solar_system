@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { cam_position } from './cam_position.js'
-import { cam_follow, scroll_follow_body } from './cam_follow.js'
+import { btn_cam_follow, scroll_follow_body, follow_body } from './cam_follow.js'
 // import { scene_axe } from './scene_axe.js'
 import { create_body } from './create_body.js';
 
@@ -41,12 +41,12 @@ create_body().then(celestial_body => {
     });
 });
 
-// La fonction cam_follow() "permettra" de poursuivre visuellement un corps céleste actuelement en beta test
+// La fonction follow_body() permet de poursuivre visuellement un corps céleste
 let tracking; // Interrupteur de suivi des corps par la caméra
 let target_name; // Nom du corps suivi
-cam_follow(element_list);
+btn_cam_follow(); // Ajout des boutons pour le choix du corps
 
-// Evenement btn_back, btn_next
+// Evenement btn_back, btn_next, btn_follow_body
 btn_back.addEventListener('click', () => {
     scroll_follow_body(-1, element_list); // Défiler vers le corps précédent
 });
@@ -67,25 +67,6 @@ btn_follow_body.addEventListener('click', (e) => {
         console.log("target_name = " + target_name);
     }
 });
-
-function follow_body() {
-    if (tracking === true) {
-        element_list_pos.forEach(element => {
-            if (element.name === target_name) {
-                const radius = element.children[1].position.x; // Rayon de l'orbite du corps cible
-                const angle = -element.rotation.y; // Angle de rotation actuel du corps cible
-                
-                // Coordonnées du point à suivre sur l'orbite du corps cible
-                const x_target = radius * Math.cos(angle);
-                const y_target = element.children[1].position.y;
-                const z_target = radius * Math.sin(angle);
-                
-                controls.target.set(x_target, y_target, z_target);
-                controls.update();
-            }
-        })
-    };
-}
 
 // Animation
 animate()
@@ -120,7 +101,7 @@ function animate() {
 
     // Affichage de la position de la caméra
     cam_position(camera);
-    follow_body();
+    follow_body(tracking, element_list_pos, target_name, controls);
 
     // Rendu de la scène avec la caméra
     renderer.render(scene, camera);
