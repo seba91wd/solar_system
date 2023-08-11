@@ -1,5 +1,5 @@
-const { bodie } = require('../db/sequelize')
-const auth = require('../auth/auth');
+const { bodie } = require('../../db/sequelize')
+const auth = require('../../auth/auth');
 
 module.exports = (app) => {
     app.delete('/api/bodies/:id',auth, (req, res) => {

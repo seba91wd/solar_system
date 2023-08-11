@@ -1,4 +1,4 @@
-const { user } = require('../db/sequelize')
+const { user } = require('../../db/sequelize')
 const bcrypt = require('bcrypt');
 const { ValidationError, UniqueConstraintError } = require('sequelize');
 const authorization = "my_authorization_pass"

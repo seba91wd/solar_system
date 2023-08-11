@@ -1,4 +1,4 @@
-const { bodie } = require('../db/sequelize');
+const { bodie } = require('../../db/sequelize');
 const { Op } = require('sequelize');
 // const auth = require('../auth/auth');
 const valide_types = ["Star", "Telluric planet", "Gas giant", "Dwarf planet", "Moon", "Asteroid", "Comet"];

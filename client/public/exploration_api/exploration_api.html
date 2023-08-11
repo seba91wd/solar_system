@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/exploration_api/exploration_api.css">
+</head>
+
+<body>
+    <h1>Exploration_api</h1>
+    <div class="container">
+        <div id="div_filter">
+            <div class="separation"></div>
+            <div>
+                <h3>Recherche</h3>
+                <form id="search_form">
+                    <input type="text" id="search">
+                    <div>
+                        <input type="image" id="empty_field" src="../public/img/circle-xmark.svg" alt="Vider le champs de recherche">
+                        <input type="image" id="launch_search" src="../public/img/search.svg" alt="Recherche">
+                    </div>
+                </form>
+            </div>
+            <div class="separation"></div>
+            <div>
+                <h3>Filtre par type</h3>
+                <div id="container_filter">
+                    <ul>
+                        <li>
+                            Planètes Télurique
+                        </li>
+                        <li>
+                            Géantes gazeuses
+                        </li>
+                        <li>
+                            Planètes naines
+                        </li>
+                        <li>
+                            Comets
+                        </li>
+                        <li>
+                            Astéroids
+                        </li>
+                        <li>
+                            Satélites artificiels
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="checkbox_t_planet" checked>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="checkbox_g_planet" checked>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="checkbox_d_planet" checked>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="checkbox_comet" checked>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="checkbox_asteroid" checked>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="checkbox_a_satelite">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="separation"></div>
+        </div> <!-- div_filter -->
+
+        <div id="div_array">
+            <nav>
+                <button><img src="../public/img/table-solid.svg" alt="Tableau"><p>Tableau</p></button>
+                <button><img src="../public/img/info.svg" alt="Détails"><p>Détails</p></button>
+            </nav>
+            <div id="container_array">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Type</th>
+                            <th>Masse</th>
+                            <th>Densité</th>
+                            <th>Gravité</th>
+                            <th>Inclinaison de l'axe</th>
+                            <th>Rayon de l'équateur</th>
+                            <th>Rayon moyen</th>
+                            <th>Rayon polaire</th>
+                            <th>Aplanissement</th>
+                            <th>Inclination</th>
+                            <th>Autour de la planète</th>
+                            <th>Excentricité</th>
+                            <th>Aphelion</th>
+                            <th>Perihelion</th>
+                            <th>Argument du périastre</th>
+                            <th>Rotation sidérale</th>
+                            <th>Rotation orbitale</th>
+                            <th>Image</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <p>Lien de la recherche</p>
+
+            <pre>
+                <input type="button" id="btn_copy" value="Copie"><span>http://localhoast:30001/api/</span>
+            </pre>
+        </div> <!-- div_array -->
+    </div>
+
+    <script type="module" src="../../public/exploration_api/exploration_api.js"></script>
+</body>
+
+</html>

@@ -33,15 +33,18 @@ app.get('/api', (req, res) => {
     res.send(welcome)
 })
 
-require('./src/routes/create_user')(app);
-require('./src/routes/login_user')(app);
-require('./src/routes/find_all_bodies')(app);
-require('./src/routes/find_by_type')(app);
-require('./src/routes/create_bodie')(app);
-require('./src/routes/update_bodie')(app);
-require('./src/routes/delete_bodie')(app);
+require('./src/routes/api/create_user')(app);
+require('./src/routes/api/login_user')(app);
+require('./src/routes/api/find_all_bodies')(app);
+require('./src/routes/api/find_by_type')(app);
+require('./src/routes/api/create_bodie')(app);
+require('./src/routes/api/update_bodie')(app);
+require('./src/routes/api/delete_bodie')(app);
 
-require('./src/routes/map')(app);
+require('./src/routes/client/accueil')(app);
+require('./src/routes/client/connexion')(app);
+require('./src/routes/client/exploration_api')(app);
+require('./src/routes/client/map')(app);
 
 app.listen(port, hostname, () => {
     console.log(`Application démarée sur http://${hostname}:${port}/api`);

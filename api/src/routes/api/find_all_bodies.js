@@ -1,4 +1,4 @@
-const { bodie } = require('../db/sequelize');
+const { bodie } = require('../../db/sequelize');
 const { Op } = require('sequelize');
 // const auth = require('../auth/auth');
 
@@ -27,7 +27,7 @@ module.exports = (app) => {
                 let message = "";
                 if (count === 1){
                     // Au singulier
-                    message = `Il y a ${count} corp céleste qui correspond au therme ${name}.`;
+                    message = `Il y a ${count} corps céleste qui correspond au therme ${name}.`;
                 }
                 else {
                     // Au pluriel
