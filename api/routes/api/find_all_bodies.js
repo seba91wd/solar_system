@@ -13,7 +13,7 @@ module.exports = (app) => {
                 const message = "Le therme de recherce doit contenir au moin 2 caractère";
                 return res.status(400).json({message})
             }
-            const limit = parseInt(req.query.limit) || 5
+            const limit = parseInt(req.query.limit) || 8
             return bodie.findAndCountAll({
                 where: {
                     name:{

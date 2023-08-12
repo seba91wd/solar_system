@@ -25,7 +25,7 @@ export function create_body() {
 
                         // Forme et texture du soleil
                         const textureLoader = new THREE.TextureLoader();
-                        const texture = textureLoader.load('../src/visualisation_3d/textures/sun.jpg');
+                        const texture = textureLoader.load('./visualisation_3d/js/textures/sun.jpg');
                         texture.mapping = THREE.EquirectangularReflectionMapping;
                         const geometry = new THREE.SphereGeometry(body.mean_radius * scale, 32, 32);
                         const material = new THREE.MeshBasicMaterial({ map: texture });

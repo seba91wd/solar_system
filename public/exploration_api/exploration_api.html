@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../public/exploration_api/exploration_api.css">
+    <link rel="stylesheet" href="./exploration_api.css">
 </head>
 
 <body>
@@ -18,8 +18,8 @@
                 <form id="search_form">
                     <input type="text" id="search">
                     <div>
-                        <input type="image" id="empty_field" src="../public/img/circle-xmark.svg" alt="Vider le champs de recherche">
-                        <input type="image" id="launch_search" src="../public/img/search.svg" alt="Recherche">
+                        <input type="image" id="empty_field" src="../img/components/circle-xmark.svg" alt="Vider le champs de recherche">
+                        <input type="image" id="launch_search" src="../img/components/search.svg" alt="Recherche">
                     </div>
                 </form>
             </div>
@@ -71,12 +71,17 @@
                 </div>
             </div>
             <div class="separation"></div>
+            <div>
+                <h3>Limite de résultat</h3>
+                
+            </div>
+            <div class="separation"></div>
         </div> <!-- div_filter -->
 
         <div id="div_array">
             <nav>
-                <button><img src="../public/img/table-solid.svg" alt="Tableau"><p>Tableau</p></button>
-                <button><img src="../public/img/info.svg" alt="Détails"><p>Détails</p></button>
+                <button><img src="../img/components/table-solid.svg" alt="Tableau"><p>Tableau</p></button>
+                <button><img src="../img/components/info.svg" alt="Détails"><p>Détails</p></button>
             </nav>
             <div id="container_array">
                 <table>
@@ -111,12 +116,12 @@
             <p>Lien de la recherche</p>
 
             <pre>
-                <input type="button" id="btn_copy" value="Copie"><span>http://localhoast:30001/api/</span>
+                <input type="button" id="btn_copy" value="Copie"><a href="" id="api_link"></a>
             </pre>
         </div> <!-- div_array -->
     </div>
 
-    <script type="module" src="../../public/exploration_api/exploration_api.js"></script>
+    <script type="module" src="./exploration_api.js"></script>
 </body>
 
 </html>

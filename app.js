@@ -10,10 +10,10 @@ module.exports = {
     port: port
 };
 
-const sequelize = require('./src/db/sequelize');
+const sequelize = require('./api/db/sequelize');
 
 // Application du Midlewares express.static sert des fichiers statiques tels que des images, des fichiers CSS, des fichiers JavaScript, etc.
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Application du Midlewares body_parse sur tout les points de terminaison
 app.use(body_parse.json());
@@ -33,18 +33,20 @@ app.get('/api', (req, res) => {
     res.send(welcome)
 })
 
-require('./src/routes/api/create_user')(app);
-require('./src/routes/api/login_user')(app);
-require('./src/routes/api/find_all_bodies')(app);
-require('./src/routes/api/find_by_type')(app);
-require('./src/routes/api/create_bodie')(app);
-require('./src/routes/api/update_bodie')(app);
-require('./src/routes/api/delete_bodie')(app);
+// Route API
+require('./api/routes/api/create_user')(app);
+require('./api/routes/api/login_user')(app);
+require('./api/routes/api/find_all_bodies')(app);
+require('./api/routes/api/find_by_type')(app);
+require('./api/routes/api/create_bodie')(app);
+require('./api/routes/api/update_bodie')(app);
+require('./api/routes/api/delete_bodie')(app);
 
-require('./src/routes/client/accueil')(app);
-require('./src/routes/client/connexion')(app);
-require('./src/routes/client/exploration_api')(app);
-require('./src/routes/client/map')(app);
+// Route client
+require('./api/routes/client/accueil')(app);
+require('./api/routes/client/connexion')(app);
+require('./api/routes/client/exploration_api')(app);
+require('./api/routes/client/map')(app);
 
 app.listen(port, hostname, () => {
     console.log(`Application démarée sur http://${hostname}:${port}/api`);
