@@ -1,9 +1,9 @@
 const express = require('express');
-const body_parse = require('body-parser');
+const path = require('path');
+const body_parse = require('body-parser'); // Middlewares body-parser
 const app = express();
 const port = process.env.PORT || 3001;
 const hostname = process.env.HOST || "localhost";
-const path = require('path');
 
 module.exports = {
     hostname: hostname,
@@ -17,6 +17,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Application du Midlewares body_parse sur tout les points de terminaison
 app.use(body_parse.json());
+
+// Application du Midlewares de traiter les données provenant des requêtes POST (formulaire)
+app.use(express.urlencoded({ extended: true }));
 
 // Creation de la BDD 
 // sequelize.initDb();
