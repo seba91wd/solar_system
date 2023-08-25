@@ -36,6 +36,16 @@ module.exports = (app) => {
                 res.json({ message, data: rows });
             })
         }
+        else if (req.query.id) {
+            return bodie.findByPk(req.query.id).then(corps => {
+                if (corps === null) {
+                    const message = "Le corps céleste demandé n'existe pas, réessayer avec un autre ID";
+                    return res.status(404).json({ message });
+                }
+                const message = `Il y a 1 corps céleste qui correspond a l'ID ${corps.id}.`;
+                res.json({ message, corps })
+            })
+        }
         else {
             // Récupération de la liste complète des corps célestes
             bodie.findAndCountAll({order: ['id']})

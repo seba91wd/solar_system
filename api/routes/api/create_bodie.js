@@ -6,9 +6,9 @@ module.exports = (app) => {
     app.post('/api/bodies',auth, (req, res) => {
         console.log("create_bodie");
         bodie.create(req.body)
-        .then(corp => {
-            const message = `Le corp céleste ${req.body.name} a bien été crée.`;
-            res.json({ message, data: corp });
+        .then(corps => {
+            const message = `Le corps céleste ${req.body.name} a bien été crée.`;
+            res.json({ message, data: corps });
         })
         .catch(error => {
             if (error.name === "SequelizeValidationError") {

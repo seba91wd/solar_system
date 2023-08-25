@@ -1,3 +1,6 @@
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// Grosse erreur de copier coller dans ce fichier (const name = req.query.name || null;)
+
 const { bodie } = require('../../db/sequelize');
 const { Op } = require('sequelize');
 // const auth = require('../auth/auth');
@@ -30,7 +33,7 @@ module.exports = (app) => {
                             let message = "";
                             if (count === 1) {
                                 // Au singulier
-                                message = `Il y a ${count} corp céleste qui correspond au type ${req_body_type} et au therme ${name}.`;
+                                message = `Il y a ${count} corps céleste qui correspond au type ${req_body_type} et au therme ${name}.`;
                             }
                             else {
                                 // Au pluriel
@@ -49,7 +52,7 @@ module.exports = (app) => {
                             let message = "";
                             if (count === 1) {
                                 // Au singulier
-                                message = `Il y a ${count} corp céleste qui correspond au type ${req_body_type}.`;
+                                message = `Il y a ${count} corps céleste qui correspond au type ${req_body_type}.`;
                             }
                             else {
                                 // Au pluriel

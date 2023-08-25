@@ -20,6 +20,15 @@ h3 {
     text-align: center;
 }
 
+input[type=text], input[type=number], select {
+    font-size: 1.2rem;
+    border-radius: 6px;
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+}
 .container {
     display: flex;
     flex-wrap: nowrap;
@@ -31,21 +40,38 @@ h3 {
     border: 2px solid #ffffff;
     background-color: #00000075;
     border-radius: 6px;
-    margin: 10px auto 10px auto;
+    margin: 10px auto;
 }
 
 .line-through {
     text-decoration: line-through;
 }
 
-/* -------------- div_filter -------------- */
+#connexion {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    padding: 4px;
+    text-decoration: none;
+    color: #ffffff;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    transition: 0.5s;
+}
+
+#connexion:hover {
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+    transition: 0.5s;
+}
+
+/* -------------- div_search -------------- */
 
 /* --------- */
 /* Recherche */
 
-#div_filter {
+#div_search {
     list-style: none;
-    /* border: 1px solid yellow; */
     height: fit-content;
 }
 
@@ -61,21 +87,18 @@ h3 {
     margin: 6px 0 0 250px;
 }
 
-input[type=text] {
+#search_form input[type=text] {
     box-sizing: border-box;
     height: 30px;
-    font-size: 1.2rem;
-    border-radius: 4px;
+    border-radius: 6px;
     padding-right: 55px;
     margin: 0px 10px 10px;
-    text-align: center;
 }
 
-input[type=number] {
+#search_form input[type=number] {
     width: 30px;
     border-radius: 10px;
     padding: 2px 4px;
-    text-align: center;
 }
 
 #search_form button {
@@ -123,16 +146,19 @@ input[type="checkbox"] {
     width: -webkit-fill-available;
 }
 
-
+/* -------------- div_array -------------- */
 
 .inactive {
     display: none;
 }
 
-/* -------------- div_array -------------- */
+#div_main {
+    margin: 0 auto;
+}
 
 #div_array {
-    margin: 0px auto;
+    width: fit-content;
+    margin: 0 auto;
 }
 
 #div_array button {
@@ -207,11 +233,102 @@ pre {
     margin-right: 2px;
 }
 
+
+/* ---------------------------- */
+/* Classe appliquée sur les formulaires, Ajouter & Modifier */
+.form_style {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form_style ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_style li {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.form_style button {
+    cursor: pointer;
+    border: 1px solid #ffffff;
+    border-radius: 15px;
+    background-color: #0000008b;
+    color: #ffffff;
+    font-size: 1.2rem;
+    padding: 4px 50px;
+}
+
+.form_style ul p {
+    position: absolute;
+    margin: 20px 0 0 190px;
+    font-size: 1.2rem;
+    color: #8f8f8f;
+}
+
+/* ---------------------------- */
+/* div Ajouter un corps céleste */
+
+#add_bodie_form {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+#div_add_form_submit {
+    text-align: center;
+}
+
+/* ---------------------------- */
+/* div Modifier un corps céleste */
+
+#search_id_bodie_update {
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+}
+
+#search_id_bodie_update input {
+    width: 50px;
+}
+
+#update_form {
+    display: none;
+}
+
+#div_update_form_submit {
+    text-align: center;
+}
+
+/* ------------------ */
+/* Supprimer un corps */
+
+#search_id_bodie_delete {
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+}
+
+#search_id_bodie_delete input {
+    width: 50px;
+}
+
+#div_delete_confirmation {
+    display: none;
+}
+
 /* --------- */
 /* Animation */
 .rotate-center {
-    position: absolute;
-    top: -365px;
+    position: fixed;
+    bottom: 0;
     z-index: -1;
     display: flex;
     justify-content: center;
@@ -221,7 +338,8 @@ pre {
 }
 
 .rotate-center img {
-    height: max-content;
+    scale: 1.4;
+    position: absolute;
     -webkit-animation: rotate-center 800s linear infinite both;
     animation: rotate-center 800s linear infinite both;
 }

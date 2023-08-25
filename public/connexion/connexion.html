@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="connexion.css">
     <title>Document</title>
 </head>
+
 <body>
-    <h1>Connexion</h1>
+    <div id="container">
+        <h1>Connexion</h1>
+        <form id="login_form">
+            <div>
+                <label for="username">Identifiant :</label>
+                <input type="text" id="username" name="username" autocomplete="no-autocomplete" required>
+            </div>
+            <div>
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <!-- <a href="#">Mot de passe oublié ?</a> -->
+            </div>
+            <div>
+                <button type="submit">Connexion</button>
+            </div>
+        </form>
+        <p id="message"></p>
+    </div>
+    <div class="rotate-center">
+        <img src="../img/components/sky_2000.png" alt="Ciel étoilé">
+    </div>
     <script type="module" src="./connexion.js"></script>
 </body>
+
 </html>

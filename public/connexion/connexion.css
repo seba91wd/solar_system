@@ -1,53 +1,63 @@
 * {
-    font-family: sans-serif;
     margin: 0;
     padding: 0;
 }
 
 body {
     background-color: #000000;
-    overflow-x: hidden;
-    color: #cacaca;
 }
 
-h1, h2 {
-    text-align: center;
-    margin: 10px 0px;
+#container {
+    display: grid;
+    height: 90vh;
+    align-content: center;
+    color: #ffffff;
 }
 
-.div_hover {
-    transition: 1s;
-    border: 2px solid #00000000;
-    margin: 4px;
-
-}
-
-.div_hover:hover {
-    transition: 1s;
-    background-color: #00000082;
-    border: 2px solid #ffffff;
-    border-radius: 10px;
-}
-
-ol {
-    margin: 10px 35px;
-}
-
-li {
-    padding: 5px 0px;
-}
-
-footer {
-    position: fixed;
-    z-index: -1;
-    bottom: 0;
-    height: 300px;
-    width: 100%;
-    contain: content;
+h1 {
     text-align: center;
 }
 
-/* Animation */
+#login_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login_form div {
+    margin-bottom: 10px;
+}
+
+#login_form label {
+    display: block;
+    font-size: 1.2rem;
+}
+
+#login_form input {
+    box-sizing: border-box;
+    height: 30px;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    text-align: center;
+    background-color: #0000008b;
+    color: #ffffff;
+}
+
+#login_form button {
+    cursor: pointer;
+    background-color: #0000008b;
+    color: #ffffff;
+    font-size: 1.2rem;
+    padding: 6px 75px;
+    border: 1px solid #ffffff;
+    border-radius: 25px;
+}
+
+#message {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
 /* Animation */
 .rotate-center {
     position: fixed;

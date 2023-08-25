@@ -10,13 +10,13 @@ module.exports = (app) => {
             where: { id: id }
         })
         .then(_ => {
-            return bodie.findByPk(id).then(corp => {
-                if (corp === null) {
-                    const message = "Le corp céleste demandé n'existe pas, réessayer avec un autre identifiant";
+            return bodie.findByPk(id).then(corps => {
+                if (corps === null) {
+                    const message = "Le corps céleste demandé n'existe pas, réessayer avec un autre identifiant";
                     return res.status(404).json({ message });
                 }
-                const message = `Le corp céleste ${corp.name} a bien été modifié.`;
-                res.json({ message, data: corp });
+                const message = `Le corps céleste ${corps.name} a bien été modifié.`;
+                res.json({ message, data: corps });
             })
         })
         .catch(error => {

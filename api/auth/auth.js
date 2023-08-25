@@ -21,10 +21,10 @@ module.exports = (req, res, next) => {
         };
 
         const user_id = decoded_token.user_id;
-        // On vérifie si le token appartient au bon utilisateur
+        // On vérifie si le token appartient au bon utilisateur (pour les petits malins)
         if (req.body.user_id && req.body.user_id !== user_id) {
             // Si req.body.user_id existe et qu'il ne correspond pas à decoded_token.user_id
-            const message = "L'identifiant de l'utilisateur est invalide.";
+            const message = "L'identification de l'utilisateur est invalide.";
             res.status(401).json({ message });
         } else {
             // Sinon on autorise la requete
