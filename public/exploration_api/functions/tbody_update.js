@@ -19,7 +19,7 @@ export function tbody_update(response) {
         const typeClass = item.body_type.replace(/\s+/g, '_'); // Remplace les espaces par des underscores
         row.classList.add(typeClass.toLowerCase()); // Ajoute la classe du type de corps céleste à la ligne
 
-        // Parcours des en-têtes de colonne pour maintenir l'ordre
+        // Parcours des en-têtes de colonne afin de garantir leurs bons ordres
         table_headers.forEach(header => {
             const cell = document.createElement('td');
             // Traitement des lunes du corps
@@ -43,4 +43,4 @@ export function tbody_update(response) {
         // Ajout de la ligne au tableau
         tbody.appendChild(row);
     });
-}
+};

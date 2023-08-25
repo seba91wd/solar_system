@@ -146,7 +146,8 @@ input[type="checkbox"] {
     width: -webkit-fill-available;
 }
 
-/* -------------- div_array -------------- */
+/* --------- */
+/* div_array */
 
 .inactive {
     display: none;
@@ -183,6 +184,7 @@ input[type="checkbox"] {
 
 /* ------- */
 /* tableau */
+
 table {
     border-spacing: inherit;
 }
@@ -209,6 +211,7 @@ td {
 
 /* -------------------- */
 /* Lien de la recherche */
+
 pre {
     width: fit-content;
     padding: 5px;
@@ -233,9 +236,9 @@ pre {
     margin-right: 2px;
 }
 
-
 /* ---------------------------- */
 /* Classe appliquée sur les formulaires, Ajouter & Modifier */
+
 .form_style {
     display: flex;
     flex-direction: column;
@@ -326,6 +329,7 @@ pre {
 
 /* --------- */
 /* Animation */
+
 .rotate-center {
     position: fixed;
     bottom: 0;

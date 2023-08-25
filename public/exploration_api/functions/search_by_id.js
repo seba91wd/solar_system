@@ -1,8 +1,4 @@
-// Revoir cette fonction pour l'utiliser dans le form update et delete
-
 export async function search_by_id(search_id_value) {
-    // Modifier un corps céleste
-    // const search_id_value = document.querySelector('#search_id_up').value;
     if (search_id_value.trim() !== '') {
         try {
             // Envoi de la requête

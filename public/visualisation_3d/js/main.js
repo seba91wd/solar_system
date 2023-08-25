@@ -47,15 +47,15 @@ let target_name; // Nom du corps suivi
 btn_cam_follow(); // Ajout des boutons pour le choix du corps
 
 // Evenement btn_back, btn_next, btn_follow_body
-btn_back.addEventListener('click', () => {
+document.querySelector('#btn_back').addEventListener('click', () => {
     scroll_follow_body(-1, element_list); // Défiler vers le corps précédent
 });
 
-btn_next.addEventListener('click', () => {
+document.querySelector('#btn_next').addEventListener('click', () => {
     scroll_follow_body(1, element_list); // Défiler vers le corps suivant
 });
 
-btn_follow_body.addEventListener('click', (e) => {
+document.querySelector('#btn_follow_body').addEventListener('click', (e) => {
     if (tracking === true) {
         tracking = false;
         console.log("tracking = " + tracking);
@@ -65,18 +65,18 @@ btn_follow_body.addEventListener('click', (e) => {
         tracking = true;
         console.log("tracking = " + tracking);
         console.log("target_name = " + target_name);
-    }
+    };
 });
 
 // Animation
-animate()
+animate();
 function animate() {
     requestAnimationFrame(animate);
 
     // Reset du tableau de la position des objets
     element_list_pos = [];
     // potentiometre vitesse de rotation
-    const speed_rotate = 100
+    const speed_rotate = 100;
 
 
     for (let i = 0; i < element_list.length; i++) {

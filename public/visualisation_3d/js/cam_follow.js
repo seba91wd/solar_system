@@ -20,8 +20,8 @@ export function btn_cam_follow() {
         div_btn.append(btn_back, btn_follow_body, btn_next)
 
         document.querySelector("#main").append(div_btn);
-    }
-}
+    };
+};
 
 let current_follow_index = 0; // Variable pour stocker l'index du corps actuellement suivi
 
@@ -35,8 +35,8 @@ export function scroll_follow_body(direction, element_list) {
     }
 
     const current_follow_body = element_list[current_follow_index];
-    btn_follow_body.innerHTML = current_follow_body.name;
-}
+    document.querySelector('#btn_follow_body').innerHTML = current_follow_body.name;
+};
 
 export function follow_body(tracking, element_list_pos, target_name, controls) {
     if (tracking === true) {
