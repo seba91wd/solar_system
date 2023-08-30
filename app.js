@@ -40,7 +40,6 @@ app.get('/api', (req, res) => {
 require('./api/routes/api/create_user')(app);
 require('./api/routes/api/login_user')(app);
 require('./api/routes/api/find_all_bodies')(app);
-require('./api/routes/api/find_by_type')(app);
 require('./api/routes/api/create_bodie')(app);
 require('./api/routes/api/update_bodie')(app);
 require('./api/routes/api/delete_bodie')(app);
@@ -48,7 +47,7 @@ require('./api/routes/api/delete_bodie')(app);
 // Route client
 require('./api/routes/client/accueil')(app);
 require('./api/routes/client/connexion')(app);
-require('./api/routes/client/exploration_api')(app);
+require('./api/routes/client/exploration')(app);
 require('./api/routes/client/map')(app);
 
 app.listen(port, hostname, () => {

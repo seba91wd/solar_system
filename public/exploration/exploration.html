@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploration des données</title>
+    <link rel="stylesheet" href="./exploration.css">
+</head>
+
+<body>
+
+    <a id="connexion" href="/connexion">Connexion</a>
+    <h1>Exploration des données</h1>
+    <div class="flex_row" id="flex_container">
+        <div class="flex_col" id="div_search_and_filter">
+
+            <form class="border" class="flex_col" id="form_search_by_name">
+                <label for="search_by_name">Recherche par nom :</label>
+                <input type="text" name="search_by_name" id="search_by_name" minlength="2">
+                <div id="div_btn_search">
+                    <button id="empty_field" type="reset">
+                        <img src="../img/components/circle-xmark.svg" alt="Vider le champs de recherche">
+                    </button>
+                    <button type="submit" id="launch_search">
+                        <img src="../img/components/search.svg" alt="Recherche">
+                    </button>
+                </div>
+                <label for="search_by_type">Filtrer par type :</label>
+                <select name="search_by_type" id="search_by_type">
+                    <option value="" selected>Aucun</option>
+                    <option value="Star">Etoile</option>
+                    <option value="Telluric planet">Planètes Télurique</option>
+                    <option value="Gas giant">Géantes Gazeuses</option>
+                    <option value="Dwarf planet">Planètes Naines</option>
+                    <option value="Moon">Lunes</option>
+                    <option value="Comet">Comets</option>
+                    <option value="Asteroid">Astéroids</option>
+                </select>
+                <div id="div_search_limit">
+                    <label for="search_limit">Limite de résultats :</label>
+                    <input type="number" name="search_limit" id="search_limit" value="10">
+                </div>
+            </form> <!-- form_search -->
+
+            <div class="border" id="div_filter">
+                <h3>Filtre de résultats</h3>
+                <form class="flex_row" id="checkboxes">
+                    <ul>
+                        <li>
+                            <label for="checkbox_star">Etoile</label>
+                            <input type="checkbox" id="checkbox_star" name="checkbox_star" checked>
+                        </li>
+                        <li>
+                            <label for="checkbox_telluric_planet">Planètes Télurique</label>
+                            <input type="checkbox" id="checkbox_telluric_planet" name="checkbox_telluric_planet"
+                                checked>
+                        </li>
+                        <li>
+                            <label for="checkbox_gas_giant">Géantes gazeuses</label>
+                            <input type="checkbox" id="checkbox_gas_giant" name="checkbox_gas_giant" checked>
+                        </li>
+                        <li>
+                            <label for="checkbox_dwarf_planet">Planètes naines</label>
+                            <input type="checkbox" id="checkbox_dwarf_planet" name="checkbox_dwarf_planet" checked>
+                        </li>
+                        <li>
+                            <label for="checkbox_moon">Lunes</label>
+                            <input type="checkbox" id="checkbox_moon" name="checkbox_moon" checked>
+                        </li>
+                        <li>
+                            <label for="checkbox_comet">Comets</label>
+                            <input type="checkbox" id="checkbox_comet" name="checkbox_comet" checked>
+                        </li>
+                        <li>
+                            <label for="checkbox_asteroid">Astéroids</label>
+                            <input type="checkbox" id="checkbox_asteroid" name="checkbox_asteroid" checked>
+                        </li>
+                    </ul>
+                </form>
+            </div> <!-- div_filter -->
+
+        </div> <!-- div_search_and_filter -->
+
+        <div class="flex_col" id="div_link_and_array">
+            <div class="border flex_row" id="div_search_link">
+                <div id="div_btn_copy">
+                    <p id="btn_copy">Lien de la recherche :</p>
+                </div>
+                <a target="_blank" href="/api/bodies?name=soleil"
+                    id="api_link">http://localhost:3001/api/bodies?name=soleil&limit=8</a>
+            </div>
+            <div class="border" id="div_array">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Nom anglais</th>
+                            <th>Type</th>
+                            <th>Masse</th>
+                            <th>Densité</th>
+                            <th>Gravité</th>
+                            <th>Inclinaison de l'axe</th>
+                            <th>Rayon de l'équateur</th>
+                            <th>Rayon moyen</th>
+                            <th>Rayon polaire</th>
+                            <th>Aplanissement</th>
+                            <th>Inclination</th>
+                            <th>Autour de la planète</th>
+                            <th>Excentricité</th>
+                            <th>Aphelion</th>
+                            <th>Perihelion</th>
+                            <th>Argument du périastre</th>
+                            <th>Rotation sidérale</th>
+                            <th>Rotation orbitale</th>
+                            <th>Image</th>
+                            <th>Lune</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>243</td>
+                            <td>Le Soleil</td>
+                            <td>Sun</td>
+                            <td>Star</td>
+                            <td>1.989 x 10^30 kg</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>7.25</td>
+                            <td>696342</td>
+                            <td>695508</td>
+                            <td>0</td>
+                            <td>0.00009</td>
+                            <td>0</td>
+                            <td></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> <!-- flex_container -->
+
+    <div class="border hidden" id="container_data_edit">
+        <h2>Edition des données</h2>
+        <div class="flex_row" id="div_data_edit">
+            <ul>
+                <li id="btn_add_data">Ajouter un corps</li>
+                <li id="btn_update_data">Modifier un corps</li>
+                <li id="btn_del_data">Supprimer un corps</li>
+            </ul>
+            <div id="div_choose">
+                <p>⬅ Choisissez une une tache</p>
+            </div>
+            <div class="hidden" id="div_add_data">
+                <form class="form_style" id="add_form">
+                    <ul>
+                        <li>
+                            <label for="name">Nom :</label>
+                            <input type="text" id="name" name="name" placeholder="Mars" required>
+                        </li>
+                        <li>
+                            <label for="english_name">Nom en anglais :</label>
+                            <input type="text" id="english_name" name="english_name" placeholder="Mars" required>
+                        </li>
+                        <li>
+                            <label for="body_type">Type de corps céleste :</label>
+                            <select id="body_type" name="body_type" required>
+                                <option value="Star">Star</option>
+                                <option value="Telluric planet" selected>Telluric planet</option>
+                                <option value="Gas giant">Gas giant</option>
+                                <option value="Dwarf planet">Dwarf planet</option>
+                                <option value="Moon">Moon</option>
+                                <option value="Asteroid">Asteroid</option>
+                                <option value="Comet">Comet</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="mass_value">Valeur de la masse :</label>
+                            <input type="text" id="mass_value" name="mass_value" placeholder="6.41712" required>
+                            <p>X 10^</p>
+                        </li>
+                        <li>
+                            <label for="mass_exponent">Exposant de masse :</label>
+                            <input type="text" id="mass_exponent" name="mass_exponent" placeholder="23" required>
+                        </li>
+                        <li>
+                            <label for="density">Densité :</label>
+                            <input type="text" id="density" name="density" placeholder="3.9341" required>
+                        </li>
+                        <li>
+                            <label for="gravity">Gravité :</label>
+                            <input type="text" id="gravity" name="gravity" placeholder="3.71" required>
+                        </li>
+                        <li>
+                            <label for="axial_tilt">Inclinaison axiale :</label>
+                            <input type="text" id="axial_tilt" name="axial_tilt" placeholder="25.19" required>
+                        </li>
+                        <li>
+                            <label for="equa_radius">Rayon équatorial :</label>
+                            <input type="text" id="equa_radius" name="equa_radius" placeholder="3396.19" required>
+                        </li>
+                        <li>
+                            <label for="mean_radius">Rayon moyen :</label>
+                            <input type="text" id="mean_radius" name="mean_radius" placeholder="3389.5" required>
+                        </li>
+                        <li>
+                            <label for="polar_radius">Rayon polaire :</label>
+                            <input type="text" id="polar_radius" name="polar_radius" placeholder="3376.2" required>
+                        </li>
+                        <li>
+                            <label for="flattening">Aplanissement :</label>
+                            <input type="text" id="flattening" name="flattening" placeholder="0.00589" required>
+                        </li>
+                        <li>
+                            <label for="inclination">Inclinaison :</label>
+                            <input type="text" id="inclination" name="inclination" placeholder="1.85" required>
+                        </li>
+                        <li>
+                            <label for="around_planet">Autour de la planète :</label>
+                            <input type="text" id="around_planet" name="around_planet" placeholder="">
+                        </li>
+                        <li>
+                            <label for="eccentricity">Excentricité :</label>
+                            <input type="text" id="eccentricity" name="eccentricity" placeholder="0.0935" required>
+                        </li>
+                        <li>
+                            <label for="aphelion">Aphélie :</label>
+                            <input type="text" id="aphelion" name="aphelion" placeholder="249200000" required>
+                        </li>
+                        <li>
+                            <label for="perihelion">Périhélie :</label>
+                            <input type="text" id="perihelion" name="perihelion" placeholder="206700000" required>
+                        </li>
+                        <li>
+                            <label for="arg_periapsis">Argument du périapsis :</label>
+                            <input type="text" id="arg_periapsis" name="arg_periapsis" placeholder="286.231" required>
+                        </li>
+                        <li>
+                            <label for="sideral_rotation">Rotation sidérale :</label>
+                            <input type="text" id="sideral_rotation" name="sideral_rotation" placeholder="24.6229"
+                                required>
+                        </li>
+                        <li>
+                            <label for="sideral_orbit">Rotation orbitale :</label>
+                            <input type="text" id="sideral_orbit" name="sideral_orbit" placeholder="686.98" required>
+                        </li>
+                        <li>
+                            <label for="picture">Image :</label>
+                            <input type="text" id="picture" name="picture">
+                        </li>
+                    </ul>
+                    <div id="div_add_form_submit">
+                        <button type="submit">Ajouter</button>
+                        <p id="add_form_message"></p>
+                    </div>
+                </form>
+
+            </div>
+            <div class="hidden" id="div_update_data">
+                <div id="search_id_bodie_update">
+                    <form id="form_search_id_bodie_update">
+                        <label for="search_id_up">ID du corps :</label>
+                        <input type="text" id="search_id_up" name="search_id_up" required>
+                        <button type="submit">Chercher un ID</button>
+                    </form>
+                    <p id="update_message_form"></p>
+                </div>
+                <form class="form_style" id="update_form">
+                    <ul>
+                        <li>
+                            <label for="update_name">Nom :</label>
+                            <input type="text" id="update_name" name="update_name" required>
+                        </li>
+                        <li>
+                            <label for="update_english_name">Nom en anglais :</label>
+                            <input type="text" id="update_english_name" name="update_english_name" required>
+                        </li>
+                        <li>
+                            <label for="update_body_type">Type de corps céleste :</label>
+                            <select id="update_body_type" name="update_body_type" required>
+                                <option value="Star">Star</option>
+                                <option value="Telluric planet">Telluric planet</option>
+                                <option value="Gas giant">Gas giant</option>
+                                <option value="Dwarf planet">Dwarf planet</option>
+                                <option value="Moon">Moon</option>
+                                <option value="Asteroid">Asteroid</option>
+                                <option value="Comet">Comet</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="update_mass_value">Valeur de la masse :</label>
+                            <input type="text" id="update_mass_value" name="update_mass_value" required>
+                            <p>X 10^</p>
+                        </li>
+                        <li>
+                            <label for="update_mass_exponent">Exposant de masse :</label>
+                            <input type="text" id="update_mass_exponent" name="update_mass_exponent" placeholder="23"
+                                required>
+                        </li>
+                        <li>
+                            <label for="update_density">Densité :</label>
+                            <input type="text" id="update_density" name="update_density" required>
+                        </li>
+                        <li>
+                            <label for="update_gravity">Gravité :</label>
+                            <input type="text" id="update_gravity" name="update_gravity" required>
+                        </li>
+                        <li>
+                            <label for="update_axial_tilt">Inclinaison axiale :</label>
+                            <input type="text" id="update_axial_tilt" name="update_axial_tilt" required>
+                        </li>
+                        <li>
+                            <label for="update_equa_radius">Rayon équatorial :</label>
+                            <input type="text" id="update_equa_radius" name="update_equa_radius" required>
+                        </li>
+                        <li>
+                            <label for="update_mean_radius">Rayon moyen :</label>
+                            <input type="text" id="update_mean_radius" name="update_mean_radius" required>
+                        </li>
+                        <li>
+                            <label for="update_polar_radius">Rayon polaire :</label>
+                            <input type="text" id="update_polar_radius" name="update_polar_radius" required>
+                        </li>
+                        <li>
+                            <label for="update_flattening">Aplanissement :</label>
+                            <input type="text" id="update_flattening" name="update_flattening" required>
+                        </li>
+                        <li>
+                            <label for="update_inclination">Inclinaison :</label>
+                            <input type="text" id="update_inclination" name="update_inclination" required>
+                        </li>
+                        <li>
+                            <label for="update_around_planet">Autour de la planète :</label>
+                            <input type="text" id="update_around_planet" name="update_around_planet" placeholder="">
+                        </li>
+                        <li>
+                            <label for="update_eccentricity">Excentricité :</label>
+                            <input type="text" id="update_eccentricity" name="update_eccentricity" required>
+                        </li>
+                        <li>
+                            <label for="update_aphelion">Aphélie :</label>
+                            <input type="text" id="update_aphelion" name="update_aphelion" required>
+                        </li>
+                        <li>
+                            <label for="update_perihelion">Périhélie :</label>
+                            <input type="text" id="update_perihelion" name="update_perihelion" required>
+                        </li>
+                        <li>
+                            <label for="update_arg_periapsis">Argument du périapsis :</label>
+                            <input type="text" id="update_arg_periapsis" name="update_arg_periapsis" required>
+                        </li>
+                        <li>
+                            <label for="update_sideral_rotation">Rotation sidérale :</label>
+                            <input type="text" id="update_sideral_rotation" name="update_sideral_rotation" required>
+                        </li>
+                        <li>
+                            <label for="update_sideral_orbit">Rotation orbitale :</label>
+                            <input type="text" id="update_sideral_orbit" name="update_sideral_orbit" required>
+                        </li>
+                        <li>
+                            <label for="update_picture">Image :</label>
+                            <input type="text" id="update_picture" name="update_picture">
+                        </li>
+                    </ul>
+                    <div id="div_update_form_submit">
+                        <button type="submit">Modifier</button>
+                        <p id="update_form_message"></p>
+                    </div>
+                </form>
+            </div>
+            <div class="hidden" id="div_del_data">
+                <div id="search_id_bodie_delete">
+                    <form id="form_search_id_bodie_delete">
+                        <label for="search_id_del">ID du corps :</label>
+                        <input type="text" id="search_id_del" name="search_id_del" required>
+                        <button type="submit">Chercher un ID</button>
+                    </form>
+                </div>
+                <div>
+                    <form class="form_style" id="delete_form">
+                        <p id="delete_message_form"></p>
+                        <div class="hidden" id="div_delete_confirmation">
+                            <button type="submit">Confirmer</button>
+                            <button type="reset">Annuler</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> <!-- div_data_edit -->
+    </div> <!-- container_data_edit -->
+
+    <footer>
+        <img src="../img/components/footer.png" alt="Sol herbeux + Dolmen + Lunette astronomique">
+    </footer>
+
+    <div class="rotate-center">
+        <img src="../img/components/sky_2000.png" alt="Ciel étoilé">
+    </div>
+    <script type="module" src="./exploration.js"></script>
+</body>
+
+</html>

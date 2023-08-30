@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Redirection vers /exploration_api
             setTimeout(() => {
-                window.location.href = "/exploration_api";
+                window.location.href = "/exploration";
             }, 3000);
         } else {
             // Gestion des erreurs d'authentification (afficher un message d'erreur)
