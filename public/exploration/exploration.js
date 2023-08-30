@@ -224,13 +224,11 @@ form_search_id_bodie_update.addEventListener('submit', async (event) => {
         window.scrollTo(0, window.scrollY + 500);
         // Message du serveur
         document.querySelector('#update_message_form').textContent = response.message;
-        console.log(response);
     }
     else {
         update_form.style.display = "none";
         // Message d'erreur du serveur
         document.querySelector('#update_message_form').textContent = response;
-        console.log(response);
     };
 });
 
@@ -240,7 +238,6 @@ update_form.addEventListener('submit', async (event) => {
     try {
         const response = await update_bodie(event, update_bodie_id, auth_token_present);
         document.querySelector('#update_form_message').textContent = response.message;
-        console.log(response);
     } 
     catch (error) {
         console.error("Une erreur s'est produite :", error);
@@ -266,12 +263,10 @@ form_search_id_bodie_delete.addEventListener('submit', async (event) => {
         // Message du serveur
         delete_message_form.textContent = `Confirmez la suppresion du corps: ${response.corps.name}`;
         div_delete_confirmation.style.display = "block";
-        console.log(response);
     }
     else {
         // Message d'erreur du serveur
         delete_message_form.textContent = response;
-        console.log(response);
     };
 });
 
@@ -284,11 +279,10 @@ delete_form.addEventListener('submit', async (event) => {
         const response = await delete_bodie(delete_bodie_id, auth_token_present);
         delete_message_form.textContent = response.message;
         div_delete_confirmation.style.display = "none";
-        console.log(response);
     } 
     catch (error) {
         console.error("Une erreur s'est produite :", error);
     };
 });
 
-console.log("Chargement de la page exploration de l'API");
+console.log("Chargement de la page exploration des données");

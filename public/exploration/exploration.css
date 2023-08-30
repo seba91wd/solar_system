@@ -222,7 +222,7 @@ td {
     font-size: 1.2rem;
 }
 
-#div_data_edit li {
+#li_btn li {
     cursor: pointer;
     border: 1px solid transparent;
     border-radius: 10px 0px 0px 10px;
@@ -326,7 +326,7 @@ td {
 
 .form_style ul p {
     position: absolute;
-    margin: 20px 0 0 190px;
+    margin: 37px 0 0 168px;
     font-size: 1.2rem;
     color: #8f8f8f;
 }
