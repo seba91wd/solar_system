@@ -46,7 +46,7 @@ export function create_body() {
             });
             resolve(bodies);
         }).catch(error => {
-            reject(error);
+            console.log(error);
         });
     });
 };

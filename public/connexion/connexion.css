@@ -58,6 +58,20 @@ h1 {
     font-size: 1.2rem;
 }
 
+/* ------ */
+/* Footer */
+
+footer {
+    position: fixed;
+    z-index: -1;
+    bottom: -8px;
+    width: 100%;
+}
+
+footer img {
+    width: inherit;
+}
+
 /* Animation */
 .rotate-center {
     position: fixed;
@@ -75,6 +89,8 @@ h1 {
     position: absolute;
     -webkit-animation: rotate-center 800s linear infinite both;
     animation: rotate-center 800s linear infinite both;
+    width: inherit;
+    min-width: max-content;
 }
 
 @-webkit-keyframes rotate-center {

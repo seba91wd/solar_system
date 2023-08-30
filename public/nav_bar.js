@@ -6,11 +6,12 @@ export function nav_bar() {
     const style = document.createElement("style")
     style.textContent = 
     `
-    #btn_accueil, #btn_expl_api, #btn_visu_3d {
+    #btn_accueil, #btn_expl, #btn_visu_3d {
         text-decoration: none;
         text-align: center;
         margin: 10px 4px;
-        width: 150px;
+        padding: 6px;
+        width: 185px;
         color: #ffffff;
         border: 2px solid #d2cdfd;
         border-radius: 10px;
@@ -31,10 +32,10 @@ export function nav_bar() {
     btn_accueil.href = url_app + "/accueil";
 
     // Creation du boutton 'Exploration de l'API' dans une balise nav
-    const btn_expl_api = document.createElement("a");
-    btn_expl_api.id = "btn_expl_api";
-    btn_expl_api.textContent = "Exploration de l'API";
-    btn_expl_api.href = url_app + "/exploration_api";
+    const btn_expl = document.createElement("a");
+    btn_expl.id = "btn_expl";
+    btn_expl.textContent = "Exploration des données";
+    btn_expl.href = url_app + "/exploration";
 
     // Creation du boutton 'Visualisation 3D' dans une balise nav
     const btn_visu_3d = document.createElement("a");
@@ -44,7 +45,7 @@ export function nav_bar() {
 
     // Envoi des bouton dans la balise nav
     nav.append(btn_accueil);
-    nav.append(btn_expl_api);
+    nav.append(btn_expl);
     nav.append(btn_visu_3d);
 
     // Envoi de la balise nav dans le body

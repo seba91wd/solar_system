@@ -39,7 +39,9 @@ create_body().then(celestial_body => {
         element_list.push(element)
         scene.add(element)
     });
-});
+}).catch(error => {
+    console.log(error);
+})
 
 // La fonction follow_body() permet de poursuivre visuellement un corps céleste
 let tracking; // Interrupteur de suivi des corps par la caméra
