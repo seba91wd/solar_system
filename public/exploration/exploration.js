@@ -28,6 +28,7 @@ import { update_bodie } from "./functions/update_bodie.js";
 // Importation de la fonction de suppresion des corps
 import { delete_bodie } from "./functions/delete_bodie.js";
 
+import { message_for_user } from "./functions/message_for_user.js";
 
 // Stock je jeton jwt de l'utilisateur, ou NULL si l'utilisateur n'est pas authentifié
 const auth_token_present = get_token_from_cookies();
@@ -72,6 +73,9 @@ const delete_form = document.querySelector('#delete_form');
 // Champs de recherche "ID du corps" (Modifier & Supprimer un corps céleste)
 const form_search_id_bodie_update = document.querySelector('#form_search_id_bodie_update');
 const form_search_id_bodie_delete = document.querySelector('#form_search_id_bodie_delete');
+
+// Champs de confirmation de suppresion d'un corps
+const div_delete_confirmation = document.querySelector('#div_delete_confirmation');
 
 // Ajout de la bare de navigation
 nav_bar();
@@ -197,8 +201,11 @@ add_form.addEventListener('submit', async (event) => {
     event.preventDefault(); // Empêche la soumission du formulaire
     try {
         const response = await add_bodie(event, auth_token_present);
-        document.querySelector('#add_form_message').textContent = response.message;
+        message_for_user(response.message);
+        // Nettoyage du formulaire
+        add_form.reset()
     } catch (error) {
+        message_for_user(error)
         console.error("Une erreur s'est produite :", error);
     }
 });
@@ -213,7 +220,7 @@ form_search_id_bodie_update.addEventListener('submit', async (event) => {
     const options = {name: null, id: id_value, type: null, limit: null};
     const {response, link} = await search_bodies(options);
 
-    if (response !== false) {
+    if (response.corps) {
         // Pré-remplissage du formulaire avec les valeurs existantes
         populate_update_form(response.corps);
         // Mise a jour de la valeur de update_bodie_id
@@ -223,12 +230,12 @@ form_search_id_bodie_update.addEventListener('submit', async (event) => {
         // Scroll de la fenêtre
         window.scrollTo(0, window.scrollY + 500);
         // Message du serveur
-        document.querySelector('#update_message_form').textContent = response.message;
+        message_for_user(response.message);
     }
     else {
         update_form.style.display = "none";
         // Message d'erreur du serveur
-        document.querySelector('#update_message_form').textContent = response;
+        message_for_user(response);
     };
 });
 
@@ -237,7 +244,9 @@ update_form.addEventListener('submit', async (event) => {
     event.preventDefault();
     try {
         const response = await update_bodie(event, update_bodie_id, auth_token_present);
-        document.querySelector('#update_form_message').textContent = response.message;
+        message_for_user(response.message);
+        update_form.style.display = "none";
+        update_form.reset();
     } 
     catch (error) {
         console.error("Une erreur s'est produite :", error);
@@ -260,29 +269,36 @@ form_search_id_bodie_delete.addEventListener('submit', async (event) => {
     if (response.corps) {
         // Mise a jour de la valeur de update_bodie_id
         delete_bodie_id = response.corps.id;
-        // Message du serveur
+        // Message de confirmation
         delete_message_form.textContent = `Confirmez la suppresion du corps: ${response.corps.name}`;
         div_delete_confirmation.style.display = "block";
     }
     else {
         // Message d'erreur du serveur
-        delete_message_form.textContent = response;
+        message_for_user(response);
     };
 });
 
 // Supprimer un corps céleste
 delete_form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const delete_message_form = document.querySelector('#delete_message_form');
 
     try {
         const response = await delete_bodie(delete_bodie_id, auth_token_present);
-        delete_message_form.textContent = response.message;
+        // Message du serveur
+        message_for_user(response.message);
         div_delete_confirmation.style.display = "none";
     } 
     catch (error) {
         console.error("Une erreur s'est produite :", error);
     };
 });
+
+const delete_cancel = document.querySelector('#delete_cancel');
+
+delete_cancel.addEventListener('click', () => {
+    div_delete_confirmation.style.display = "none";
+    form_search_id_bodie_delete.reset();
+})
 
 console.log("Chargement de la page exploration des données");

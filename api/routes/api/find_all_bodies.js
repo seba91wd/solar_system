@@ -14,7 +14,7 @@ module.exports = (app) => {
             const id = parseInt(req.query.id);
 
             if (name && name.length < 2) {
-                const message = "Le terme de recherche doit contenir au moins 2 caractères";
+                const message = "Le terme de recherche doit contenir au moins 2 caractères.";
                 return res.status(400).json({ message });
             };
 
@@ -33,7 +33,7 @@ module.exports = (app) => {
             if (id) {
                 return bodie.findByPk(id).then(corps => {
                     if (corps === null) {
-                        const message = "Le corps céleste demandé n'existe pas, réessayer avec un autre ID";
+                        const message = "Le corps céleste demandé n'existe pas, réessayer avec un autre ID.";
                         return res.status(404).json({ message });
                     }
                     const message = `Il y a 1 corps céleste qui correspond à l'ID ${corps.id}.`;
@@ -74,7 +74,7 @@ module.exports = (app) => {
             const limit = parseInt(req.query.limit) || null; // null = pas de limite de résultat
             bodie.findAndCountAll({ order: ['id'], limit: limit })
                 .then(({ count, rows }) => {
-                    const message = `La liste des corps célestes a bien été récupérée, ${count} objets trouvés`;
+                    const message = `La liste des corps célestes a bien été récupérée, ${count} objets trouvés.`;
                     res.json({ message, data: rows });
                 })
                 .catch(error => {

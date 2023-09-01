@@ -16,10 +16,14 @@ h2 {
     margin: 10px 0px;
 }
 
+a {
+    color: #cacaca;
+}
+
 .div_hover {
     transition: 1s;
     border: 2px solid #00000000;
-    margin: 4px auto;
+    margin: 20px auto;
     width: 90%;
 }
 
@@ -28,6 +32,7 @@ h2 {
     background-color: #00000082;
     border: 2px solid #ffffff;
     border-radius: 10px;
+    color: #ffffff;
 }
 
 ol {
@@ -36,6 +41,7 @@ ol {
 
 li {
     padding: 5px 0px;
+    line-height: 1.2;
 }
 
 /* ------ */

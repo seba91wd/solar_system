@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exploration des données</title>
+    <title>Orbit Explorer - Exploration des données</title>
+    <meta name="description" content="Découvrez les caractéristiques (dimensions, masse, orbit, images, etc) des différents objets gravitant dans le système solaire au travers de l'interface 3D du projet Orbit Explorer.">
     <link rel="stylesheet" href="./exploration.css">
 </head>
 
@@ -259,7 +260,6 @@
                     </ul>
                     <div id="div_add_form_submit">
                         <button type="submit">Ajouter</button>
-                        <p id="add_form_message"></p>
                     </div>
                 </form>
 
@@ -271,7 +271,6 @@
                         <input type="text" id="search_id_up" name="search_id_up" required>
                         <button type="submit">Chercher un ID</button>
                     </form>
-                    <p id="update_message_form"></p>
                 </div>
                 <form class="form_style" id="update_form">
                     <ul>
@@ -372,7 +371,6 @@
                     </ul>
                     <div id="div_update_form_submit">
                         <button type="submit">Modifier</button>
-                        <p id="update_form_message"></p>
                     </div>
                 </form>
             </div>
@@ -386,16 +384,19 @@
                 </div>
                 <div>
                     <form class="form_style" id="delete_form">
-                        <p id="delete_message_form"></p>
                         <div class="hidden" id="div_delete_confirmation">
+                            <p id="delete_message_form"></p>
                             <button type="submit">Confirmer</button>
-                            <button type="reset">Annuler</button>
+                            <button id="delete_cancel" type="reset">Annuler</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div> <!-- div_data_edit -->
     </div> <!-- container_data_edit -->
+    <div id="div_server_message">
+        <ul id="server_message"></ul>
+    </div>
 
     <footer>
         <img src="../img/components/footer.png" alt="Sol herbeux + Dolmen + Lunette astronomique">

@@ -257,6 +257,9 @@ td {
     border-radius: 0px 10px 10px 10px;
 }
 
+#div_add_data button[type="submit"] {
+    margin-bottom: 10px;
+}
 
 /* ---------------------------------------- */
 /* ----------- div_update_data ------------ */
@@ -272,6 +275,10 @@ td {
 
 #update_form {
     display: none;
+}
+
+#update_form button[type="submit"] {
+    margin-bottom: 10px;
 }
 
 /* ------------------------------------- */
@@ -330,6 +337,31 @@ td {
     font-size: 1.2rem;
     color: #8f8f8f;
 }
+
+/* -------------------------------------- */
+/* --------- div_server_message --------- */
+
+#div_server_message {
+    position: fixed;
+    bottom: -50px;
+    width: 100%;
+    font-size: 1.2rem;
+    transition: 1s;
+}
+
+#div_server_message ul {
+    background-color: #080047d7;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    width: fit-content;
+    margin: auto;
+    padding: 10px;
+}
+
+#div_server_message li {
+    list-style-position: inside; /* Place le point de la balise <li> à l'intérieur du contenu */
+}
+
 
 /* -------------------------------------- */
 /* --------------- Footer --------------- */

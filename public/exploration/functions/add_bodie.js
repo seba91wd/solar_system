@@ -42,6 +42,7 @@ export async function add_bodie(event, auth_token) {
         } else {
             const error_data = await response.json();
             console.error('Erreur lors de l\'envoi de la requête:', error_data);
+            return error_data;
         }
     } catch (error) {
         console.error('Erreur lors de l\'envoi de la requête:', error);

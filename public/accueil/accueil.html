@@ -4,41 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbit Explorer - Accueil</title>
+    <meta name="description" content="Découvrez les caractéristiques (dimensions, masse, orbit, images, etc) des différents objets gravitant dans le système solaire au travers de l'interface 3D du projet Orbit Explorer.">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="../img/components/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./accueil.css">
-    <title>Accueil</title>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <h1>Accueil</h1>
+    <h1>Orbit Explorer</h1>
     <div class="div_hover">
-        <h2>Les objectifs du projet “nom du projet” sont :</h2>
+        <h2>Les objectifs du projet “Orbit Explorer” sont :</h2>
         <ol>
             <li>
-                Me former à la création d’une application web comportant une API et plusieurs pages d'exploitation de l’API.
+                Me former à la création d’une application web en développent une API solide pour rassembler des informations sur divers corps célestes du système solaire
             </li>
             <li>
-                Fournir une application sur le thème des sciences spatiales qui réunit des informations sur l’ensemble des corps céleste détectés dans le système solaire (étoile, planètes, planètes naines, lunes, comètes, astéroïdes, satellite artificiel).
+                Créer une interface graphique pour les utilisateurs authentifiés permettant d'exploiter l’API, de manière à compléter et enrichir les informations de la base de données.
             </li>
             <li>
                 Créer une interface graphique animé en 3D mettant en scène la rotation des corps célestes sur leurs orbite.
             </li>
             <li>
-                Créer une interface graphique pour les utilisateurs authentifiés permettant d'exploiter l’API, ainsi que de compléter et enrichir les informations de la base de données.
+                Offrir une expérience simple et informative dans le domaine des sciences spatiales qui rassemble des informations sur l’ensemble des corps céleste détectés dans le système solaire (étoile, planètes, planètes naines, lunes, comètes, astéroïdes, ...).
             </li>
+             <li>
+                Ressources Externes: Git, NodeJS, express, sequelize + mariadb, jsonwebtoken, bcrypt, three.js <br>
+                Github: <a href="https://github.com/seba91wd/solar_system">https://github.com/seba91wd/solar_system</a>
+             </li>
         </ol>
     </div>
     <div class="div_hover">
         <h2>Utilisation du site</h2>
         <ol>
             <li>
-                La consultation de l’API est ouverte à tous, sur l’URL : “URL de l’API” ou sur l’interface graphique “lien de la page Exploration de l'API”.
+                La consultation des données est ouverte à tous, sur l’URL : <a href="../api/bodies">api/bodies</a> ou sur <a href="../exploration/">l’interface graphique</a>.
             </li>
             <li>
-                Les ajouts et les modifications apportés à l’API sont réservés aux utilisateurs authentifiés.
+                Les ajouts et les modifications apportés aux données sont réservés aux utilisateurs authentifiés.
             </li>
             <li>
-                La page “Visualisation 3D” propose une représentation à échelle réel du système solaire avec une fonctionnalité de sélection et de poursuite des corps célestes.
+                La page <a href="../map">Visualisation 3D</a> propose une représentation à échelle réel du système solaire avec une fonctionnalité de sélection et de poursuite des corps célestes.
             </li>
         </ol>
     </div>
