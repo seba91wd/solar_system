@@ -156,7 +156,7 @@ input[type="checkbox"] {
 }
 
 #div_search_link a {
-    margin: auto;
+    margin: auto 0px;
 }
 
 #div_search_link * {

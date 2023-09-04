@@ -121,7 +121,7 @@ form_search_by_name.addEventListener('submit', async (event) => {
     if (response !== false) {
         // Implémentation du "lien de la recherche"
         api_link.href = link;
-        api_link.textContent = `http://localhost:3001${link}`;
+        api_link.textContent = link;
         tbody_update(response);
     };
 });

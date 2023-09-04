@@ -1,8 +1,5 @@
-const port = 3001;
-const hostname = "localhost";
-
 export function get_celestial_bodies() {
-    return fetch(`http://${hostname}:${port}/api/bodies/`)
+    return fetch(`/api/bodies`)
     .then(response => response.json())
     .then(data => {
         // Vérifier si les données sont valides

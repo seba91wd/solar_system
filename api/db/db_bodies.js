@@ -1,5 +1,4 @@
-const { hostname, port } = require("../../app");
-const link = `http://${hostname}:${port}/api/bodies?name=`;
+const link = `/api/bodies?name=`;
 const bodies = [
     {
         "name": "La Lune",

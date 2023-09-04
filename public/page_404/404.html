@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Orbit Explorer - Erreur 404</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 40vh;
+        }
+
+        h1, p {
+            color: #ffffff;
+            text-align: center;
+            font-size: -webkit-xxx-large;
+        }
+
+        /* ------ */
+        /* Footer */
+
+        footer {
+            position: fixed;
+            z-index: -1;
+            bottom: -8px;
+            width: 100%;
+        }
+
+        footer img {
+            width: inherit;
+        }
+
+
+        /* Animation */
+        .rotate-center {
+            position: fixed;
+            bottom: 0;
+            z-index: -1;
+            display: flex;
+            justify-content: center;
+            contain: content;
+            height: -webkit-fill-available;
+            width: 100vw;
+        }
+
+        .rotate-center img {
+            scale: 1.4;
+            position: absolute;
+            -webkit-animation: rotate-center 800s linear infinite both;
+            animation: rotate-center 800s linear infinite both;
+            width: inherit;
+            min-width: max-content;
+        }
+
+        @-webkit-keyframes rotate-center {
+            0% {
+                -webkit-transform: rotate(0);
+                transform: rotate(0);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotate-center {
+            0% {
+                -webkit-transform: rotate(0);
+                transform: rotate(0);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Erreur 404</h1>
+        <p>Il n'y a rien ici !!!</p>
+    </div>
+    <div class="rotate-center">
+        <img src="../img/components/sky_2000.png" alt="Ciel étoilé">
+    </div>
+    <footer>
+        <img src="../img/components/footer.png" alt="Sol herbeux + Dolmen + Lunette astronomique">
+    </footer>
+</body>
+
+</html>

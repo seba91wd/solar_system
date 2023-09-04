@@ -4,11 +4,15 @@ const bodie_model = require('../models/bodies');
 const user_model = require('../models/user');
 const db_bodies = require('./db_bodies');
 
+const base_name = "solar_system";
+const user_name = "root";
+const password = "";
+
 // Création d'une instance sequelize pour le développement
 const sequelize = new Sequelize(
-    'solar_system', /* Nom de la BDD */
-    'root',         /* Identifiant */
-    '',             /* Mot de passe */
+    base_name, /* Nom de la BDD */
+    user_name, /* Identifiant */
+    password,  /* Mot de passe */
     {
         host: 'localhost', /* Emplacement de la BDD sur le serveur */
         dialect: 'mariadb', /* Nom du driver utilisée par sequelize */

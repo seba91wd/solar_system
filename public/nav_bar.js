@@ -1,7 +1,4 @@
 export function nav_bar() {
-    const url_app = "http://localhost:3001";
-    const body = document.querySelector('body');
-
     const head = document.querySelector("head");
     const style = document.createElement("style")
     style.textContent = 
@@ -29,19 +26,19 @@ export function nav_bar() {
     const btn_accueil = document.createElement("a");
     btn_accueil.id = "btn_accueil";
     btn_accueil.textContent = "Accueil";
-    btn_accueil.href = url_app + "/accueil";
+    btn_accueil.href = "../accueil";
 
     // Creation du boutton 'Exploration de l'API' dans une balise nav
     const btn_expl = document.createElement("a");
     btn_expl.id = "btn_expl";
     btn_expl.textContent = "Exploration des données";
-    btn_expl.href = url_app + "/exploration";
+    btn_expl.href = "../exploration";
 
     // Creation du boutton 'Visualisation 3D' dans une balise nav
     const btn_visu_3d = document.createElement("a");
     btn_visu_3d.id = "btn_visu_3d";
     btn_visu_3d.textContent = "Visualisation 3D";
-    btn_visu_3d.href = url_app + "/map";
+    btn_visu_3d.href = "../map";
 
     // Envoi des bouton dans la balise nav
     nav.append(btn_accueil);
