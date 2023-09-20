@@ -173,6 +173,30 @@ module.exports = (sequelize, DataTypes) => {
                 notNull: { msg: "L'argument du périastre (arg_periapsis) du corps céleste est une propriété requise." }
             }
         },
+        long_asc_node: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+            validate: {
+                notEmpty: { msg: "La longitude du nœud ascendant (long_asc_node) du corps céleste ne peut pas être vide." },
+                notNull: { msg: "La longitude du nœud ascendant (long_asc_node) du corps céleste est une propriété requise." }
+            }
+        },
+        semimajor_axis: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+            validate: {
+                notEmpty: { msg: "Le demi-grand axe (semimajor_axis) du corps céleste ne peut pas être vide." },
+                notNull: { msg: "Le demi-grand axe (semimajor_axis) du corps céleste est une propriété requise." }
+            }
+        },
+        main_anomaly: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+            validate: {
+                notEmpty: { msg: "L'anomalie moyenne (main_anomaly) du corps céleste ne peut pas être vide." },
+                notNull: { msg: "L'anomalie moyenne (main_anomaly) du corps céleste est une propriété requise." }
+            }
+        },
         sideral_rotation: {
             type: DataTypes.FLOAT,
             allowNull: false,

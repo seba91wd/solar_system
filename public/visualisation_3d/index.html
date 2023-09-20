@@ -2,28 +2,29 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orbit Explorer - Visualisation 3D</title>
-    <meta name="description" content="Découvrez les caractéristiques (dimensions, masse, orbit, images, etc) des différents objets gravitant dans le système solaire au travers de l'interface 3D du projet Orbit Explorer.">
-    <link rel="stylesheet" href="./visualisation_3d/style.css">
-    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
-    <script type="importmap">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orbit Explorer - Visualisation 3D</title>
+  <meta name="description" content="Découvrez les caractéristiques (dimensions, masse, orbit, images, etc) des différents objets gravitant dans le système solaire au travers de l'interface 3D du projet Orbit Explorer.">
+  <link rel="stylesheet" href="./visualisation_3d/style.css">
+  <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+  <script type="importmap">
     {
       "imports": {
         "three": "https://unpkg.com/three@0.154.0/build/three.module.js",
         "three/addons/": "https://unpkg.com/three@0.154.0/examples/jsm/",
-		"three/examples/jsm/controls/OrbitControls": "https://unpkg.com/three@0.154.0/examples/jsm/controls/OrbitControls.js"
+		    "three/examples/jsm/controls/OrbitControls": "https://unpkg.com/three@0.154.0/examples/jsm/controls/OrbitControls.js"
       }
     }
   </script>
 </head>
 
 <body>
-    <div id="main">
-        <!-- Contenu principal, la carte du système solaire générée par Three.js sera affichée ici -->
-    </div>
-    <script type="module" src="./visualisation_3d/js/main.js"></script>
+  <div id="main">
+    <!-- Contenu principal, la carte du système solaire générée par Three.js sera affichée ici -->
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/stats-js@1.0.1/build/stats.min.js"></script>
+  <script type="module" src="./visualisation_3d/js/main.js"></script>
 </body>
 
 </html>

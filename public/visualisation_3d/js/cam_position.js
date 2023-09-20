@@ -5,7 +5,7 @@ export function cam_position(camera) {
         cam_position.innerHTML = `
             X: ${camera.position.x}<br>
             Y: ${camera.position.y}<br>
-            Z: ${camera.position.z}
+            Z: ${camera.position.z}<br>
             `;
     }
     else {        

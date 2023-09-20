@@ -122,6 +122,7 @@ form_search_by_name.addEventListener('submit', async (event) => {
         // Implémentation du "lien de la recherche"
         api_link.href = link;
         api_link.textContent = link;
+        // Mise a jour du tableau de donnée
         tbody_update(response);
     };
 });

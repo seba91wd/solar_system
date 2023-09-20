@@ -2,13 +2,8 @@ const express = require('express');
 const path = require('path');
 const body_parse = require('body-parser'); // Middlewares body-parser
 const app = express();
-const port = process.env.PORT || 3001;
-const hostname = process.env.HOST || "localhost";
-
-// module.exports = {
-//     hostname: hostname,
-//     port: port
-// };
+const port = process.env.PORT || 3000;
+const hostname = process.env.HOST || "192.168.1.46";
 
 const sequelize = require('./api/db/sequelize');
 

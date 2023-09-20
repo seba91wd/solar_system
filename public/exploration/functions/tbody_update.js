@@ -5,7 +5,8 @@ export function tbody_update(response) {
         "id", "name", "english_name", "body_type", "mass", "density", "gravity",
         "axial_tilt", "equa_radius", "mean_radius", "polar_radius", "flattening",
         "inclination", "around_planet", "eccentricity", "aphelion", "perihelion",
-        "arg_periapsis", "sideral_rotation", "sideral_orbit", "picture", "moons"
+        "arg_periapsis", "long_asc_node", "semimajor_axis", "main_anomaly", "sideral_rotation", 
+        "sideral_orbit", "picture", "moons"
     ];
 
     // Tableau de donnée

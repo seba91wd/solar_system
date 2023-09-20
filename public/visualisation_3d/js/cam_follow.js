@@ -28,13 +28,13 @@ let current_follow_index = 0; // Variable pour stocker l'index du corps actuelle
 export function scroll_follow_body(direction, element_list) {
     current_follow_index += direction;
     if (current_follow_index < 0) {
-        current_follow_index = element_list.length - 1;
+        current_follow_index = element_list[0].children.length - 1;
     }
-    else if (current_follow_index >= element_list.length) {
+    else if (current_follow_index >= element_list[0].children.length) {
         current_follow_index = 0;
     }
 
-    const current_follow_body = element_list[current_follow_index];
+    const current_follow_body = element_list[0].children[current_follow_index];
     document.querySelector('#btn_follow_body').innerHTML = current_follow_body.name;
 };
 
