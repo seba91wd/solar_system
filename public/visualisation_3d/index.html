@@ -2,29 +2,73 @@
 <html lang="fr">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orbit Explorer - Visualisation 3D</title>
-  <meta name="description" content="Découvrez les caractéristiques (dimensions, masse, orbit, images, etc) des différents objets gravitant dans le système solaire au travers de l'interface 3D du projet Orbit Explorer.">
-  <link rel="stylesheet" href="./visualisation_3d/style.css">
-  <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
-  <script type="importmap">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbit Explorer - Visualisation 3D</title>
+    <meta name="description"
+        content="Découvrez les caractéristiques (dimensions, masse, orbit, images, etc) des différents objets gravitant dans le système solaire au travers de l'interface 3D du projet Orbit Explorer.">
+    <link rel="stylesheet" href="./visualisation_3d/style.css">
+    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+    <script type="importmap">
     {
       "imports": {
         "three": "https://unpkg.com/three@0.154.0/build/three.module.js",
         "three/addons/": "https://unpkg.com/three@0.154.0/examples/jsm/",
 		    "three/examples/jsm/controls/OrbitControls": "https://unpkg.com/three@0.154.0/examples/jsm/controls/OrbitControls.js"
+        
       }
     }
-  </script>
+    </script>
+
 </head>
 
 <body>
-  <div id="main">
-    <!-- Contenu principal, la carte du système solaire générée par Three.js sera affichée ici -->
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/stats-js@1.0.1/build/stats.min.js"></script>
-  <script type="module" src="./visualisation_3d/js/main.js"></script>
+    <div id="nav_div">
+        <div class="border scrollbar" id="list_corps">
+            <h2>liste des corps célestes</h2>
+            <div id="div_list_star">
+                <h3 class="h3_list_type">Étoile</h3>
+                <ul class="list_corps_ul" id="list_star"></ul>
+            </div>
+            <div id="div_list_telluric">
+                <h3 class="h3_list_type">Planètes telluriques</h3>
+                <ul class="list_corps_ul" id="list_telluric"></ul>
+            </div>
+            <div id="div_list_gaz">
+                <h3 class="h3_list_type">Géantes gazeuses</h3>
+                <ul class="list_corps_ul" id="list_gaz"></ul>
+            </div>
+            <div id="div_list_dwarf">
+                <h3 class="h3_list_type">Planètes naines</h3>
+                <ul class="list_corps_ul" id="list_dwarf"></ul>
+            </div>
+            <div id="div_list_comet">
+                <h3 class="h3_list_type">Comètes</h3>
+                <ul class="list_corps_ul" id="list_comet"></ul>
+            </div>
+            <div id="div_list_asteroid">
+                <h3 class="h3_list_type">Astéroids</h3>
+                <ul class="list_corps_ul" id="list_asteroid"></ul>
+            </div>
+        </div>
+        <div class="border" id="time_scale">
+            <h2>Échelle des temps</h2>
+        </div>
+        <div class="border" id="zoom_coor">
+            <h2>Niveau de zoom</h2>
+            <h2>Coordonnées</h2>
+        </div>
+        <div class="border" id="details_corps">
+            <h2>Details du corps</h2>
+        </div>
+    </div>
+    <div id="main">
+        <!-- Contenu principal, la carte du système solaire générée par Three.js sera affichée ici -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/stats-js@1.0.1/build/stats.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/21.0.0/tween.umd.min.js"></script> <!-- DELETE ME -->
+    <script type="module" src="./visualisation_3d/js/main.js"></script>
+    <script type="module" src="./visualisation_3d/js/interface.js"></script>
 </body>
 
 </html>

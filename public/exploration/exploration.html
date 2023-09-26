@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./exploration.css">
 </head>
 
-<body>
+<body class="scrollbar">
 
     <a id="connexion" href="/connexion">Connexion</a>
     <h1>Exploration des données</h1>
@@ -30,8 +30,8 @@
                 <label for="search_by_type">Filtrer par type :</label>
                 <select name="search_by_type" id="search_by_type">
                     <option value="" selected>Aucun</option>
-                    <option value="Star">Etoile</option>
-                    <option value="Telluric planet">Planètes Télurique</option>
+                    <option value="Star">Étoile</option>
+                    <option value="Telluric planet">Planètes telluriques</option>
                     <option value="Gas giant">Géantes Gazeuses</option>
                     <option value="Dwarf planet">Planètes Naines</option>
                     <option value="Moon">Lunes</option>
@@ -49,11 +49,11 @@
                 <form class="flex_row" id="checkboxes">
                     <ul>
                         <li>
-                            <label for="checkbox_star">Etoile</label>
+                            <label for="checkbox_star">Étoile</label>
                             <input type="checkbox" id="checkbox_star" name="checkbox_star" checked>
                         </li>
                         <li>
-                            <label for="checkbox_telluric_planet">Planètes Télurique</label>
+                            <label for="checkbox_telluric_planet">Planètes telluriques</label>
                             <input type="checkbox" id="checkbox_telluric_planet" name="checkbox_telluric_planet"
                                 checked>
                         </li>
@@ -70,7 +70,7 @@
                             <input type="checkbox" id="checkbox_moon" name="checkbox_moon" checked>
                         </li>
                         <li>
-                            <label for="checkbox_comet">Comets</label>
+                            <label for="checkbox_comet">Comètes</label>
                             <input type="checkbox" id="checkbox_comet" name="checkbox_comet" checked>
                         </li>
                         <li>
@@ -90,7 +90,7 @@
                 </div>
                 <a target="_blank" href="/api/bodies?name=soleil&limit=10" id="api_link">/api/bodies?name=soleil&limit=10</a>
             </div>
-            <div class="border" id="div_array">
+            <div class="border scrollbar" id="div_array">
                 <table>
                     <thead>
                         <tr>

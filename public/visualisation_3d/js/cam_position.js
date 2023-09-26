@@ -10,7 +10,7 @@ export function cam_position(camera) {
     }
     else {        
         const div = document.createElement("div");
-        div.style = "position: absolute; top: 0; right: 0; background-color: yellow; padding: 2px;"
+        div.style = "position: absolute; top: 0; right: 0; background-color: yellow; padding: 2px; color: black;"
     
         // Titre de la barre
         const paragraphe1 = document.createElement('p');

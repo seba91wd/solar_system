@@ -41,18 +41,15 @@ export function scroll_follow_body(direction, element_list) {
 export function follow_body(tracking, element_list_pos, target_name, controls) {
     if (tracking === true) {
         element_list_pos.forEach(element => {
-            if (element.name === target_name) {
-                const radius = element.children[1].position.x; // Rayon de l'orbite du corps cible
-                const angle = -element.rotation.y; // Angle de rotation actuel du corps cible
-                
-                // Coordonnées du point à suivre sur l'orbite du corps cible
-                const x_target = radius * Math.cos(angle);
-                const y_target = element.children[1].position.y;
-                const z_target = radius * Math.sin(angle);
-                
-                controls.target.set(x_target, y_target, z_target);
+            if (element.name === target_name && element.name === "Sun_group") {
+                controls.target.set(0,0,0);
+                controls.update();
+            }
+            else if (element.name === target_name) {
+                controls.target.set(element.children[0].position.x, element.children[0].position.y, element.children[0].position.z);
                 controls.update();
             }
         })
     };
 }
+

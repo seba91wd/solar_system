@@ -82,6 +82,21 @@ input[type=number] {
     display: none;
 }
 
+/* Bare de scroll */
+.scrollbar::-webkit-scrollbar {
+    width: 20px;               /* width of the entire scrollbar */
+}
+.scrollbar::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background: transparent;
+}
+  
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+}
+
 /* -------------------------------------- */
 /* ------- div_search_and_filter -------- */
 

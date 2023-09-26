@@ -7,8 +7,8 @@ import { create_body } from './create_body.js';
 
 // Affichage des FPS
 var stats = new Stats();
-stats.showPanel( 0 ); // 0: fps, 1: ms, 2: mb, 3+: custom
-document.body.appendChild( stats.dom );
+stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+document.body.appendChild(stats.dom);
 stats.begin();
 
 // Création de la scène
@@ -19,7 +19,7 @@ scene_axe(scene); // DEBUG
 // Création de la caméra
 const fov = 75;
 const aspect = (window.innerWidth / 2) / (window.innerHeight / 2);
-const near = 0.1;
+const near = 0.001;
 const far = 1000000;
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 
@@ -59,47 +59,35 @@ const backGroundTexture = new THREE.CubeTextureLoader().load([
 ]);
 scene.background = backGroundTexture;
 
-const element_list = []
-const element_list_pos = [];
+// Tableau des objets ajoutés dans la scène, exporté vers ./interface.js
+export const element_list = [];
+let data = {};
 // Création des objets (orbites, corps, lunes)
 create_body(scene).then(celestial_body => {
-    element_list.push(celestial_body)
+    element_list.push(celestial_body.all_group);
     // Ajout du groupe contenant les objets THREE dans la scène
-    console.log("Groupe des objets ajoutés");
-    console.log(celestial_body);
-    scene.add(celestial_body)
+    scene.add(celestial_body.all_group);
 }).catch(error => {
     console.log(error);
 })
 
-// La fonction follow_body() permet de poursuivre visuellement un corps céleste
-let tracking; // Interrupteur de suivi des corps par la caméra
-let target_name; // Nom du corps suivi
-btn_cam_follow(); // Ajout des boutons pour le choix du corps
-
-// Evenement btn_back, btn_next, btn_follow_body
-document.querySelector('#btn_back').addEventListener('click', () => {
-    scroll_follow_body(-1, element_list); // Défiler vers le corps précédent
-});
-
-document.querySelector('#btn_next').addEventListener('click', () => {
-    scroll_follow_body(1, element_list); // Défiler vers le corps suivant
-});
-
-document.querySelector('#btn_follow_body').addEventListener('click', (e) => {
+let tracking;
+let position;
+export function tracking_interuptor(corps_position) {
     if (tracking === true) {
         tracking = false;
-        console.log("tracking = " + tracking);
     }
     else {
-        target_name = e.target.textContent;
         tracking = true;
-        console.log("tracking = " + tracking);
-        console.log("target_name = " + target_name);
+        position = corps_position
     };
-});
+};
 
 // Animation
+
+// Création d'une horloge
+const clock = new THREE.Clock();
+
 animate();
 function animate() {
     requestAnimationFrame(animate);
@@ -110,59 +98,73 @@ function animate() {
     // Affichage de la position de la caméra
     cam_position(camera);
 
+    TWEEN.update();
+
     // Determiner la durée d'une année, puis l'utiliser pour adapter la vitesse de rotation des corps sur leur axe
-    
     if (element_list[0]) {
         for (let i = 0; i < element_list[0].children.length; i++) {
             const element = element_list[0].children[i];
-            if (element.name === "Sun") {
-                // console.log(element.rotation.y);
+            // Animation du soleil
+            if (element.name === "Sun_group") {
                 element.rotation.y += 0.01;
             }
-            else if (element.isMesh === true) {
-                // console.log(element.rotation.y);
-                element.rotation.y += element.rotation.speed / 100;
-            }
-            else if (element.isGroup === true) {
-                element_list_pos.push(element);
+            // Animations des autres corps (en orbite)
+            else {
                 for (let y = 0; y < element.children.length; y++) {
                     const children_elem = element.children[y];
+
+                    // Animantion des objets de type "Mesh"
                     if (children_elem.isMesh === true) {
-                        // console.log(children_elem);
-                        children_elem.rotation.y += children_elem.rotation.speed / 100;
-                    }
-                }
-            }
+                        if (children_elem.data.sideral_rotation) {
+                            // Calcule de la vitesse de rotation des corps sur leur axe
+                            children_elem.rotation.y += (2 * Math.PI / children_elem.data.sideral_orbit);
+                        };
+
+                        if (children_elem.data.sideral_orbit) {
+                            const elapsedTime = clock.getElapsedTime(); // Temps écoulé en secondes
+                            const vitesseOrbite = (2 * Math.PI) / children_elem.data.sideral_orbit;
+                            // Calculez l'index précédent et suivant dans le tableau des positions
+                            let positionIndex = Math.floor((elapsedTime * vitesseOrbite) * 100) % ((children_elem.data.positions.length / 3) - 1);
+
+                            const prevIndex = positionIndex;
+                            const nextIndex = (positionIndex + 1) % 303;
+
+                            // Obtenez les coordonnées XYZ correspondantes à partir de "positions"
+                            const positions = children_elem.data.positions;
+                            const prevX = positions[prevIndex * 3];
+                            const prevY = positions[prevIndex * 3 + 1];
+                            const prevZ = positions[prevIndex * 3 + 2];
+                        
+                            const nextX = positions[nextIndex * 3];
+                            const nextY = positions[nextIndex * 3 + 1];
+                            const nextZ = positions[nextIndex * 3 + 2];
+                        
+                            // Calculez le facteur d'interpolation entre les deux positions
+                            const t = ((elapsedTime * vitesseOrbite) * 100) % 1; // Utilisez la partie décimale
+                        
+                            // Interpolation linéaire entre les positions précédente et suivante
+                            const x = prevX + t * (nextX - prevX);
+                            const y = prevY + t * (nextY - prevY);
+                            const z = prevZ + t * (nextZ - prevZ);
+                        
+                            // Définissez la position du corps céleste
+                            children_elem.position.set(x, y, z);
+                        
+                            // Si un group de lune est présent, on applique la nouvelle position
+                            if (element.children[2]) {
+                                element.children[2].position.set(x, y, z);
+                            };
+                        };
+                    };
+                };
+            };
         };
+    };
+    if (tracking === true) {
+        controls.target.set(position.x, position.y, position.z);
+        controls.update();
     }
-
-    // // Reset du tableau de la position des objets
-    // element_list_pos = [];
-    // // potentiometre vitesse de rotation
-    // const speed_rotate = 100;
-
-    // for (let i = 0; i < element_list.length; i++) {
-    //     if (element_list[i]) {
-
-    //         if (element_list[i].type === "Mesh") {
-    //             element_list[i].rotation.y += element_list[i].rotation.speed;
-    //         }
-    //         else {
-    //             element_list[i].rotation.y += (element_list[i].rotation.speed / speed_rotate);
-    //             if (element_list[i].children) {
-    //                 element_list[i].children.forEach(child => {
-    //                     if (child.type === "Group") {
-    //                         child.rotation.y += (child.rotation.speed / speed_rotate);
-    //                     };
-    //                 });
-    //             };
-    //             element_list_pos.push(element_list[i]);
-    //         };
-    //     };
-    // };
-
-    follow_body(tracking, element_list_pos, target_name, controls);
 
     // Rendu de la scène avec la caméra
     renderer.render(scene, camera);
-}
+};
