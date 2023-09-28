@@ -17,6 +17,11 @@ export function name(spotLight, scene) {
     // const spotLight = new THREE.SpotLight( 0x0000FF, 4, 30, Math.PI/12 );
     // spotLight.position.set( 5, 10, 5 );
     // scene.add( spotLight );
-    const spotLightHelper = new THREE.SpotLightHelper( spotLight );
-    scene.add( spotLightHelper );
+    const spot_light_helper = new THREE.SpotLightHelper( spotLight );
+    scene.add( spot_light_helper );
+}
+
+export function box_helper(element) {
+    const box = new THREE.BoxHelper( element, 0xffff00 );
+    return box;
 }

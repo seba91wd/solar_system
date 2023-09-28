@@ -6,7 +6,7 @@ import { get_celestial_bodies } from './req_bodies.js';
 const scale = 1 / 1000000;
 
 const all_group = new THREE.Group();
-const positions = {}
+all_group.name = "all_group";
 let celestial_body_incomplete = [];
 
 export function create_body(scene) {
@@ -74,10 +74,17 @@ export function create_body(scene) {
                             // Création et nommage d'un groupe
                             const group = new THREE.Group();
                             group.name = body.english_name + "_group";
+                            
+                            // Création et nommage d'un groupe pour les objets orbitants.
+                            const orbiter_group = new THREE.Group();
+                            orbiter_group.name = body.english_name + "_orbiter_group";
+                            // orbiter_group.data = body;
+                            orbiter_group.anim_coord = positions;
+                            orbiter_group.position.set(positions[0], positions[1], positions[2])
 
                             // Ajout de l'orbite et du corps dans le groupe
-                            group.add(celestial_body);
-                            group.add(orbit_line);
+                            orbiter_group.add(celestial_body);
+                            
 
                             // Gestion de lunes
                             if (body.moons) {
@@ -86,8 +93,11 @@ export function create_body(scene) {
                                 // Nommage du groupe
                                 moon_group.name = body.english_name +  "_moons_group";
                                 // Ajout de l'orbite et du corps des lunes dans un groupe
-                                group.add(moon_group);
+                                orbiter_group.add(moon_group);
                             }
+
+                            group.add(orbiter_group);
+                            group.add(orbit_line);
                             all_group.add(group);
                         }
                     }
@@ -173,7 +183,7 @@ function createCelestialBody(body, positions) {
     let celestial_body;
 
     // Création de la forme et du matériau du corps céleste
-    const geometry = new THREE.SphereGeometry(body.mean_radius * scale * 100, 32, 32);
+    const geometry = new THREE.SphereGeometry(body.mean_radius * scale, 32, 32);
     const material = add_texture(body);
     celestial_body = new THREE.Mesh(geometry, material);
 
@@ -183,12 +193,12 @@ function createCelestialBody(body, positions) {
     const z = positions[2];
 
     // Positionnez le corps céleste
-    celestial_body.position.set(x, y, z);
+    celestial_body.position.set(0, 0, 0);
 
     // Nom du corps céleste (utile pour le débogage)
     celestial_body.name = body.english_name + "_body";
+    // Ajout des données du corps sur l'objet "mesh"
     celestial_body.data = body;
-    celestial_body.data.positions = positions;
 
     return celestial_body;
 }

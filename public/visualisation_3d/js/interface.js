@@ -1,4 +1,4 @@
-import { element_list } from "./main.js";
+import { all_group } from "./main.js";
 import { tracking_interuptor } from "./main.js";
 
 // Balises <ul> de la div #list_corps
@@ -13,19 +13,19 @@ const list_asteroid = document.querySelector("#list_asteroid");
 const h3_list_type = document.querySelectorAll(".h3_list_type");
 
 // Vérification de la disponibilité de la liste des corps
-function check_element_list() {
+function check_all_group() {
     return new Promise((resolve) => {
         const check = () => {
-            if (element_list.length > 0 && element_list[0].children[1].children[0]) {
+            if (all_group.length > 0 && all_group[0].children[1].children[0]) {
                 let check_value = true
-                for (let i = 0; i < element_list[0].children.length; i++) {
-                    const group = element_list[0].children[i];
+                for (let i = 0; i < all_group[0].children.length; i++) {
+                    const group = all_group[0].children[i];
                     if (!group.children[0].name) {
                         check_value = false;
                     }
                 }
                 if (check_value === true) {
-                    resolve(element_list);
+                    resolve(all_group);
                 }
                 else {
                     setTimeout(check, 500); // Vérifie toutes les 500 millisecondes
@@ -39,14 +39,12 @@ function check_element_list() {
     });
 };
 
-// Attendre que le tableau element_list soit prêt
-check_element_list().then((all_group) => {
+// Attendre que le tableau all_group soit prêt
+check_all_group().then((all_group) => {
 
     // --- Implémentation de la liste des corps célestes ---
     generate_li_elements(all_group).then(() => {
         // Maintenant que les balises <li> sont générées et ajoutées au DOM,
-
-
 
         // --- Évènement: Déplier / Replier les fenêtres des listes de corps ---
         for (let i = 0; i < h3_list_type.length; i++) {
@@ -68,12 +66,17 @@ check_element_list().then((all_group) => {
             li.addEventListener('click', () => {
                 const target_name = li.id;
                 console.log("target_name : " + target_name);
+
                 for (let y = 0; y < all_group[0].children.length; y++) {
-                    const celestial_body = all_group[0].children[y].children[0];
-                    // console.log(celestial_body);
-                    if (target_name === celestial_body.data.english_name) {
-                        tracking_interuptor(celestial_body.position)
-                        break;
+
+                    const orbiter_group = all_group[0].children[y].children[0];
+                    if (orbiter_group.isGroup === true) {
+                        
+                        if (target_name === orbiter_group.children[0].data.english_name) {
+                            console.log(orbiter_group);
+                            tracking_interuptor(orbiter_group.position)
+                            break;
+                        }
                     }
                 }
             });
@@ -85,7 +88,15 @@ function generate_li_elements(all_group) {
     return new Promise((resolve) => {
         for (let i = 0; i < all_group[0].children.length; i++) {
             // Sélection de l'objet THREE Mesh correspondant a un corps de la scène..
-            const mesh = all_group[0].children[i].children[0];
+            let mesh
+            if (i === 0) {
+                // Cas spécifique du soleil
+                mesh = all_group[0].children[i].children[0];
+            }
+            else {
+                // Pour tout les autre groups de corps
+                mesh = all_group[0].children[i].children[0].children[0];
+            };
 
             // Création d'une balise <li>
             const li = document.createElement("li");
@@ -116,37 +127,3 @@ function generate_li_elements(all_group) {
         resolve(); // Résoudre la promesse une fois que les balises sont ajoutées.
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
