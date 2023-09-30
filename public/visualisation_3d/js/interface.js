@@ -74,7 +74,7 @@ check_all_group().then((all_group) => {
                         
                         if (target_name === orbiter_group.children[0].data.english_name) {
                             console.log(orbiter_group);
-                            tracking_interuptor(orbiter_group.position)
+                            tracking_interuptor(orbiter_group)
                             break;
                         }
                     }

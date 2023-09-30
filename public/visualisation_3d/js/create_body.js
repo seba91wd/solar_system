@@ -25,8 +25,8 @@ export function create_body(scene) {
                         body.position = new THREE.Vector3(0, 0, 0);
 
                         // Forme et texture du soleil
-                        const textureLoader = new THREE.TextureLoader();
-                        const texture = textureLoader.load('./visualisation_3d/js/textures/sun.jpg');
+                        const texture_loader = new THREE.TextureLoader();
+                        const texture = texture_loader.load('./visualisation_3d/js/textures/sun.jpg');
                         texture.mapping = THREE.EquirectangularReflectionMapping;
                         const geometry = new THREE.SphereGeometry(body.mean_radius * scale, 32, 32);
                         const material = new THREE.MeshBasicMaterial({ map: texture });
@@ -48,14 +48,15 @@ export function create_body(scene) {
 
                         all_group.add(group);
                     }
-                    else if (
-                        body.body_type === "Asteroid" ||
-                        body.body_type === "Comet" ||
-                        // body.body_type === "Gas giant" ||
-                        body.body_type === "Dwarf planet") {
-                        // ne rien faire
-                    }
-                    // Pour le traitement des autres corps céleste on fait appelle a la fonction add_orbite_and_body()
+                    // else if (
+                    //     body.body_type === "Asteroid" ||
+                    //     body.body_type === "Comet" ||
+                    //     body.body_type === "Gas giant" ||
+                    //     body.body_type === "Dwarf planet") {
+                    //     // ne rien faire
+                    // }
+
+                    // Pour le traitement des autres corps céleste on fait appelle a les fonctions create_orbit() et create_celestial_body()
                     else {
                         // Verification des valeurs
                         if (body.aphelion === 0 || body.perihelion === 0) {
@@ -66,10 +67,10 @@ export function create_body(scene) {
                             // Atribution d'une couleur
                             body.color = get_body_color(body);
                             // Création de ligne d'orbite
-                            const { orbit_line, positions } = createOrbit(body);
+                            const { orbit_line, positions } = create_orbit(body);
 
                             // Création du corps
-                            const celestial_body = createCelestialBody(body, positions);
+                            const celestial_body = create_celestial_body(body, positions);
 
                             // Création et nommage d'un groupe
                             const group = new THREE.Group();
@@ -113,7 +114,7 @@ export function create_body(scene) {
     });
 };
 
-function createOrbit(body) {
+function create_orbit(body) {
     // Convertir l'inclinaison en radians
     const inclination = (body.inclination * Math.PI) / 180;
 
@@ -131,9 +132,9 @@ function createOrbit(body) {
     }
     else {
         // Calculer la période orbitale en jours (en utilisant le paramètre sideral_orbit en années)
-        const orbitalPeriodDays = body.sideral_orbit * 365.25; // Nous utilisons 365.25 jours par an pour prendre en compte les années bissextiles
+        const orbital_period_days = body.sideral_orbit * 365.25; // Nous utilisons 365.25 jours par an pour prendre en compte les années bissextiles
         // Calculer la mean anomaly en radians en utilisant la période orbitale
-        mean_anomaly_rad = (2 * Math.PI * (360 - body.long_asc_node)) / orbitalPeriodDays;
+        mean_anomaly_rad = (2 * Math.PI * (360 - body.long_asc_node)) / orbital_period_days;
     }
 
     // Vérification de la valeur de long_asc_node
@@ -167,9 +168,9 @@ function createOrbit(body) {
     const orbit_geometry = new THREE.BufferGeometry();
     orbit_geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
     // Création du matériau de l'orbite
-    const orbitMaterial = new THREE.LineBasicMaterial({ color: body.color });
+    const orbit_material = new THREE.LineBasicMaterial({ color: body.color });
     // Création de l'objet Three.js pour l'orbite
-    const orbit_line = new THREE.Line(orbit_geometry, orbitMaterial);
+    const orbit_line = new THREE.Line(orbit_geometry, orbit_material);
 
     // Nom du corps céleste (utile pour le débogage)
     orbit_line.name = body.english_name + "_orbit";
@@ -179,7 +180,7 @@ function createOrbit(body) {
     return { orbit_line: orbit_line, positions: positions };
 }
 
-function createCelestialBody(body, positions) {
+function create_celestial_body(body, positions) {
     let celestial_body;
 
     // Création de la forme et du matériau du corps céleste
@@ -193,7 +194,15 @@ function createCelestialBody(body, positions) {
     const z = positions[2];
 
     // Positionnez le corps céleste
-    celestial_body.position.set(0, 0, 0);
+    if (body.body_type === "Moon") {
+        // Les objets type lunes sont positionnée par rapport a leur groupe parent
+        celestial_body.position.set(x, y, z);
+    }
+    else {
+        // Les autres corps sont positionnées sur x0 y0 z0, car le groupe parent érite de la position réel du corps
+        celestial_body.position.set(0, 0, 0);
+    }
+
 
     // Nom du corps céleste (utile pour le débogage)
     celestial_body.name = body.english_name + "_body";
@@ -219,18 +228,18 @@ function add_moons_and_orbits(parent_body, data, parent_object) {
             // Atribution d'une couleur
             moon_data.color = get_body_color(moon_data);
 
-            const { orbit_line, positions } = createOrbit(moon_data); // Crée l'orbite de la lune
-            const celestial_body = createCelestialBody(moon_data, positions); // Crée le corps de la lune
+            const { orbit_line, positions } = create_orbit(moon_data); // Crée l'orbite de la lune
+            const celestial_body = create_celestial_body(moon_data, positions); // Crée le corps de la lune
 
             // Ajoute l'orbite et le corps de la lune au groupe de la lune
             moon_group.add(celestial_body);
             moon_group.add(orbit_line);
     
             // Ajuste la position de la lune par rapport à sa planète parente en utilisant pos
-            const xMoonOrbit = parent_object.position.x;
-            const yMoonOrbit = parent_object.position.y;
-            const zMoonOrbit = parent_object.position.z;
-            moon_group.position.set(xMoonOrbit, yMoonOrbit, zMoonOrbit);
+            const x_moon_orbit = parent_object.position.x;
+            const y_moon_orbit = parent_object.position.y;
+            const z_moon_orbit = parent_object.position.z;
+            moon_group.position.set(x_moon_orbit, y_moon_orbit, z_moon_orbit);
         }
         // console.log("Moon processing of " + parent_body.english_name + " : " + moon_data.english_name);
     });
@@ -239,44 +248,44 @@ function add_moons_and_orbits(parent_body, data, parent_object) {
 
 function add_texture(body) {
     if (body.english_name === "Mercury") {
-        const textureLoader = new THREE.TextureLoader();
-        const texture = textureLoader.load('./visualisation_3d/js/textures/mercury.jpg');
+        const texture_loader = new THREE.TextureLoader();
+        const texture = texture_loader.load('./visualisation_3d/js/textures/mercury.jpg');
         return new THREE.MeshPhongMaterial({ map: texture });
     }
     else if (body.english_name === "Venus") {
-        const textureLoader = new THREE.TextureLoader();
-        const texture = textureLoader.load('./visualisation_3d/js/textures/venus.jpg');
+        const texture_loader = new THREE.TextureLoader();
+        const texture = texture_loader.load('./visualisation_3d/js/textures/venus.jpg');
         return new THREE.MeshPhongMaterial({ map: texture });
     }
     else if (body.english_name=== "Earth") {
-        const textureLoader = new THREE.TextureLoader();
-        const texture = textureLoader.load('./visualisation_3d/js/textures/earth_daymap.jpg');
+        const texture_loader = new THREE.TextureLoader();
+        const texture = texture_loader.load('./visualisation_3d/js/textures/earth_daymap.jpg');
         return new THREE.MeshPhongMaterial({ map: texture });
     } 
     else if (body.english_name === "Mars") {
-        const textureLoader = new THREE.TextureLoader();
-        const texture = textureLoader.load('./visualisation_3d/js/textures/mars.jpg');
+        const texture_loader = new THREE.TextureLoader();
+        const texture = texture_loader.load('./visualisation_3d/js/textures/mars.jpg');
         return new THREE.MeshPhongMaterial({ map: texture });
     }
 
     else if (body.english_name === "Jupiter") {
-        const textureLoader = new THREE.TextureLoader();
-        const texture = textureLoader.load('./visualisation_3d/js/textures/jupiter.jpg');
+        const texture_loader = new THREE.TextureLoader();
+        const texture = texture_loader.load('./visualisation_3d/js/textures/jupiter.jpg');
         return new THREE.MeshPhongMaterial({ map: texture });
     }
     else if (body.english_name === "Saturn") {
-        const textureLoader = new THREE.TextureLoader();
-        const texture = textureLoader.load('./visualisation_3d/js/textures/saturn.jpg');
+        const texture_loader = new THREE.TextureLoader();
+        const texture = texture_loader.load('./visualisation_3d/js/textures/saturn.jpg');
         return new THREE.MeshPhongMaterial({ map: texture });
     }
     else if (body.english_name === "Uranus") {
-        const textureLoader = new THREE.TextureLoader();
-        const texture = textureLoader.load('./visualisation_3d/js/textures/uranus.jpg');
+        const texture_loader = new THREE.TextureLoader();
+        const texture = texture_loader.load('./visualisation_3d/js/textures/uranus.jpg');
         return new THREE.MeshPhongMaterial({ map: texture });
     }
     else if (body.english_name === "Neptune") {
-        const textureLoader = new THREE.TextureLoader();
-        const texture = textureLoader.load('./visualisation_3d/js/textures/neptune.jpg');
+        const texture_loader = new THREE.TextureLoader();
+        const texture = texture_loader.load('./visualisation_3d/js/textures/neptune.jpg');
         return new THREE.MeshPhongMaterial({ map: texture });
     }
     else {

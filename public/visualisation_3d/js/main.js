@@ -1,7 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { cam_position } from './cam_position.js'
-import { btn_cam_follow, scroll_follow_body, follow_body } from './cam_follow.js'
 import { scene_axe, plight_pos, box_helper } from './scene_helper.js'
 import { create_body } from './create_body.js';
 
@@ -49,7 +48,7 @@ controls.enableRotate = true; // Activer la fonction de rotation
 controls.enableDamping = true; // Activer la fonction de translation
 
 // Créer la texture du background
-const backGroundTexture = new THREE.CubeTextureLoader().load([
+const back_ground_texture = new THREE.CubeTextureLoader().load([
     './visualisation_3d/js/textures/milky_way/px.jpg',
     './visualisation_3d/js/textures/milky_way/nx.jpg',
     './visualisation_3d/js/textures/milky_way/py.jpg',
@@ -57,11 +56,10 @@ const backGroundTexture = new THREE.CubeTextureLoader().load([
     './visualisation_3d/js/textures/milky_way/pz.jpg',
     './visualisation_3d/js/textures/milky_way/nz.jpg',
 ]);
-scene.background = backGroundTexture;
+scene.background = back_ground_texture;
 
 // Tableau des objets ajoutés dans la scène, exporté vers ./interface.js
 export const all_group = [];
-let data = {};
 // Création des objets (orbites, corps, lunes)
 create_body(scene).then(celestial_body => {
     all_group.push(celestial_body.all_group);
@@ -72,18 +70,46 @@ create_body(scene).then(celestial_body => {
 })
 
 let tracking;
-let position;
-export function tracking_interuptor(corps_position) {
-    if (tracking === true) {
-        tracking = false;
+let tracking_group;
+
+export function tracking_interuptor(orbiter_group) {
+    // Si le groupe est identique sélectionné est le même que précédemment alors on désactive le tracking.
+    if (tracking_group === orbiter_group) {
+        if (tracking === true) {
+            tracking_group = null;
+            orbiter_group.remove(camera);
+            controls.enableDamping = true;
+            tracking = false;
+        }
+        else {
+            tracking_group = orbiter_group;
+            orbiter_group.add(camera);
+            controls.enableDamping = false;
+            tracking = true;
+        }
     }
     else {
+        if (tracking_group) {
+            tracking_group.remove(camera);
+        }
+        tracking_group = orbiter_group;
+        orbiter_group.add(camera);
+        controls.enableDamping = false;
         tracking = true;
-        position = corps_position
-    };
+    }
+    controls.update();
 };
 
-// Animation
+
+function follow_body(camera, group) {
+    // Pointez la caméra vers le corps suivi
+    camera.lookAt(group.position);
+}
+
+
+////////////////////////////////////////////////////////
+// ----------------- Animation ---------------------- //
+////////////////////////////////////////////////////////
 
 // Création d'une horloge
 const clock = new THREE.Clock();
@@ -116,40 +142,45 @@ function animate() {
                     if (corps_group_child.isGroup === true) {
                         // Désignation du groupe a faire orbiter
                         const orbiter_group = corps_group_child
-                        if (orbiter_group.children[0].data.sideral_orbit) {
+                        const mesh = orbiter_group.children[0]
+                        if (mesh.data.sideral_orbit) {
 
-                            const elapsedTime = clock.getElapsedTime(); // Temps écoulé en secondes
-                            const vitesseOrbite = (2 * Math.PI) / orbiter_group.children[0].data.sideral_orbit;
+                            const elapsed_time = clock.getElapsedTime(); // Temps écoulé en secondes
+                            
+                            // Calculez la rotation en utilisant un modulo pour assurer une rotation continue
+                            const rotation_angle = (2 * Math.PI * elapsed_time) / mesh.data.sideral_rotation;
+                            mesh.rotation.y = rotation_angle % (2 * Math.PI);
+
+                            const vitesse_orbite = (2 * Math.PI) / mesh.data.sideral_orbit;
                             // Calculez l'index précédent et suivant dans le tableau des positions
-                            let positionIndex = Math.floor((elapsedTime * vitesseOrbite) * 100) % ((orbiter_group.anim_coord.length / 3) - 1);
+                            let position_index = Math.floor((elapsed_time * vitesse_orbite) * 100) % ((orbiter_group.anim_coord.length / 3) - 1);
 
-                            const prevIndex = positionIndex;
-                            const nextIndex = (positionIndex + 1) % 303;
+                            const prev_index = position_index;
+                            const next_index = (position_index + 1) % 303;
 
                             // Obtenez les coordonnées XYZ correspondantes à partir de "positions"
                             const positions = orbiter_group.anim_coord;
-                            const prevX = positions[prevIndex * 3];
-                            const prevY = positions[prevIndex * 3 + 1];
-                            const prevZ = positions[prevIndex * 3 + 2];
+                            const prev_x = positions[prev_index * 3];
+                            const prev_y = positions[prev_index * 3 + 1];
+                            const prev_z = positions[prev_index * 3 + 2];
                         
-                            const nextX = positions[nextIndex * 3];
-                            const nextY = positions[nextIndex * 3 + 1];
-                            const nextZ = positions[nextIndex * 3 + 2];
+                            const next_x = positions[next_index * 3];
+                            const next_y = positions[next_index * 3 + 1];
+                            const next_z = positions[next_index * 3 + 2];
                         
                             // Calculez le facteur d'interpolation entre les deux positions
-                            const t = ((elapsedTime * vitesseOrbite) * 100) % 1; // Utilisez la partie décimale
+                            const t = ((elapsed_time * vitesse_orbite) * 100) % 1; // Utilisez la partie décimale
                         
                             // Interpolation linéaire entre les positions précédente et suivante
-                            const x = prevX + t * (nextX - prevX);
-                            const y = prevY + t * (nextY - prevY);
-                            const z = prevZ + t * (nextZ - prevZ);
+                            const x = prev_x + t * (next_x - prev_x);
+                            const y = prev_y + t * (next_y - prev_y);
+                            const z = prev_z + t * (next_z - prev_z);
                         
                             // Définissez la position du corps céleste
                             orbiter_group.position.set(x, y, z);
 
                             if (tracking === true) {
-                                controls.target.set(position.x, position.y, position.z);
-                                controls.update();
+                                follow_body(camera, tracking_group);
                             };
                         };
                     };
