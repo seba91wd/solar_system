@@ -9,7 +9,7 @@ const all_group = new THREE.Group();
 all_group.name = "all_group";
 let celestial_body_incomplete = [];
 
-export function create_body(scene) {
+export function create_body() {
     // Envoi de la requête
     return new Promise((resolve, reject) => {
         get_celestial_bodies().then(data => {

@@ -48,22 +48,45 @@ h3 {
     padding: 10px;
 }
 
-#nav_div {
-    width: 100%;
+#list_corps {
     position: absolute;
     z-index: +1;
     bottom: 0;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-#list_corps {
+    left: 0;
     max-height: 90vh;
     overflow-y: auto;
-    padding-left: 30px;
+}
+
+#time_scale {
+    position: absolute;
+    z-index: +1;
+    bottom: 0;
+    left: 30%;
+}
+
+/* Composant: "public/visualisation_3d/js/components/cam_position.js" */
+#cam_pos {
+    position: absolute;
+    z-index: +1;
+    bottom: 0;
+    right: 30%;
+    text-align: center;
+}
+
+#cam_pos button {
+    background: none;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+    padding: 4px;
+    margin-bottom: 4px;
+}
+
+#details_corps {
+    position: absolute;
+    z-index: +1;
+    bottom: 0;
+    right: 0;
 }
 
 #list_corps li {
@@ -79,10 +102,4 @@ h3 {
 
 .list_active {
     height: fit-content;
-}
-
-
-
-#time_scale {
-    height: 50px;
 }

@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { cam_position } from './cam_position.js'
-import { scene_axe, plight_pos, box_helper } from './scene_helper.js'
+import { plight_pos } from './scene_helper.js'
 import { create_body } from './create_body.js';
 
 // Affichage des FPS
@@ -12,19 +12,23 @@ stats.begin();
 
 // Création de la scène
 const scene = new THREE.Scene();
-console.log(scene); // DEBUG
-scene_axe(scene); // DEBUG
 
 // Création de la caméra
 const fov = 75;
 const aspect = (window.innerWidth / 2) / (window.innerHeight / 2);
 const near = 0.001;
 const far = 1000000;
-const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 
+// La caméra est importé dans le fichier "public/visualisation_3d/js/cam_position.js"
+export const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+
+// Position de la caméra au rafraîchissement de la page
 camera.position.x = 0;
 camera.position.y = 1500;
 camera.position.z = 0;
+
+// Ajout de la caméra parmi les enfants de la scène
+scene.add(camera)
 
 // Création du rendu
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -43,9 +47,23 @@ plight_pos(plight, scene); // DEBUG
 
 // OrbitControls: rotation (clic gauche), zoom de la caméra (scroll), déplacement (clic droit)
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableZoom = true; // Activer la fonction de zoom
-controls.enableRotate = true; // Activer la fonction de rotation
-controls.enableDamping = true; // Activer la fonction de translation
+controls.enableZoom = true;         // Activer le zoom
+controls.enablePan = true;          // Vue panoramique
+controls.enableRotate = true;       // Rotation activée
+controls.maxDistance = 10000        // Zomm min
+controls.minDistance = 0.001        // Zomm max
+controls.enableDamping = false;     // Désactiver l'amortissement
+controls.zoomSpeed = 1;             // Vitesse du zoom
+
+// Configuration des boutons de la souris
+controls.mouseButtons = {
+    LEFT: THREE.MOUSE.ROTATE,
+    MIDDLE: null,
+    RIGHT: THREE.MOUSE.DOLLY,
+};
+
+controls.update();
+console.log(controls); // DEBUG
 
 // Créer la texture du background
 const back_ground_texture = new THREE.CubeTextureLoader().load([
@@ -56,12 +74,13 @@ const back_ground_texture = new THREE.CubeTextureLoader().load([
     './visualisation_3d/js/textures/milky_way/pz.jpg',
     './visualisation_3d/js/textures/milky_way/nz.jpg',
 ]);
+// Ajout du background dans la scène
 scene.background = back_ground_texture;
 
 // Tableau des objets ajoutés dans la scène, exporté vers ./interface.js
 export const all_group = [];
 // Création des objets (orbites, corps, lunes)
-create_body(scene).then(celestial_body => {
+create_body().then(celestial_body => {
     all_group.push(celestial_body.all_group);
     // Ajout du groupe contenant les objets THREE dans la scène
     scene.add(celestial_body.all_group);
@@ -69,15 +88,16 @@ create_body(scene).then(celestial_body => {
     console.log(error);
 })
 
+// Cette fonction est reliée à un évènement dans le fichier "list_corps.js".
+// Elle permet d'activer / désactiver le suivi dynamique du corps sélectionné.
 let tracking;
 let tracking_group;
-
 export function tracking_interuptor(orbiter_group) {
     // Si le groupe est identique sélectionné est le même que précédemment alors on désactive le tracking.
     if (tracking_group === orbiter_group) {
         if (tracking === true) {
             tracking_group = null;
-            orbiter_group.remove(camera);
+            scene.add(camera);
             controls.enableDamping = true;
             tracking = false;
         }
@@ -90,22 +110,23 @@ export function tracking_interuptor(orbiter_group) {
     }
     else {
         if (tracking_group) {
-            tracking_group.remove(camera);
+            scene.add(camera);
         }
         tracking_group = orbiter_group;
         orbiter_group.add(camera);
         controls.enableDamping = false;
         tracking = true;
-    }
+    };
     controls.update();
 };
 
-
+// Cette fonction permet de s'assurer que la caméra garde son orientation vers le corps sélectionné.
 function follow_body(camera, group) {
     // Pointez la caméra vers le corps suivi
     camera.lookAt(group.position);
-}
+};
 
+console.log(scene); // DEBUG
 
 ////////////////////////////////////////////////////////
 // ----------------- Animation ---------------------- //
@@ -123,8 +144,6 @@ function animate() {
 
     // Affichage de la position de la caméra
     cam_position(camera);
-
-    TWEEN.update();
 
     // Determiner la durée d'une année, puis l'utiliser pour adapter la vitesse de rotation des corps sur leur axe
     if (all_group[0]) {
@@ -188,7 +207,6 @@ function animate() {
             };
         };
     };
-
 
     // Rendu de la scène avec la caméra
     renderer.render(scene, camera);
