@@ -70,7 +70,7 @@ export function create_body() {
                             const { orbit_line, positions } = create_orbit(body);
 
                             // Création du corps
-                            const celestial_body = create_celestial_body(body, positions);
+                            const celestial_body = create_celestial_body(body);
 
                             // Création et nommage d'un groupe
                             const group = new THREE.Group();
@@ -79,7 +79,7 @@ export function create_body() {
                             // Création et nommage d'un groupe pour les objets orbitants.
                             const orbiter_group = new THREE.Group();
                             orbiter_group.name = body.english_name + "_orbiter_group";
-                            // orbiter_group.data = body;
+                            // Ajout du tableau des coordonnées XYZ des points de passage du corps
                             orbiter_group.anim_coord = positions;
                             orbiter_group.position.set(positions[0], positions[1], positions[2])
 
@@ -90,7 +90,7 @@ export function create_body() {
                             // Gestion de lunes
                             if (body.moons) {
                                 // Création de l'orbite et du corps de la lune
-                                const moon_group = add_moons_and_orbits(body, data, celestial_body);
+                                const moon_group = add_moons_and_orbits(body, data);
                                 // Nommage du groupe
                                 moon_group.name = body.english_name +  "_moons_group";
                                 // Ajout de l'orbite et du corps des lunes dans un groupe
@@ -132,7 +132,7 @@ function create_orbit(body) {
     }
     else {
         // Calculer la période orbitale en jours (en utilisant le paramètre sideral_orbit en années)
-        const orbital_period_days = body.sideral_orbit * 365.25; // Nous utilisons 365.25 jours par an pour prendre en compte les années bissextiles
+        const orbital_period_days = body.sideral_orbit * 365.256; // Nous utilisons 365.25 jours par an pour prendre en compte les années bissextiles
         // Calculer la mean anomaly en radians en utilisant la période orbitale
         mean_anomaly_rad = (2 * Math.PI * (360 - body.long_asc_node)) / orbital_period_days;
     }
@@ -180,29 +180,21 @@ function create_orbit(body) {
     return { orbit_line: orbit_line, positions: positions };
 }
 
-function create_celestial_body(body, positions) {
+function create_celestial_body(body) {
     let celestial_body;
 
     // Création de la forme et du matériau du corps céleste
+    // let geometry;
+    // if (body.body_type === "Moon") {
+
+    //     geometry = new THREE.SphereGeometry(body.mean_radius * scale * 10, 32, 32);
+    // }
+    // else {
+    //     geometry = new THREE.SphereGeometry(body.mean_radius * scale, 32, 32);
+    // }
     const geometry = new THREE.SphereGeometry(body.mean_radius * scale, 32, 32);
     const material = add_texture(body);
     celestial_body = new THREE.Mesh(geometry, material);
-
-    // Positionnement du corps céleste sur son orbite en utilisant l'angle initial, l'inclinaison, body.long_asc_node et pos
-    const x = positions[0];
-    const y = positions[1];
-    const z = positions[2];
-
-    // Positionnez le corps céleste
-    if (body.body_type === "Moon") {
-        // Les objets type lunes sont positionnée par rapport a leur groupe parent
-        celestial_body.position.set(x, y, z);
-    }
-    else {
-        // Les autres corps sont positionnées sur x0 y0 z0, car le groupe parent érite de la position réel du corps
-        celestial_body.position.set(0, 0, 0);
-    }
-
 
     // Nom du corps céleste (utile pour le débogage)
     celestial_body.name = body.english_name + "_body";
@@ -212,13 +204,17 @@ function create_celestial_body(body, positions) {
     return celestial_body;
 }
 
-function add_moons_and_orbits(parent_body, data, parent_object) {
-    const moon_group = new THREE.Group();
-    moon_group.name = parent_body.english_name + "_group_moon_";
+function add_moons_and_orbits(parent_body, data) {
 
+    const moon_group = new THREE.Group();  // "body"_moon_group
+    moon_group.name = parent_body.english_name + "_group_moon";
+    
     parent_body.moons.forEach(element => {
         const moon_name = element.moon;
         const moon_data = data.find(data => data.name === moon_name);
+
+        const moon_orbiter_group = new THREE.Group();  // "body"_moon_orbiter_group
+        moon_orbiter_group.name = moon_name + "_moon_orbiter_group";
 
         if (moon_data.aphelion === 0 || moon_data.perihelion === 0) {
             // Ajout du nom du corps dans la liste des objets incomplet
@@ -229,17 +225,21 @@ function add_moons_and_orbits(parent_body, data, parent_object) {
             moon_data.color = get_body_color(moon_data);
 
             const { orbit_line, positions } = create_orbit(moon_data); // Crée l'orbite de la lune
-            const celestial_body = create_celestial_body(moon_data, positions); // Crée le corps de la lune
+            const celestial_body = create_celestial_body(moon_data); // Crée le corps de la lune
 
+            // Ajout du tableau des coordonnées XYZ des points de passage du corps
+            moon_orbiter_group.anim_coord = positions;
+
+            moon_orbiter_group.add(celestial_body)
             // Ajoute l'orbite et le corps de la lune au groupe de la lune
-            moon_group.add(celestial_body);
+            moon_group.add(moon_orbiter_group);
             moon_group.add(orbit_line);
     
             // Ajuste la position de la lune par rapport à sa planète parente en utilisant pos
-            const x_moon_orbit = parent_object.position.x;
-            const y_moon_orbit = parent_object.position.y;
-            const z_moon_orbit = parent_object.position.z;
-            moon_group.position.set(x_moon_orbit, y_moon_orbit, z_moon_orbit);
+            const x_moon_orbit = positions[0];
+            const y_moon_orbit = positions[1];
+            const z_moon_orbit = positions[2];
+            moon_orbiter_group.position.set(x_moon_orbit, y_moon_orbit, z_moon_orbit);
         }
         // console.log("Moon processing of " + parent_body.english_name + " : " + moon_data.english_name);
     });
@@ -267,7 +267,6 @@ function add_texture(body) {
         const texture = texture_loader.load('./visualisation_3d/js/textures/mars.jpg');
         return new THREE.MeshPhongMaterial({ map: texture });
     }
-
     else if (body.english_name === "Jupiter") {
         const texture_loader = new THREE.TextureLoader();
         const texture = texture_loader.load('./visualisation_3d/js/textures/jupiter.jpg');

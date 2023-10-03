@@ -57,11 +57,46 @@ h3 {
     overflow-y: auto;
 }
 
+/* Composant: Échelle des temps */
 #time_scale {
     position: absolute;
     z-index: +1;
     bottom: 0;
     left: 30%;
+    text-align: center;
+}
+
+#time_scale fieldset {
+    padding-right: 10px;
+    border-radius: 6px;
+}
+
+#time_scale legend {
+    padding: 2px 10px;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+}
+
+#time_scale input[type="range"] {
+  width: 100%;
+  margin: 0 6px;
+}
+
+#time_scale img {
+    color: #ffffff;
+    height: 30px;
+    margin: 6px 8px 0px 8px;
+    padding: 2px;
+    border-radius: 10px;
+}
+
+.active_time {
+    background-color: #4c00ff6e;;
+}
+
+#time_scale img:hover {
+    background: #4c00ff6e;
+    color: #ffffff;
 }
 
 /* Composant: "public/visualisation_3d/js/components/cam_position.js" */
