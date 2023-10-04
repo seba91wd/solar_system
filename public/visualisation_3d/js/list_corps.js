@@ -28,6 +28,15 @@ function create_component() {
             h3.classList.add("h3_list_type");
             h3.textContent = sectionInfo.title;
 
+            if (sectionInfo.title !== "Étoile") {
+                const btn_orbits_view = document.createElement("img");
+                btn_orbits_view.src = "./visualisation_3d/js/icons/orbit.png";
+                btn_orbits_view.alt = "Schéma corps en orbite";
+                btn_orbits_view.id = sectionInfo.id + "_orbit";
+                btn_orbits_view.className = "btn_orbits_view";
+                sectionDiv.appendChild(btn_orbits_view);
+            }
+
             const ul = document.createElement("ul");
             ul.classList.add("list_corps_ul");
             ul.id = sectionInfo.id;
@@ -132,10 +141,91 @@ function generate_li_elements() {
 
 function event_listener() {
     return new Promise((resolve) => {
-        // Balises <h3> type de corps
-        const h3_list_type = document.querySelectorAll(".h3_list_type");
+        
+        // --- Évènement: Afficher / Masquer les ligne des orbites ---
+        const btn_orbits_view = document.querySelectorAll(".btn_orbits_view");
+        for (let i = 0; i < btn_orbits_view.length; i++) {
+            const btn = btn_orbits_view[i];
+            btn.addEventListener("click", () => {
+                console.log(btn);
+                const orbit_type = btn.id.split("_")[1];
+                console.log(orbit_type);
 
+                const line_array = {
+                    telluric: [],
+                    gaz: [],
+                    dwarf: [],
+                    comet: [],
+                    asteroid: []
+                };
+
+                for (let j = 1; j < all_group[0].children.length; j++) {
+                    const mesh = all_group[0].children[j].children[0].children[0];
+                    const line = all_group[0].children[j].children[1];
+                    // console.log(mesh);
+                    // console.log(line);
+                
+                    if (mesh.data.body_type === "Telluric planet") {
+                        line_array.telluric.push(line)
+                    }
+                    else if (mesh.data.body_type === "Gas giant") {
+                        line_array.gaz.push(line);
+                    }
+                    else if (mesh.data.body_type === "Dwarf planet") {
+                        line_array.dwarf.push(line);
+                    }
+                    else if (mesh.data.body_type === "Comet") {
+                        line_array.comet.push(line);
+                    }
+                    else if (mesh.data.body_type === "Asteroid") {
+                        line_array.asteroid.push(line);
+                    }
+                };
+
+                if (orbit_type === "telluric") {
+                    // Obtenir la liste des orbites telluriques et les masquer
+                    console.log(line_array);
+                    line_array.telluric.forEach((line) => {
+                        switch_view(line, btn);
+                    });
+                }
+                else if (orbit_type === "gaz") {
+                    line_array.gaz.forEach((line) => {
+                        switch_view(line, btn);
+                    });
+                }
+                else if (orbit_type === "dwarf") {
+                    line_array.dwarf.forEach((line) => {
+                        switch_view(line, btn);
+                    });
+                }
+                else if (orbit_type === "comet") {
+                    line_array.comet.forEach((line) => {
+                        switch_view(line, btn);
+                    });
+                }
+                else if (orbit_type === "asteroid") {
+                    line_array.asteroid.forEach((line) => {
+                        switch_view(line, btn);
+                    });
+                }
+                
+            });
+        };
+
+        function switch_view(line, btn) {
+            if (line.visible === true) {
+                btn.src = "./visualisation_3d/js/icons/orbit_close.png"
+                line.visible = false;
+            }
+            else {
+                btn.src = "./visualisation_3d/js/icons/orbit.png";
+                line.visible = true;
+            }
+        }
+        
         // --- Évènement: Déplier / Replier les fenêtres des listes de corps ---
+        const h3_list_type = document.querySelectorAll(".h3_list_type");
         for (let i = 0; i < h3_list_type.length; i++) {
             const ul = h3_list_type[i];
             ul.addEventListener('click', () => {
