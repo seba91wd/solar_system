@@ -31,7 +31,7 @@ export function create_body() {
                         const geometry = new THREE.SphereGeometry(body.mean_radius * scale, 32, 32);
                         const material = new THREE.MeshBasicMaterial({ map: texture });
                         const celestial_body = new THREE.Mesh(geometry, material);
-                        
+
                         // Vitesse de rotation
                         celestial_body.rotation.speed = 0.01;
 
@@ -66,6 +66,7 @@ export function create_body() {
                         else {
                             // Atribution d'une couleur
                             body.color = get_body_color(body);
+
                             // Création de ligne d'orbite
                             const { orbit_line, positions } = create_orbit(body);
 
@@ -75,7 +76,7 @@ export function create_body() {
                             // Création et nommage d'un groupe
                             const group = new THREE.Group();
                             group.name = body.english_name + "_group";
-                            
+
                             // Création et nommage d'un groupe pour les objets orbitants.
                             const orbiter_group = new THREE.Group();
                             orbiter_group.name = body.english_name + "_orbiter_group";
@@ -85,14 +86,19 @@ export function create_body() {
 
                             // Ajout de l'orbite et du corps dans le groupe
                             orbiter_group.add(celestial_body);
-                            
+
+                            if (body.name === "Saturne") {
+                                // Ajout des anneaux de Saturne
+                                const ring = add_saturn_ring();
+                                orbiter_group.add(ring);
+                            }
 
                             // Gestion de lunes
                             if (body.moons) {
                                 // Création de l'orbite et du corps de la lune
                                 const moon_group = add_moons_and_orbits(body, data);
                                 // Nommage du groupe
-                                moon_group.name = body.english_name +  "_moons_group";
+                                moon_group.name = body.english_name + "_moons_group";
                                 // Ajout de l'orbite et du corps des lunes dans un groupe
                                 orbiter_group.add(moon_group);
                             }
@@ -107,7 +113,7 @@ export function create_body() {
             });
             console.log("Tableau des corps aux données incomplètes");   // debug
             console.log(celestial_body_incomplete);                     // debug
-            resolve({all_group});
+            resolve({ all_group });
         }).catch(error => {
             console.log(error);
         });
@@ -183,10 +189,10 @@ function create_orbit(body) {
 function create_celestial_body(body) {
     let celestial_body;
 
+    // DEBUG
     // Création de la forme et du matériau du corps céleste
     // let geometry;
     // if (body.body_type === "Moon") {
-
     //     geometry = new THREE.SphereGeometry(body.mean_radius * scale * 10, 32, 32);
     // }
     // else {
@@ -201,6 +207,10 @@ function create_celestial_body(body) {
     // Ajout des données du corps sur l'objet "mesh"
     celestial_body.data = body;
 
+    // Appliquer une rotation pour prendre en compte l'inclinaison axiale (en degrés)
+    const axial_tilt_radians = (body.axial_tilt * Math.PI) / 180; // Convertir en radians
+    celestial_body.rotation.x = axial_tilt_radians;
+
     return celestial_body;
 }
 
@@ -208,7 +218,7 @@ function add_moons_and_orbits(parent_body, data) {
 
     const moon_group = new THREE.Group();  // "body"_moon_group
     moon_group.name = parent_body.english_name + "_group_moon";
-    
+
     parent_body.moons.forEach(element => {
         const moon_name = element.moon;
         const moon_data = data.find(data => data.name === moon_name);
@@ -234,7 +244,7 @@ function add_moons_and_orbits(parent_body, data) {
             // Ajoute l'orbite et le corps de la lune au groupe de la lune
             moon_group.add(moon_orbiter_group);
             moon_group.add(orbit_line);
-    
+
             // Ajuste la position de la lune par rapport à sa planète parente en utilisant pos
             const x_moon_orbit = positions[0];
             const y_moon_orbit = positions[1];
@@ -257,11 +267,11 @@ function add_texture(body) {
         const texture = texture_loader.load('./visualisation_3d/js/textures/venus.jpg');
         return new THREE.MeshPhongMaterial({ map: texture });
     }
-    else if (body.english_name=== "Earth") {
+    else if (body.english_name === "Earth") {
         const texture_loader = new THREE.TextureLoader();
         const texture = texture_loader.load('./visualisation_3d/js/textures/earth_daymap.jpg');
         return new THREE.MeshPhongMaterial({ map: texture });
-    } 
+    }
     else if (body.english_name === "Mars") {
         const texture_loader = new THREE.TextureLoader();
         const texture = texture_loader.load('./visualisation_3d/js/textures/mars.jpg');
@@ -322,3 +332,35 @@ function get_body_color(body) {
     }
     return color;
 };
+
+function add_saturn_ring() {
+    // Chargez la texture de l'anneau depuis une image PNG
+    const textureLoader = new THREE.TextureLoader();
+    const texture = textureLoader.load("./visualisation_3d/js/textures/saturn_rings.png");
+
+    // Créez la géométrie d'un disque
+    const geometry = new THREE.RingGeometry(0.1, 4.1, 64); // Ajustez les paramètres selon vos besoins
+
+    // Ajustez les coordonnées UV pour étirer la texture circulairement
+    const pos = geometry.attributes.position;
+    const v3 = new THREE.Vector3();
+    for (let i = 0; i < pos.count; i++) {
+        v3.fromBufferAttribute(pos, i);
+        geometry.attributes.uv.setXY(i, v3.length() < 4 ? 0 : 1, 1);
+    }
+
+    // Créez le matériau en utilisant la texture chargée
+    const material = new THREE.MeshBasicMaterial({
+        map: texture,
+        color: 0xffffff, // Couleur de base (peut être ajustée)
+        side: THREE.DoubleSide,
+        transparent: true,
+    });
+
+    // Créez le mesh du disque avec le matériau
+    const disk = new THREE.Mesh(geometry, material);
+    disk.rotation.x = Math.PI / 2;
+
+
+    return disk;
+}
