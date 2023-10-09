@@ -80,12 +80,19 @@ export function create_body() {
                             // Création et nommage d'un groupe pour les objets orbitants.
                             const orbiter_group = new THREE.Group();
                             orbiter_group.name = body.english_name + "_orbiter_group";
+                            
                             // Ajout du tableau des coordonnées XYZ des points de passage du corps
                             orbiter_group.anim_coord = positions;
                             orbiter_group.position.set(positions[0], positions[1], positions[2])
 
                             // Ajout de l'orbite et du corps dans le groupe
                             orbiter_group.add(celestial_body);
+
+                            if (body.name === "La Terre") {
+                                // Ajouter une couche nuageuse
+                                const cloud_mesh = earth_clouds(body);
+                                orbiter_group.add(cloud_mesh)
+                            }
 
                             if (body.name === "Saturne") {
                                 // Ajout des anneaux de Saturne
@@ -189,15 +196,6 @@ function create_orbit(body) {
 function create_celestial_body(body) {
     let celestial_body;
 
-    // DEBUG
-    // Création de la forme et du matériau du corps céleste
-    // let geometry;
-    // if (body.body_type === "Moon") {
-    //     geometry = new THREE.SphereGeometry(body.mean_radius * scale * 10, 32, 32);
-    // }
-    // else {
-    //     geometry = new THREE.SphereGeometry(body.mean_radius * scale, 32, 32);
-    // }
     const geometry = new THREE.SphereGeometry(body.mean_radius * scale, 32, 32);
     const material = add_texture(body);
     celestial_body = new THREE.Mesh(geometry, material);
@@ -268,9 +266,28 @@ function add_texture(body) {
         return new THREE.MeshPhongMaterial({ map: texture });
     }
     else if (body.english_name === "Earth") {
-        const texture_loader = new THREE.TextureLoader();
-        const texture = texture_loader.load('./visualisation_3d/js/textures/earth_daymap.jpg');
-        return new THREE.MeshPhongMaterial({ map: texture });
+        // Chargez la texture de nuit
+        const night_texture_loader = new THREE.TextureLoader();
+        const night_texture = night_texture_loader.load('./visualisation_3d/js/textures/earth_nightmap.jpg');
+
+        // Chargez la texture de jour
+        const day_texture_loader = new THREE.TextureLoader();
+        const day_texture = day_texture_loader.load('./visualisation_3d/js/textures/earth_daymap.jpg');
+
+        // Chargez la texture specular (réflexion)
+        const earth_specularmap_loader = new THREE.TextureLoader();
+        const earth_specularmap = earth_specularmap_loader.load('./visualisation_3d/js/textures/earth_specularmap.tif');
+
+        const Material_earth = new THREE.MeshPhongMaterial({
+            map: day_texture,                       // Texture de jour
+            emissiveMap: night_texture,             // Texture de nuit (émissive)
+            emissive: new THREE.Color(0x888888),    // Couleur de l'émission de nuit
+            emissiveIntensity: 1,                   // Intensité de l'émission de nuit
+            specularMap: earth_specularmap,         // Texture de spécularité (réflexion)
+            specular: 1,                            // Niveau de réflexion
+            shininess: 30,                          // Lissage de la spécularité
+        });
+        return Material_earth
     }
     else if (body.english_name === "Mars") {
         const texture_loader = new THREE.TextureLoader();
@@ -361,6 +378,27 @@ function add_saturn_ring() {
     const disk = new THREE.Mesh(geometry, material);
     disk.rotation.x = Math.PI / 2;
 
-
     return disk;
+}
+
+function earth_clouds(body) {
+    const texture_loader = new THREE.TextureLoader();
+    const texture = texture_loader.load('./visualisation_3d/js/textures/earth_clouds.png');
+    const geometry = new THREE.SphereGeometry((body.mean_radius + 50) * scale, 32, 32);
+
+    // cloud metarial
+    const cloudMetarial = new THREE.MeshPhongMaterial({
+        map: texture,
+        transparent: true,
+    });
+
+    // cloud mesh
+    const cloud_mesh = new THREE.Mesh(geometry, cloudMetarial);
+    cloud_mesh.name = "cloud_mesh";
+
+    // Appliquer une rotation pour prendre en compte l'inclinaison axiale (en degrés)
+    const axial_tilt_radian = (body.axial_tilt * Math.PI) / 180; // Convertir en radians
+    cloud_mesh.rotation.x = axial_tilt_radian;
+
+    return cloud_mesh;
 }

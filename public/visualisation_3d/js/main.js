@@ -41,9 +41,14 @@ const ambient = new THREE.AmbientLight(0x222222); // https://sbcode.net/threejs/
 scene.add(ambient);
 
 // Lumière émise par le soleil dans toutes les directions
-const plight = new THREE.PointLight(0xffffff, 2); // https://sbcode.net/threejs/point-light/
+const plight = new THREE.PointLight(0xffffff, 1); // https://sbcode.net/threejs/point-light/
 scene.add(plight);
 plight_pos(plight, scene); // DEBUG
+
+// const directional_light = new THREE.DirectionalLight(0xffffff, 2);
+// directional_light.position.set(0, 0, 0);
+// scene.add(directional_light);
+// plight_pos(directional_light, scene); // DEBUG
 
 // OrbitControls: rotation (clic gauche), zoom de la caméra (scroll), déplacement (clic droit)
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -128,7 +133,7 @@ export function tracking_interuptor(orbiter_group) {
 
 // Cette fonction est reliée à un évènement dans le fichier "time_scale.js".
 // Elle permet de contrôler l'animation (play, stop, speed_up, speed_down)
-let is_playing = true; // Interrupteur de l'animation
+let is_playing = false; // Interrupteur de l'animation
 let time_scale = 1; // Facteur d'échelle de temps
 export function anim_controls(value) {
     if (value === "play") {
@@ -224,6 +229,8 @@ function follow_body(camera, group) {
     camera.lookAt(group.position);
 };
 
+
+// Cette fonction permet de faire orbiter les corps et de les faire tourner sur eux-même
 function animate_celestial_body(orbiter_group, simulation_time) {
     const mesh = orbiter_group.children[0]
     // console.log(mesh);
@@ -266,5 +273,12 @@ function animate_celestial_body(orbiter_group, simulation_time) {
     
         // Définissez la position du corps céleste
         orbiter_group.position.set(x, y, z);
+
+        const cloudMesh = orbiter_group.children[1];
+        if (cloudMesh) {
+            if (cloudMesh.name === "cloud_mesh") {
+                cloudMesh.rotation.y = (mesh.rotation.y) * 0.9
+            }
+        }
     };
 };
