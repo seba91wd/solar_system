@@ -1,44 +1,95 @@
+/* /////////////////////////////////////////////////////////////////////////
+/////////////////////////// --- Reset CSS --- /////////////////////////// */
 * {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
 }
-
-/* Bare de scroll */
-.scrollbar::-webkit-scrollbar {
-    width: 20px;               /* width of the entire scrollbar */
+/*//////////////////////////////////////////////////////////////////////////////
+/////////////////////////// --- Bare de scroll --- ///////////////////////////*/
+.scrollbar {
+    overflow-y: auto;
 }
+.scrollbar::-webkit-scrollbar {
+    width: 20px;
+    /* width of the entire scrollbar */
+}
+
 .scrollbar::-webkit-scrollbar-track {
     border-radius: 8px;
     background: transparent;
 }
-  
+
 .scrollbar::-webkit-scrollbar-thumb {
     background-color: transparent;
     border: 2px solid #ffffff;
     border-radius: 8px;
 }
 
-body
-{
+/*/////////////////////////////////////////////////////////////////////////////
+/////////////////////////// --- Style par TAG --- ///////////////////////////*/
+body {
     overflow: hidden;
-    color: #ffffff;
 }
+
 /* Contient la balise <canvas> de THREE.js */
 #main {
+    color: #ffffff;
+    /* position: absolute;
+    z-index: 0;
     contain: content;
     width: 100%;
-    height: 100vh;
+    height: 100vh; */
+}
+
+h1 {
+    text-transform: uppercase;
+    text-align: center;
+    margin: 12px 30px;
 }
 
 h2{
-    margin-bottom: 10px;
+    cursor: pointer;
+    margin-bottom: 12px;
 }
 
 h3 {
     cursor: pointer;
     margin: 10px 0px;
+    width: fit-content;
 }
+
+ul {
+    list-style: none;
+}
+
+li {
+    cursor: pointer;
+    width: fit-content;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+
+li:hover {
+    border: 1px solid #ffffff;
+}
+
+fieldset {
+    padding-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+}
+
+legend {
+    margin: auto;
+    padding: 2px 10px;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////
+/////////////////////////// --- Style ancien CSS --- ///////////////////////////*/
 
 .border {
     border: 1px solid #ffffff;
@@ -48,33 +99,33 @@ h3 {
     padding: 10px;
 }
 
-#list_corps {
+/* #list_corps {
     position: absolute;
     z-index: +1;
-    bottom: 0;
-    left: 0;
+    bottom: 350px;
+    right: 0;
     max-height: 90vh;
     padding-right: 35px;
     overflow-y: auto;
-}
+} */
 
-.btn_orbits_view {
+/* .btn_orbits_view {
     cursor: pointer;
     position: absolute;
     right: 0;
     height: 25px;
-}
+} */
 
 /* Composant: Échelle des temps */
-#time_scale {
+/* #time_scale {
     position: absolute;
     z-index: +1;
-    bottom: 0;
-    left: 30%;
+    bottom: 180px;
+    right: 0;
     text-align: center;
-}
+} */
 
-#time_scale fieldset {
+/* #time_scale fieldset {
     padding-right: 10px;
     border-radius: 6px;
 }
@@ -96,23 +147,23 @@ h3 {
     margin: 6px 8px 0px 8px;
     padding: 2px;
     border-radius: 10px;
-}
+} */
 
-.active_time {
+/* .active_time {
     background-color: #4c00ff6e;;
 }
 
 #time_scale img:hover {
     background: #4c00ff6e;
     color: #ffffff;
-}
+} */
 
 /* Composant: "public/visualisation_3d/js/components/cam_position.js" */
 #cam_pos {
     position: absolute;
     z-index: +1;
     bottom: 0;
-    right: 30%;
+    right: 0;
     text-align: center;
 }
 
@@ -124,14 +175,7 @@ h3 {
     padding: 4px;
     margin-bottom: 4px;
 }
-
-#details_corps {
-    position: absolute;
-    z-index: +1;
-    bottom: 0;
-    right: 0;
-}
-
+/* 
 #list_corps li {
     cursor: pointer;
     padding-left: 10px;
@@ -145,4 +189,96 @@ h3 {
 
 .list_active {
     height: fit-content;
+} */
+
+/*////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////// --- Barre de navigation  --- ///////////////////////////*/
+
+#nav_container {
+    height: calc(100% - 100px);
 }
+
+#nav {    
+    transition: 0.5s;
+    position: absolute;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    left: -305px;
+}
+/* ---------------------------------------------------------- */
+/* --- Boutton: Afficher / Masquer la barre de navigation --- */
+
+#div_btn_nav_view {
+    position: absolute;
+    top: 10px;
+    right: -60px;
+}
+
+#div_btn_nav_view img {
+    cursor: pointer;
+    transition: 0.5s;
+    transform: rotate(0deg);
+}
+
+/* ---------------------------------------------------------- */
+/* ---------------- Onglet: Liste des corps ----------------- */
+
+.tab {
+    transition: 0.5s;
+    contain: content;
+    max-height: 350px;
+    height: 0px;
+}
+
+.div_tab {
+    contain: content;
+    transition: 0.5s;
+    background-color: #1f1f1f;
+    height: 28px;
+    width: 260px;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+/* ---------------------------------------------------------- */
+/* ---------------- Onglet: Échelle de temps ---------------- */
+
+#time_range {
+    width: 100%;
+    margin: 5px;
+}
+
+#time_icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+#time_icons img {
+    height: 40px;
+}
+
+#time_icons img:hover {
+    background-color: #4c00ff6e;
+}
+
+.active_time {
+    background-color: #4c00ff6e;;
+}
+
+/* ---------------------------------------------------------- */
+/* --------------------- Onglet: Option --------------------- */
+
+/* .btn_orbits_view {
+
+} */
+
+
+@media screen and (max-width: 530px) {
+
+
+}
+
+  

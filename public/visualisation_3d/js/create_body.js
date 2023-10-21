@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { get_celestial_bodies } from './req_bodies.js';
 
 // Echelle 1 / 1 000 000
-// Cette échelle ne modifie pas l'aspect du système solaire mais permet de diminuer "astronomiquement" les dimmension de la scène
+// Cette échelle ne modifie pas l'aspect du système solaire mais permet de diminuer "astronomiquement" les dimmensions de la scène
 const scale = 1 / 1000000;
 
 const all_group = new THREE.Group();
@@ -16,8 +16,6 @@ export function create_body() {
             // Réception de la réponse
             data.forEach(body => {
                 if (body.body_type !== "Moon") {
-                    // Variable contenant le corps céleste à traiter
-
                     // Traitement du soleil
                     if (body.body_type === "Star") {
 
@@ -88,18 +86,6 @@ export function create_body() {
                             // Ajout de l'orbite et du corps dans le groupe
                             orbiter_group.add(celestial_body);
 
-                            if (body.name === "La Terre") {
-                                // Ajouter une couche nuageuse
-                                const cloud_mesh = earth_clouds(body);
-                                orbiter_group.add(cloud_mesh)
-                            }
-
-                            if (body.name === "Saturne") {
-                                // Ajout des anneaux de Saturne
-                                const ring = add_saturn_ring();
-                                orbiter_group.add(ring);
-                            }
-
                             // Gestion de lunes
                             if (body.moons) {
                                 // Création de l'orbite et du corps de la lune
@@ -108,6 +94,18 @@ export function create_body() {
                                 moon_group.name = body.english_name + "_moons_group";
                                 // Ajout de l'orbite et du corps des lunes dans un groupe
                                 orbiter_group.add(moon_group);
+                            }
+
+                            if (body.name === "La Terre") {
+                                // Ajouter une couche nuageuse
+                                const cloud_mesh = earth_clouds(body);
+                                orbiter_group.add(cloud_mesh);
+                            }
+
+                            if (body.name === "Saturne") {
+                                // Ajout des anneaux de Saturne
+                                const ring = add_saturn_ring();
+                                orbiter_group.add(ring);
                             }
 
                             group.add(orbiter_group);
@@ -137,18 +135,23 @@ function create_orbit(body) {
     // Nombre de segments pour représenter l'orbite
     const segments = 100;
 
+    // let mean_anomaly_rad;
+    // if (body.main_anomaly !== 0) {
+        //     // Convertir la mean anomaly de degrés en radians
+        //     mean_anomaly_rad = (body.main_anomaly * Math.PI) / 180;
+        // }
+        // else {
+            //     // Calculer la période orbitale en jours (en utilisant le paramètre sideral_orbit en années)
+            //     const orbital_period_days = body.sideral_orbit * 365.256; // Nous utilisons 365.25 jours par an pour prendre en compte les années bissextiles
+            //     // Calculer la mean anomaly en radians en utilisant la période orbitale
+            //     mean_anomaly_rad = (2 * Math.PI * (360 - body.long_asc_node)) / orbital_period_days;
+            // }
+            
     // Vérifier si la mean anomaly est disponible et non nulle
-    let mean_anomaly_rad;
-    if (body.main_anomaly !== 0) {
-        // Convertir la mean anomaly de degrés en radians
-        mean_anomaly_rad = (body.main_anomaly * Math.PI) / 180;
+    if (body.main_anomaly === 0) {
+        body.main_anomaly = Math.random() * Math.PI * 2;
     }
-    else {
-        // Calculer la période orbitale en jours (en utilisant le paramètre sideral_orbit en années)
-        const orbital_period_days = body.sideral_orbit * 365.256; // Nous utilisons 365.25 jours par an pour prendre en compte les années bissextiles
-        // Calculer la mean anomaly en radians en utilisant la période orbitale
-        mean_anomaly_rad = (2 * Math.PI * (360 - body.long_asc_node)) / orbital_period_days;
-    }
+    
 
     // Vérification de la valeur de long_asc_node
     if (body.long_asc_node === 0) {
@@ -159,9 +162,12 @@ function create_orbit(body) {
     // Calcul de l'angle de l'orbite
     const angle_step = (Math.PI * 2) / segments;
 
+    // Convertir la mean anomaly de degrés en radians
+    const mean_anomaly_rad = (body.main_anomaly * Math.PI) / 180;
+
     // Contiendra toutes les positions XYZ du corps
     const positions = [];
-
+    
     // Calcul trigonométrique des positions XYZ de chaque segment composant la ligne de l'orbite
     // Note: La première coordonnée XYZ calculée dans cette boucle est utilisée plus tard pour placer le corps
     for (let i = 0; i <= segments; i++) {
@@ -194,11 +200,19 @@ function create_orbit(body) {
 }
 
 function create_celestial_body(body) {
-    let celestial_body;
 
-    const geometry = new THREE.SphereGeometry(body.mean_radius * scale, 32, 32);
+    // DEBUG
+    let geometry;
+    if (body.body_type === "Moon") {
+        geometry = new THREE.SphereGeometry(body.mean_radius * scale * 3, 32, 32);
+    }
+    else {
+        geometry = new THREE.SphereGeometry(body.mean_radius * scale, 32, 32);
+    }
+    
+    // const geometry = new THREE.SphereGeometry(body.mean_radius * scale, 32, 32);
     const material = add_texture(body);
-    celestial_body = new THREE.Mesh(geometry, material);
+    const celestial_body = new THREE.Mesh(geometry, material);
 
     // Nom du corps céleste (utile pour le débogage)
     celestial_body.name = body.english_name + "_body";
@@ -232,22 +246,31 @@ function add_moons_and_orbits(parent_body, data) {
             // Atribution d'une couleur
             moon_data.color = get_body_color(moon_data);
 
-            const { orbit_line, positions } = create_orbit(moon_data); // Crée l'orbite de la lune
-            const celestial_body = create_celestial_body(moon_data); // Crée le corps de la lune
+            // Crée l'orbite de la lune
+            const { orbit_line, positions } = create_orbit(moon_data);
+
+            // Crée le corps de la lune
+            const celestial_body = create_celestial_body(moon_data);
 
             // Ajout du tableau des coordonnées XYZ des points de passage du corps
             moon_orbiter_group.anim_coord = positions;
-
-            moon_orbiter_group.add(celestial_body)
-            // Ajoute l'orbite et le corps de la lune au groupe de la lune
-            moon_group.add(moon_orbiter_group);
-            moon_group.add(orbit_line);
 
             // Ajuste la position de la lune par rapport à sa planète parente en utilisant pos
             const x_moon_orbit = positions[0];
             const y_moon_orbit = positions[1];
             const z_moon_orbit = positions[2];
             moon_orbiter_group.position.set(x_moon_orbit, y_moon_orbit, z_moon_orbit);
+
+            // Ajoute de la la lune dans le groupe "orbiter"
+            moon_orbiter_group.add(celestial_body)
+
+            // Ajoute l'orbite et le corps de la lune au groupe de la lune
+            moon_group.add(moon_orbiter_group);
+            moon_group.add(orbit_line);
+
+            // Alignement des orbits des lunes sur l'axe de rotation de la planète mère
+            const axial_tilt_radians = (parent_body.axial_tilt * Math.PI) / 180;
+            moon_group.rotation.x = axial_tilt_radians;
         }
         // console.log("Moon processing of " + parent_body.english_name + " : " + moon_data.english_name);
     });
@@ -356,7 +379,7 @@ function add_saturn_ring() {
     const texture = textureLoader.load("./visualisation_3d/js/textures/saturn_rings.png");
 
     // Créez la géométrie d'un disque
-    const geometry = new THREE.RingGeometry(0.1, 4.1, 64); // Ajustez les paramètres selon vos besoins
+    const geometry = new THREE.RingGeometry(0.1, 4.1, 64);
 
     // Ajustez les coordonnées UV pour étirer la texture circulairement
     const pos = geometry.attributes.position;
@@ -369,14 +392,18 @@ function add_saturn_ring() {
     // Créez le matériau en utilisant la texture chargée
     const material = new THREE.MeshBasicMaterial({
         map: texture,
-        color: 0xffffff, // Couleur de base (peut être ajustée)
+        color: 0xffffff,
         side: THREE.DoubleSide,
         transparent: true,
     });
 
+    // Appliquer une rotation pour prendre en compte l'inclinaison axiale (convertir en radians: "/180"), 
+    const axial_tilt_radians = (26.73 * Math.PI) / 180;
+
     // Créez le mesh du disque avec le matériau
     const disk = new THREE.Mesh(geometry, material);
-    disk.rotation.x = Math.PI / 2;
+    disk.rotation.x = (Math.PI / 2) + axial_tilt_radians;
+    disk.name = "Saturn_ring"
 
     return disk;
 }
@@ -396,8 +423,8 @@ function earth_clouds(body) {
     const cloud_mesh = new THREE.Mesh(geometry, cloudMetarial);
     cloud_mesh.name = "cloud_mesh";
 
-    // Appliquer une rotation pour prendre en compte l'inclinaison axiale (en degrés)
-    const axial_tilt_radian = (body.axial_tilt * Math.PI) / 180; // Convertir en radians
+    // Appliquer une rotation pour prendre en compte l'inclinaison axiale (convertir en radians)
+    const axial_tilt_radian = (body.axial_tilt * Math.PI) / 180;
     cloud_mesh.rotation.x = axial_tilt_radian;
 
     return cloud_mesh;

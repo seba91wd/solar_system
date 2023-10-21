@@ -60,6 +60,7 @@ const initDb = () => {
                 })
                 .then(corp => console.log(corp.toJSON()))
             })
+            // Création d'un compte admin (BETA)
             bcrypt.hash("admin_password", 10)
                 .then(hash => {
                     user.create({

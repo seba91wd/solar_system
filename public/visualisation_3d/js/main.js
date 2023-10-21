@@ -5,9 +5,11 @@ import { plight_pos } from './scene_helper.js'
 import { create_body } from './create_body.js';
 
 // Affichage des FPS
-var stats = new Stats();
+let stats = new Stats();
 stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
-document.body.appendChild(stats.dom);
+document.querySelector("#main").appendChild(stats.dom);
+document.querySelector("#main > div").style = "position: fixed; top: 0px; right: 0px; cursor: pointer; opacity: 0.9; z-index: 10000;";
+// document.body.appendChild(stats.dom);
 stats.begin();
 
 // Création de la scène
@@ -42,7 +44,7 @@ scene.add(ambient);
 // Lumière émise par le soleil dans toutes les directions
 const plight = new THREE.PointLight(0xffffff, 1); // https://sbcode.net/threejs/point-light/
 scene.add(plight);
-plight_pos(plight, scene); // DEBUG
+// plight_pos(plight, scene); // DEBUG
 
 // OrbitControls: rotation (clic gauche), zoom de la caméra (scroll), déplacement (clic droit)
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -76,6 +78,18 @@ const background_texture = new THREE.CubeTextureLoader().load([
 // Ajout du background dans la scène
 scene.background = background_texture;
 
+
+// export const all_group = new Promise((resolve) => {
+//     create_body().then(celestial_body => {
+//         // all_group.push(celestial_body.all_group);
+//         // Ajout du groupe contenant les objets THREE dans la scène
+//         scene.add(celestial_body.all_group);
+//         resolve()
+//     }).catch(error => {
+//         console.log(error);
+//     })
+// })
+
 // Tableau des objets ajoutés dans la scène, exporté vers ./interface.js
 export const all_group = [];
 // Création des objets (orbites, corps, lunes)
@@ -91,7 +105,7 @@ create_body().then(celestial_body => {
 // ------------ Fonctions évènement ----------------- //
 ////////////////////////////////////////////////////////
 
-// Cette fonction est reliée à un évènement dans le fichier "list_corps.js".
+// Cette fonction est reliée à un évènement dans le fichier "/components/map_nav_bar.js".
 // Elle permet d'activer / désactiver le suivi dynamique du corps sélectionné.
 let tracking; // Interrupteur du suivi des corps
 let tracking_group; // Groupe du corps suivi
@@ -125,7 +139,7 @@ export function tracking_interuptor(orbiter_group) {
     controls.update();
 };
 
-// Cette fonction est reliée à un évènement dans le fichier "time_scale.js".
+// Cette fonction est reliée à un évènement dans le fichier "/components/map_nav_bar.js".
 // Elle permet de contrôler l'animation (play, stop, speed_up, speed_down)
 let is_playing = true; // Interrupteur de l'animation
 let time_scale = 1; // Facteur d'échelle de temps
@@ -204,8 +218,9 @@ function animate() {
                         for (let l = 0; l < body_moon_group.children.length; l++) {
                             const body_moon_group_child = body_moon_group.children[l];
                             if (body_moon_group_child.type === "Group") {
-                                const orbiter_group = body_moon_group_child;
-                                animate_celestial_body(orbiter_group, simulation_time);
+                                // console.log(body_moon_group_child);
+                                const moon_orbiter_group = body_moon_group_child;
+                                animate_celestial_body(moon_orbiter_group, simulation_time);
                             };
                         };
                     };
@@ -269,7 +284,7 @@ function animate_celestial_body(orbiter_group, simulation_time) {
     };
 
     // Rotation de la couche nuageuse de la planète Terre
-    const cloudMesh = orbiter_group.children[1];
+    const cloudMesh = orbiter_group.children[2];
     if (cloudMesh) {
         if (cloudMesh.name === "cloud_mesh") {
             cloudMesh.rotation.y = (mesh.rotation.y) * 0.9;
